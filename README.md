@@ -1,8 +1,6 @@
 <h1 align="center">Hi 👋, I'm HSn</h1>
 <h3 align="center">Go Engineer</h3>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=hsn0918" alt="hsn0918" /></a> </p>
-
 - 🌱 I’m currently learning **Kubernetes and linux**
 
 - 👨‍💻 All of my projects are available at [https://github.com/HSn0918](https://github.com/HSn0918)
