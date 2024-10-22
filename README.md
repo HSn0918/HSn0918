@@ -12,10 +12,3 @@
 
 <p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=hsn0918&show_icons=true&locale=en&layout=compact" alt="hsn0918" /></p>
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=hsn0918&" alt="hsn0918" /></p>
-<h3 align="center">关注 Taffy 喵</h3>
-<p align="center">
-  <a href="https://github.com/TaffyMew" target="_blank" rel="noreferrer">
-    <img src="https://avatars.githubusercontent.com/u/000000?v=4" alt="TaffyMew's profile" width="40" height="40"/> 
-  </a>
-</p>
