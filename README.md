@@ -2,7 +2,7 @@
 <h3 align="center">Go Engineer | Kubernetes Enthusiast</h3>
 
 ## About Me
-- 🔭 I'm currently working with **Go microservices and container orchestration**
+- 🔭 I'm currently working with **Go and container orchestration**
 - 🌱 I'm learning **advanced Kubernetes patterns and Linux system internals**
 - 👨‍💻 All of my projects are available at [github.com/HSn0918](https://github.com/HSn0918)
 - 📫 How to reach me: **hsn2003zj@gmail.com**
