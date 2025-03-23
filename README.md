@@ -1,14 +1,19 @@
 <h1 align="center">Hi 👋, I'm HSn</h1>
-<h3 align="center">Go Engineer</h3>
+<h3 align="center">Go Engineer | Kubernetes Enthusiast</h3>
 
-- 🌱 I’m currently learning **Kubernetes and linux**
+## About Me
+- 🔭 I'm currently working with **Go microservices and container orchestration**
+- 🌱 I'm learning **advanced Kubernetes patterns and Linux system internals**
+- 👨‍💻 All of my projects are available at [github.com/HSn0918](https://github.com/HSn0918)
+- 📫 How to reach me: **hsn2003zj@gmail.com**
 
-- 👨‍💻 All of my projects are available at [https://github.com/HSn0918](https://github.com/HSn0918)
+## Skills
+![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
-- 📫 How to reach me **hsn2003zj@.gmail.com**
-
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://www.elastic.co" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/elastic/elastic-icon.svg" alt="elasticsearch" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://golang.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg" alt="go" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://kubernetes.io" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="kubernetes" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://redis.io" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original-wordmark.svg" alt="redis" width="40" height="40"/> </a> </p>
-
-<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=hsn0918&show_icons=true&locale=en&layout=compact" alt="hsn0918" /></p>
-
+## GitHub Stats
+<p>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=hsn0918&show_icons=true&locale=en&layout=compact&theme=dark" alt="hsn0918" />
+</p>
