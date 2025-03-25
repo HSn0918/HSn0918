@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄锡超 - 个人简历</title>
+    <!-- TailwindCSS 3.0+ CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 自定义样式 -->
+    <script>
+        // 设置Tailwind主题
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    },
+                },
+            },
+            plugins: [],
+        }
+
+        // 检查系统主题偏好并设置初始主题
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <style>
+        /* 自定义样式 */
+        input, textarea {
+            background-color: white;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+        }
+
+        .dark input, .dark textarea {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: white;
+        }
+
+        /* 修复表单元素在黑暗模式下的问题 */
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+            border-color: #0ea5e9;
+        }
+
+        /* 添加平滑过渡效果 */
+        section {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* 通用卡片悬停效果 */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 技能卡片悬停效果 */
+        .skill-card {
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+            color: #0ea5e9;
+        }
+
+        .skill-icon {
+            transition: all 0.3s ease;
+        }
+
+        /* 项目图标悬停效果 */
+        .project-icon {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover .project-icon {
+            transform: scale(1.1);
+            color: #0ea5e9;
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- 主题切换按钮 -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle"
+            class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 text-gray-800 dark:text-gray-200">
+            <i class="fa-solid fa-sun dark:hidden"></i>
+            <i class="fa-solid fa-moon hidden dark:inline"></i>
+        </button>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="sticky top-0 bg-white/80 dark:bg-gray-800/90 backdrop-blur-md shadow-sm z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                        黄锡超
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#education"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">教育背景</a>
+                    <a href="#skills"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">专业技能</a>
+                    <a href="#experience"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">实习经历</a>
+                    <a href="#projects"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">项目经历</a>
+                    <a href="#opensource"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">开源贡献</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button"
+                        class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-md">
+            <div class="pt-2 pb-4 space-y-1 px-4">
+                <a href="#education" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400">教育背景</a>
+                <a href="#skills" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400">专业技能</a>
+                <a href="#experience" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400">实习经历</a>
+                <a href="#projects" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400">项目经历</a>
+                <a href="#opensource" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400">开源贡献</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 个人信息卡片 -->
+    <header class="max-w-7xl mx-auto my-8 px-4 sm:px-6 lg:px-8">
+        <div
+            class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl rounded-2xl transition-all duration-300 hover:shadow-2xl card-hover">
+            <div class="p-6">
+                <div class="md:flex items-center">
+                    <div class="flex-shrink-0 mb-6 md:mb-0">
+                        <div
+                            class="h-40 w-40 rounded-full overflow-hidden mx-auto md:mx-0 border-4 border-primary-100 dark:border-primary-900">
+                            <img src="touxiang.jpg" alt="黄锡超的照片" class="h-full w-full object-cover">
+                        </div>
+                    </div>
+                    <div class="md:ml-8 text-center md:text-left">
+                        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">黄锡超</h1>
+                        <p class="mt-2 text-xl text-gray-600 dark:text-gray-300">后端开发工程师 | Go 语言开发者</p>
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <div class="flex items-center justify-center md:justify-start">
+                                <i class="fa-solid fa-envelope text-primary-500 mr-2"></i>
+                                <span class="text-sm">hsn.zj@foxmail.com</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start">
+                                <i class="fa-solid fa-envelope-open text-primary-500 mr-2"></i>
+                                <span class="text-sm">hsn2003zj@gmail.com</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start">
+                                <i class="fa-brands fa-weixin text-primary-500 mr-2"></i>
+                                <span class="text-sm">hsn7307</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start">
+                                <i class="fa-brands fa-github text-primary-500 mr-2"></i>
+                                <a href="https://github.com/HSn0918" target="_blank"
+                                    class="text-primary-600 dark:text-primary-400 hover:underline text-sm">github.com/HSn0918</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <!-- 教育背景 -->
+        <section id="education" class="mb-16 opacity-0 translate-y-4">
+            <div class="flex items-center mb-6">
+                <i class="fa-solid fa-graduation-cap text-3xl text-primary-500 mr-4"></i>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">教育背景</h2>
+            </div>
+            <div
+                class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg card-hover">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">浙江理工大学科技与艺术学院</h3>
+                        <p class="mt-1 text-gray-600 dark:text-gray-300">计算机科学与技术 | 本科</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
+                            2021.09 - 2025.07
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 专业技能 -->
+        <section id="skills" class="mb-16 opacity-0 translate-y-4">
+            <div class="flex items-center mb-6">
+                <i class="fa-solid fa-code text-3xl text-primary-500 mr-4"></i>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">专业技能</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
+                    <div class="flex items-center mb-4">
+                        <i class="skill-icon fa-solid fa-code text-3xl text-primary-500 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Go 语言基础</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        熟悉 Go 语言核心特性，熟悉常用数据结构（map、chan、slice 等），理解 GMP 调度模型和垃圾回收（GC）机制，具备并发编程经验，能够通过协程优化接口响应时间和提升系统性能。
+                    </p>
+                </div>
+                <div
+                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
+                    <div class="flex items-center mb-4">
+                        <i class="skill-icon fa-solid fa-cubes text-3xl text-primary-500 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Go 开发框架</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        熟悉常见 Go 开发框架，如 Gin、GORM、gRPC、go-zero 和 kubebuilder 等。
+                    </p>
+                </div>
+                <div
+                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
+                    <div class="flex items-center mb-4">
+                        <i class="skill-icon fa-solid fa-cloud text-3xl text-primary-500 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">云原生技术</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        熟悉 Kubernetes，具备容器化部署经验、了解 Kubernetes informer 机制、通过阅读相关 Kubernetes 源码，解决过相应问题。
+                    </p>
+                </div>
+                <div
+                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
+                    <div class="flex items-center mb-4">
+                        <i class="skill-icon fa-solid fa-database text-3xl text-primary-500 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">数据库技术</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        熟悉 MySQL 数据库，擅长 SQL 索引优化、查询优化和事务处理等。
+                    </p>
+                </div>
+                <div
+                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
+                    <div class="flex items-center mb-4">
+                        <i class="skill-icon fa-solid fa-memory text-3xl text-primary-500 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">缓存技术</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        熟悉 Redis 使用，能够高效解决高并发下的缓存问题，熟悉缓存雪崩、缓存穿透和缓存击穿等问题的解决方案。
+                    </p>
+                </div>
+                <div
+                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
+                    <div class="flex items-center mb-4">
+                        <i class="skill-icon fa-solid fa-terminal text-3xl text-primary-500 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">开发工具与环境</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        熟悉 Linux 操作系统和 Git 版本控制工具，能够独立完成项目的开发、打包和部署，具备扎实的开发环境配置与调试能力。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 开源经历 -->
+        <section id="opensource" class="mb-16 opacity-0 translate-y-4">
+            <div class="flex items-center mb-6">
+                <i class="fa-solid fa-code-branch text-3xl text-primary-500 mr-4"></i>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">开源经历</h2>
+            </div>
+            <div
+                class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
+                <div class="p-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div class="flex items-center">
+                            <i class="fa-brands fa-github text-gray-700 dark:text-gray-300 text-2xl mr-3 project-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">个人GitHub</h3>
+                                <a href="https://github.com/HSn0918" target="_blank"
+                                    class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
+                                    github.com/HSn0918
+                                </a>
+                                <p class="mt-2 text-gray-600 dark:text-gray-300">Go工程师 | Kubernetes爱好者 | 42个代码仓库 | 47个Star</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TinyRedis 项目 -->
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-cube text-red-500 mr-3 project-icon"></i>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">TinyRedis</h3>
+                                    <a href="https://github.com/MiniApplication/tinyredis" target="_blank"
+                                        class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
+                                        github.com/MiniApplication/tinyredis
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="mt-2 md:mt-0">
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                                    <i class="fa-solid fa-star mr-1"></i> 10 Stars
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
+                            <li class="flex">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-cubes text-yellow-500 mr-2 project-icon"></i>
+                                </div>
+                                <p><span class="font-medium">项目概述：</span>TinyRedis 是一个使用 Go 语言原生 net 包实现的轻量级高性能 Redis
+                                    服务端，高效支持 Redis 各种基本数据类型。</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 其他项目 -->
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">其他开源项目</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Learning-Notes -->
+                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
+                                <div class="flex items-center mb-2">
+                                    <i class="fa-solid fa-book text-green-500 mr-2 project-icon"></i>
+                                    <h4 class="font-bold">Learning-Notes</h4>
+                                </div>
+                                <a href="https://github.com/HSn0918/Learning-Notes" target="_blank"
+                                    class="text-primary-600 dark:text-primary-400 hover:underline text-sm">
+                                    github.com/HSn0918/Learning-Notes
+                                </a>
+                                <p class="text-sm mt-2">学习笔记与技术总结</p>
+                            </div>
+
+                            <!-- big-market-go -->
+                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
+                                <div class="flex items-center mb-2">
+                                    <i class="fa-solid fa-shopping-cart text-indigo-500 mr-2 project-icon"></i>
+                                    <h4 class="font-bold">big-market-go</h4>
+                                </div>
+                                <a href="https://github.com/HSn0918/big-market-go" target="_blank"
+                                    class="text-primary-600 dark:text-primary-400 hover:underline text-sm">
+                                    github.com/HSn0918/big-market-go
+                                </a>
+                                <p class="text-sm mt-2">Go实现的大营销系统</p>
+                            </div>
+
+                            <!-- controller-demo -->
+                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
+                                <div class="flex items-center mb-2">
+                                    <i class="fa-solid fa-dharmachakra text-blue-500 mr-2 project-icon"></i>
+                                    <h4 class="font-bold">controller-demo</h4>
+                                </div>
+                                <a href="https://github.com/HSn0918/controller-demo" target="_blank"
+                                    class="text-primary-600 dark:text-primary-400 hover:underline text-sm">
+                                    github.com/HSn0918/controller-demo
+                                </a>
+                                <p class="text-sm mt-2">Kubernetes控制器示例</p>
+                            </div>
+
+                            <!-- zeroim -->
+                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
+                                <div class="flex items-center mb-2">
+                                    <i class="fa-solid fa-comments text-yellow-500 mr-2 project-icon"></i>
+                                    <h4 class="font-bold">zeroim</h4>
+                                </div>
+                                <a href="https://github.com/HSn0918/zeroim" target="_blank"
+                                    class="text-primary-600 dark:text-primary-400 hover:underline text-sm">
+                                    github.com/HSn0918/zeroim
+                                </a>
+                                <p class="text-sm mt-2">基于go-zero的即时通讯系统</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实习经历 -->
+        <section id="experience" class="mb-16 opacity-0 translate-y-4">
+            <div class="flex items-center mb-6">
+                <i class="fa-solid fa-briefcase text-3xl text-primary-500 mr-4"></i>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">实习经历</h2>
+            </div>
+            <div
+                class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
+                <div class="p-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">杭州谐云科技有限公司</h3>
+                            <p class="mt-1 text-gray-600 dark:text-gray-300">服务端开发实习生</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                2024.07-至今
+                            </span>
+                        </div>
+                    </div>
+                    <div class="text-lg font-medium text-primary-600 dark:text-primary-400 mb-2">观云台</div>
+                    <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
+                        <li class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-shield-halved text-blue-500 mr-2 project-icon"></i>
+                            </div>
+                            <p><span
+                                    class="font-medium">基线检查：</span>采用策略模式，统一接入底座部门自研组件并管理多种检查策略，灵活支持立即执行、延迟执行和定时执行等不同执行方式，优化了基线检查的灵活性和可扩展性。
+                            </p>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-arrows-rotate text-blue-500 mr-2 project-icon"></i>
+                            </div>
+                            <p><span class="font-medium">平台重构与安全增强：</span>参与平台 Kubernetes 资源管理的重构，将平台核心服务从 Java 迁移至
+                                Go，参照 Kubernetes RESTful API 规范设计接口，继承 Kubernetes RBAC 鉴权功能，并通过 Webhook 使平台的 token 兼容
+                                Kubernetes token，增强了平台的安全性与一致性。</p>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-bolt text-blue-500 mr-2 project-icon"></i>
+                            </div>
+                            <p><span class="font-medium">多租户管理与性能优化：</span>独立设计并实现备份服务器的多租户功能，结合 MapReduce
+                                思想和协程优化接口性能，将响应时间从 30 秒降至 2 秒，性能提升约 15 倍，同时通用化该工具方法，提高了项目开发效率。</p>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-database text-blue-500 mr-2 project-icon"></i>
+                            </div>
+                            <p><span class="font-medium">集群备份与回滚设计：</span>设计并实现了基于 MinIO 和 Velero
+                                的集群备份与回滚功能，确保平台数据的可靠性与高可用性。</p>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-chart-line text-blue-500 mr-2 project-icon"></i>
+                            </div>
+                            <p><span class="font-medium">运维监控与性能调优：</span>负责平台 L3 工单值班及开发与测试环境中的 Kubernetes 运维工作，在
+                                Kubernetes 环境下，通过日志定位并解决接口响应时间过长的问题，与前端团队协作，共同优化性能。</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目经历 -->
+        <section id="projects" class="mb-16 opacity-0 translate-y-4">
+            <div class="flex items-center mb-6">
+                <i class="fa-solid fa-laptop-code text-3xl text-primary-500 mr-4"></i>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">项目经历</h2>
+            </div>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
+                <div class="p-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Beyond</h3>
+                            <p class="mt-1 text-gray-600 dark:text-gray-300">后端开发</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+                                2023.09 - 2023.12
+                            </span>
+                        </div>
+                    </div>
+                    <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
+                        <li class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-lock text-purple-500 mr-2 project-icon"></i>
+                            </div>
+                            <p><span class="font-medium">设计秒杀防止超卖功能：</span>基于 ConcurrentHashMap
+                                的设计思想，使用 Redis 实现了滑块锁功能，有效防止了超买现象，经过压测支持每秒 6000 次秒杀操作。</p>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-gift text-purple-500 mr-2 project-icon"></i>
+                            </div>
+                            <p><span class="font-medium">抽奖秒杀模块设计与优化：</span>负责设计并实现抽奖模块，采用模板模式定义抽奖流程框架，结合责任链模式和规则树模式，优化了决策过程，确保抽奖逻辑具有灵活性与可扩展性。
+                            </p>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-server text-purple-500 mr-2 project-icon"></i>
+                            </div>
+                            <p><span class="font-medium">缓存策略实施与优化：</span>通过使用 Redis 缓存热点数据，结合
+                                MapReduce 与 SingleFlight
+                                的思想，提升查询速度的同时并防止缓存击穿。采用旁路缓存方案保持缓存数据的实时性和准确性。</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-white dark:bg-gray-800 py-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-600 dark:text-gray-400 font-medium flex items-center">
+                        <i class="fa-regular fa-copyright mr-1"></i>
+                        <span>2025 HSn</span>
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">使用 Tailwind CSS 和 Font Awesome 构建</p>
+                </div>
+                <div class="flex space-x-8">
+                    <a href="mailto:hsn2003zj@gmail.com" class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110">
+                        <i class="fa-solid fa-envelope text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110 group relative">
+                        <i class="fa-brands fa-weixin text-xl"></i>
+                        <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 py-1 px-3 bg-gray-700 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">微信: hsn7307</span>
+                    </a>
+                    <a href="https://github.com/HSn0918" target="_blank" class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110">
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // 移动端菜单
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 导航链接点击后关闭移动端菜单
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 滚动动画
+        const sections = document.querySelectorAll('section');
+
+        const revealSection = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                    entry.target.classList.add('opacity-100', 'translate-y-0', 'transition-all', 'duration-700', 'ease-out');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const sectionObserver = new IntersectionObserver(revealSection, {
+            root: null,
+            threshold: 0.15
+        });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // 初始化页面时立即显示首屏内容
+        setTimeout(() => {
+            const visibleSections = Array.from(sections).filter(section => {
+                const rect = section.getBoundingClientRect();
+                return rect.top < window.innerHeight && rect.bottom >= 0;
+            });
+
+            visibleSections.forEach(section => {
+                section.classList.remove('opacity-0', 'translate-y-4');
+                section.classList.add('opacity-100', 'translate-y-0', 'transition-all', 'duration-700', 'ease-out');
+                sectionObserver.unobserve(section);
+            });
+        }, 100);
+    </script>
+</body>
+
+</html>
