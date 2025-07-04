@@ -1,4 +1,4 @@
-<img width="398" alt="image" src="https://github.com/user-attachments/assets/da9b057f-1fb7-48f6-80ea-83ad3e355786" /><h1 align="center">Hi 👋, I'm HSn</h1>
+<h1 align="center">Hi 👋, I'm HSn</h1>
 <h3 align="center">Go Engineer | Kubernetes Enthusiast</h3>
 
 ## About Me
