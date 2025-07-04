@@ -1,11 +1,11 @@
-<h1 align="center">Hi 👋, I'm HSn</h1>
+<img width="398" alt="image" src="https://github.com/user-attachments/assets/da9b057f-1fb7-48f6-80ea-83ad3e355786" /><h1 align="center">Hi 👋, I'm HSn</h1>
 <h3 align="center">Go Engineer | Kubernetes Enthusiast</h3>
 
 ## About Me
-- 🔭 I'm currently working with **Go and container orchestration**
-- 🌱 I'm learning **advanced Kubernetes patterns and Linux system internals**
+- 🔭 I'm currently working with **Go**
+- 🌱 I'm learning **advanced Kubernetes patterns and DDD**
 - 👨‍💻 All of my projects are available at [github.com/HSn0918](https://github.com/HSn0918)
-- 📫 How to reach me: **hsn2003zj@gmail.com**
+- 📫 How to reach me: **hsn2003zj@gmail.com** Or **hsn@linux.do** 
 
 ## Skills
 ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
