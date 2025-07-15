@@ -1,0 +1,128 @@
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+% !TeX spellcheck = en_US
+% --- 选择Xelatex编译器 ---
+\documentclass{resume}
+
+% --- 核心依赖包 ---
+\usepackage{zh_CN-Adobefonts_external} % 中文字体支持
+\usepackage{linespacing_fix}           % 行间距修正
+\usepackage{cite}                      % 参考文献
+\usepackage{comment}                   % 注释环境
+
+% --- 推荐阅读 ---
+% LaTeX 30分钟入门: https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% languageSelection 包文档: https://github.com/xiangrongjingujiu/latex-languageSelection
+% notePlus 包文档: https://github.com/xiangrongjingujiu/latex-note-plus
+
+% --- 自定义功能包 ---
+\usepackage[Chinese]{languageSelection} % 中英双语切换
+\usepackage[color=blue]{notePlus}      % 笔记与高亮
+
+\begin{document}
+\pagenumbering{gobble} % 全局隐藏页码
+
+% ===================================================================
+% 基本信息
+% 替换 "%" 后面的注释内容为你自己的信息
+% ===================================================================
+
+% --- 中文信息 ---
+\CN{
+  \name{黄锡超}
+  \info{手机：(+86) 13736707307}{邮箱：hsn.zj@foxmail.com}{}{}
+  \info{性别：男}{微信：hsn7307}{}{}
+}
+
+
+% --- 照片 ---
+% 照片需放置于 images 文件夹下，并命名为 you.jpg
+% 0.15 为照片缩放比例，可按需调整
+% 如果不需要照片，请注释掉下面这行
+\yourphoto{0.10}
+
+% ===================================================================
+% 正文内容
+% ===================================================================
+
+% -------------------------------------------------------------------
+% 教育背景
+% -------------------------------------------------------------------
+\CN{
+  \section{教育背景}
+  \datedsubsection{\textbf{浙江理工大学科技与艺术学院}，计算机科学与技术，\textit{本科}}{2021.09 - 2025.06}
+}
+\EN{
+  \section{EDUCATION}
+  \datedsubsection{\textbf{Clayden University}, Clayden Experimental Class, \textit{PhD}}{1910.09 - 1930.06}
+}
+\CN{
+  \section{专业技能}
+  \begin{itemize}[leftmargin=*, parsep=0.5ex, itemsep=0.5ex]
+    \item \textbf{编程语言与框架}：熟悉Go语言（核心特性如map, channel, slice）及主流框架 (如gin, kubebuilder, connect-grpc)。
+    \item \textbf{云原生技术}：熟悉Kubernetes核心机制（含Informer），具备通过源码分析解决业务问题的能力。
+    \item \textbf{数据库与缓存}：熟练运用MySQL进行数据存储与管理；熟悉Redis并具备解决缓存穿透、雪崩、击穿等高并发问题的实践经验。
+    \item \textbf{开发与部署}：熟悉Linux操作系统和Git版本控制；具备独立完成项目开发到部署全流程的能力。
+    \item \textbf{AI与大模型}：了解AI大模型Prompt工程（提示词设计优化），熟悉MCP开发。
+  \end{itemize}
+}
+% -------------------------------------------------------------------
+% 工作经历
+% -------------------------------------------------------------------
+\CN{
+  \section{工作经历}
+  \datedsubsection{\textbf{武汉智识无垠科技有限公司}，后端开发工程师}{2025.06 - 至今}
+  \begin{itemize}[leftmargin=*, parsep=0.5ex, itemsep=0.5ex]
+    \item 负责核心产品后端的架构设计、服务迭代与体验优化，负责内部平台的规划与研发工作。
+    \item 与算法团队紧密协作，专注于提升系统在高并发场景下的稳定性与扩展性，保障核心算法服务的平稳落地与高效运行。
+  \end{itemize}
+
+  \datedsubsection{\textbf{杭州谐云科技有限公司}，后端开发工程师}{2024.07 - 2025.04}
+  \begin{itemize}[leftmargin=*, parsep=0.5ex, itemsep=0.5ex]
+    \item 负责PaaS平台核心服务的现代化改造，主导后端服务的迁移与重构工作，并为新架构设计与构建标准化的API。
+    \item 深入分析并解决系统的性能瓶颈，通过架构与代码层面的持续优化，实现关键服务响应速度与吞吐量的显著提升。
+  \end{itemize}
+}
+
+% -------------------------------------------------------------------
+% 项目经历
+% -------------------------------------------------------------------
+\CN{
+  \section{项目经历}
+    \datedsubsection{\textbf{Doc2X，后端开发工程师}}{2025.06-至今}
+  \begin{itemize}[parsep=0.5ex]
+    \item \textbf{项目介绍}：全场景文档解析器 Doc2X，提供业界领先的 PDF 解析服务，旨在无损提取并结构化文档内容，并一键转换为 Markdown, LaTeX, Word 等多种格式。
+    \item \textbf{主要贡献}：
+      \begin{itemize}[leftmargin=*, parsep=0pt, itemsep=0.5ex, topsep=0.5ex]
+        \item \textbf{自动化工作流平台研发}：设计并开发内部平台，替代原有手动流程。
+        \item \textbf{核心架构解耦与设计}：构建事件驱动的异步架构，将业务逻辑与算法服务解耦，显著提升了系统的可维护性与迭代效率。
+      \end{itemize}
+  \end{itemize}
+}
+  \datedsubsection{\textbf{观云台，后端开发工程师}}{2024.07-2025.05}
+  \begin{itemize}[parsep=0.5ex]
+    \item \textbf{项目介绍}：基于Kubernetes的新一代PaaS平台，旨在提升企业IT管理能力，降低运营成本和风险，提高运维效率，保障业务稳定与高效迭代。
+    \item \textbf{主要贡献}：
+      \begin{itemize}[leftmargin=*, parsep=0pt, itemsep=0.5ex, topsep=0.5ex]
+        \item \textbf{平台重构与安全增强}：参与平台Kubernetes资源管理重构，将核心服务从 \textbf{Java} 迁移至 \textbf{Go}，并参照Kubernetes规范设计接口，集成鉴权功能，显著增强平台安全性与一致性。
+        \item \textbf{多租户管理与性能优化}：独立设计并实现备份服务器多租户功能，结合MapReduce思想和协程优化接口性能，将响应时间从30秒缩短至2秒，并通用化该工具方法，大幅提高项目开发效率。
+        \item \textbf{容器服务架构改造与性能提升}：将Java命令式服务改造为K8S声明式架构，统一资源模型；通过协程与批处理优化，核心接口响应时间从20秒降至300毫秒，显著提升用户体验与系统效率。
+      \end{itemize}
+  \end{itemize}
+
+
+
+\CN{
+  \section{开源经历}
+%  \datedsubsection{\textbf{tiny-redis} (Go)}{11 Stars}
+%  \begin{itemize}[parsep=0.5ex]
+%   \item \textbf{项目介绍}：基于Go网络库实现的一个支持多种数据结构 (以及TTL) 的内存数据库。
+%  \end{itemize}
+ 
+  \datedsubsection{\textbf{Kubernetes-mcp} (Go)}{23 Stars}
+  \begin{itemize}[parsep=0.5ex]
+    \item \textbf{项目介绍}：基于Go实现的 Model Context Protocol (MCP) 服务器，用于与Kubernetes集群交互，提供高效的集群管理和资源调度能力。
+  \end{itemize}
+}
+
+\end{document}
