@@ -1,6 +1,6 @@
 \documentclass{resume}
 \usepackage{zh_CN-Adobefonts_external} % 中文字体支持
-\usepackage{linespacing_fix}           % 行间距修正
+\usepackage{linespacing_fix}
 \usepackage{cite}
 \usepackage{comment}
 
@@ -9,79 +9,89 @@
 
 \begin{document}
 \pagenumbering{gobble}
+
 \CN{
   \name{黄锡超}
-  \info{手机:(+86) 13736707307}{邮箱:hsn.zj@foxmail.com}{}{}
-  \info{性别:男}{微信:hsn7307}{在线简历:resume.huangsn.dev}{}
+  \info{手机: (+86) 13736707307}{邮箱: hsn.zj@foxmail.com}{}{}
+  \info{性别: 男}{微信: hsn7307}{在线简历: resume.huangsn.dev}{}
 }
 
+% =============================
+% 教育背景
+% =============================
 \CN{
   \section{教育背景}
-  \datedsubsection{\textbf{浙江理工大学科技与艺术学院}，计算机科学与技术，\textbf{本科}}{2021.09 - 2025.06}
+  \datedsubsection{\textbf{浙江理工大学科技与艺术学院}，计算机科学与技术（本科）}{2021.09 -- 2025.06}
 }
- \CN{
-    \section{专业技能}
-    \begin{itemize}[leftmargin=*, parsep=0.5ex, itemsep=0.5ex]
-      \item \textbf{编程语言与框架}：\textbf{熟练使用 Go}，掌握 \textbf{gRPC、ConnectRPC、Gin} 等主流框架，具备\textbf{微服务架构设计}经验。
-      \item \textbf{云原生技术}：\textbf{熟悉 Kubernetes 核心机制}，能通过\textbf{源码分析}定位并解决过问题。
-      \item \textbf{数据库与缓存}：\textbf{熟练 PostgreSQL 设计与优化}，具备 \textbf{Redis 在高并发场景下的经验}（缓存击穿/雪崩/穿透）。
-      \item \textbf{消息队列与事件驱动}：熟练使用 \textbf{NATS}，具备\textbf{事件驱动架构}设计经验，掌握\textbf{异步消息处理}。
-      \item \textbf{工程与部署}：熟悉 \textbf{Linux} 与 \textbf{Git}，具备\textbf{从开发到部署的全流程交付能力}。
-      \item \textbf{AI 与大模型}：了解大模型原理，具备 \textbf{MCP 相关开发经验}。
-    \end{itemize}
-  }
 
+% =============================
+% 工作经历
+% =============================
 \CN{
   \section{工作经历}
-  \datedsubsection{\textbf{智识无垠}，\textbf{后端开发工程师}}{2025.06 - 至今}
-  \begin{itemize}[leftmargin=*, parsep=0.5ex, itemsep=0.5ex]
-    \item 参与核心文档解析产品后端系统的\textbf{架构设计与迭代}，支撑 \textbf{万级日活、千万级日文档解析量} 的稳定运行。
-    \item 推动\textbf{内部平台建设}与\textbf{流程自动化}，支撑产品的快速迭代。
+
+  \datedsubsection{\textbf{智识无垠}，后端开发工程师}{2025.06 -- 至今}
+  \begin{itemize}[leftmargin=*, itemsep=0.5ex]
+    \item 参与核心文档解析平台的后端架构演进，支撑 \textbf{万级 DAU、千万级日解析量}，服务可用性稳定。
+    \item 主导内部平台建设，推动关键流程 \textbf{自动化与标准化}，运营效率提升 \textbf{2 倍以上}。
   \end{itemize}
 
-  \datedsubsection{\textbf{谐云}，\textbf{后端开发工程师}}{2024.07 - 2025.04}
-  \begin{itemize}[leftmargin=*, parsep=0.5ex, itemsep=0.5ex]
-    \item 参与 PaaS 云平台\textbf{核心服务的重构与迭代}，推动系统\textbf{现代化改造}与\textbf{性能优化}。
-    \item 协助构建\textbf{多租户、容器服务}等模块，提升平台\textbf{稳定性与用户体验}。
+  \datedsubsection{\textbf{谐云}，后端开发工程师}{2024.07 -- 2025.04}
+  \begin{itemize}[leftmargin=*, itemsep=0.5ex]
+    \item 负责 PaaS 平台核心服务的 \textbf{Java→Go 重构} 与性能优化，使服务平均响应时间降低 \textbf{40\%+}。
+    \item 参与多租户、容器服务等模块建设，优化资源调度与系统稳定性，显著提升用户体验。
   \end{itemize}
 }
+
+% =============================
+% 项目经历
+% =============================
 \CN{
   \section{项目经历}
-  \datedsubsection{\textbf{Doc2X — C/B端文档解析平台}，后端开发}{2025.06 - 至今}
-    \begin{itemize}[parsep=0.5ex]
-      \item \textbf{项目简介}：业界领先的\textbf{智能文档解析器}，支持无损提取 PDF 内容并转化为 Markdown/LaTeX/Word 等格式，服务日均解析量超 \textbf{千万级}，涵盖学术论文、合同文档、表格图表等多场景解析。
-      \item \textbf{技术栈}：\textbf{Go}、\textbf{gRPC + ConnectRPC}、\textbf{PostgreSQL}、\textbf{Redis}、\textbf{NATS}、\textbf{Kubernetes}、\textbf{OpenTelemetry}。
-      \item \textbf{贡献亮点}：
-        \begin{itemize}[leftmargin=*, parsep=0pt, itemsep=0.5ex]
 
-        \item {\textbf{多渠道通知系统}}：设计并实现\textbf{告警通知系统}，采用\textbf{策略模式 + 工厂模式}接入多个通知渠道，支持余额告警、资源告警、系统公告等场景。
-        \item {\textbf{消费者服务迭代}}：围绕 \textbf{NATS} 构建解析、翻译、订单、奖励等事件处理链路，统一实现 \textbf{用户额度扣减}、\textbf{限流幂等校验} 与 \textbf{结果缓存} 更新，保证多业务场景的配额与缓存一致性。
-        \item {\textbf{运营后台迭代}}：围绕 Admin 端整合 \textbf{公告投放}、\textbf{发票审核}、\textbf{退款审批} 与 \textbf{用户订单/消费查询} 等核心流程，帮助运营与财务在一个后台完成日常审核、对账与运营动作。
-        \end{itemize}
-    \end{itemize}
- \datedsubsection{\textbf{观云台 — Kubernetes PaaS 平台}，后端开发}{2024.07 - 2025.05}
- \begin{itemize}[parsep=0.5ex]
-   \item \textbf{项目简介}：基于 Kubernetes 的\textbf{新一代 PaaS 平台}，帮助企业提升 IT 管理能力，降低运维成本，保障业务稳定与高效迭代。
-   \item \textbf{技术栈}：\textbf{Go}、\textbf{Gin}、\textbf{Kubernetes}、\textbf{Kubebuilder}、\textbf{MySQL}。
-   \item \textbf{贡献亮点}：
-     \begin{itemize}[leftmargin=*, parsep=0pt, itemsep=0.5ex]
-       \item \textbf{资源管理重构}：将Kubernetes资源服务管理从 \textbf{Java 重构为 Go}，接口参照 \textbf{Kubernetes 规范}并集成鉴权，\textbf{增强平台安全性与一致性}。
-       \item \textbf{性能优化}：实现\textbf{多租户备份服务}，结合 \textbf{MapReduce 思想}与\textbf{协程优化}，\textbf{响应时间从 30 秒缩短至 2 秒}，并沉淀为可复用工具。
-       \item \textbf{容器服务（网关）}：将 Java 命令式容器服务改造为 \textbf{Kubernetes 声明式架构}，统一资源模型，\textbf{核心接口响应时间从 20 秒降至 300 毫秒}，显著改善用户体验。
-       \item \textbf{基线合规检查}：为保障售后服务资格，与基础设施部门合作建立\textbf{自动化合规巡检机制}。利用 \textbf{Kubernetes CronJob} 实现定时巡检，支持\textbf{文件和命令}两种检查模式，确保纳管组件版本 100\% 符合规范。
-     \end{itemize}
- \end{itemize}
+  % -------- Doc2X --------
+ \datedsubsection{\textbf{Doc2X — C/B 端智能文档解析平台}，后端开发}{2025.06 -- 至今}
+\begin{itemize}[leftmargin=*, itemsep=0.6ex]
+  \item \textbf{项目简介}：行业领先的文档解析平台，支持从 PDF 智能提取内容并转换为 \textbf{Markdown / LaTeX / Word}，覆盖学术论文、合同、图表等场景，日解析量超 \textbf{千万级}。
+  \item \textbf{技术栈}：\textbf{Go}、\textbf{gRPC / ConnectRPC}、\textbf{PostgreSQL}、\textbf{Redis}、\textbf{NATS}、\textbf{Kubernetes}、\textbf{OpenTelemetry}
+  \item \textbf{核心贡献}：
+  \begin{itemize}[leftmargin=2em, itemsep=0.4ex]
+    \item \textbf{多渠道通知系统}：基于 \textbf{策略模式 + 工厂模式} 设计\textbf{可扩展通知框架}，新渠道接入时间从 \textbf{2 天缩短至 0.5 天}。
+    \item \textbf{统一消费者服务}：基于 \textbf{NATS} 构建事件链路，实现 \textbf{额度扣减、限流、幂等校验、缓存更新} 等核心处理流程。
+    \item \textbf{大模型翻译}：基于 \textbf{Prefill 优化} 请求结构，提升 \textbf{KV Cache 命中率}；整体 \textbf{Token 消耗降低 20\%～40\%}，显著减少推理成本。
+    \item \textbf{管理后台开发}：使用 \textbf{Vibe Coding} 完成公告管理、发票/退款审批、订单查询等功能全栈开发，推进运营流程\textbf{数字化}，显著提升内部效率。
+  \end{itemize}
+\end{itemize}
+
+% -------- 观云台 --------
+\datedsubsection{\textbf{观云台 — Kubernetes PaaS 平台}，后端开发}{2024.07 -- 2025.05}
+\begin{itemize}[leftmargin=*, itemsep=0.6ex]
+  \item \textbf{项目简介}：基于 \textbf{Kubernetes} 的企业级 PaaS，帮助企业降低运维成本并提升业务交付效率。
+  \item \textbf{技术栈}：\textbf{Go}、\textbf{Gin}、\textbf{Kubernetes}、\textbf{Kubebuilder}、\textbf{MySQL}
+  \item \textbf{核心贡献}：
+  \begin{itemize}[leftmargin=2em, itemsep=0.4ex]
+    \item \textbf{Kubernetes 资源管理重构}：完成 \textbf{Java→Go 重构}，基于 \textbf{Kubernetes API 规范} 引入\textbf{原生 RBAC 鉴权}；修复 \textbf{StatefulSet 字段约束}导致的部署死锁问题，显著提升扩容 / 发布稳定性。
+    \item \textbf{多租户备份性能优化}：引入 \textbf{MapReduce 思想} 与 \textbf{可配置协程池}，将串行调用改为 \textbf{分片并行}，显著减少任务总时长并沉淀为通用工具。
+    \item \textbf{容器服务（网关）重构}：将命令式接口切换为 \textbf{Kubernetes 声明式架构}，核心操作延迟从 \textbf{20 秒 → 300 毫秒}，显著提升用户体验。
+    \item \textbf{基线合规巡检}：基于 \textbf{K8S CronJob} 实现定时巡检，覆盖 \textbf{文件 + 命令} 两类检查，确保纳管组件版本 \textbf{100\% 合规}。
+  \end{itemize}
+\end{itemize}
+
 }
+
+% =============================
+% 技能
+% =============================
 \CN{
-  % \section{开源经历}
-  \datedsubsection{\textbf{tiny-redis (Go)}}{11 Stars}
-  \begin{itemize}[parsep=0.5ex]
-    \item 实现一个支持多种数据结构与 TTL 的\textbf{内存数据库}，熟悉底层\textbf{网络库}与\textbf{存储实现}。
-  \end{itemize}
-
-  \datedsubsection{\textbf{Kubernetes-mcp (Go)}}{25 Stars}
-  \begin{itemize}[parsep=0.5ex]
-    \item 实现 \textbf{Model Context Protocol (MCP)} 服务器，支持与 Kubernetes 集群交互，实现\textbf{高效资源管理与调度}。
+  \section{专业技能}
+  \begin{itemize}[leftmargin=*, itemsep=0.5ex]
+    \item \textbf{编程语言与框架}：熟练使用 Go；掌握 gRPC、ConnectRPC、Gin；具备微服务架构设计经验。
+    \item \textbf{云原生技术}：熟悉 Kubernetes 核心机制，具备通过源码分析定位问题的经验。
+    \item \textbf{数据库与缓存}：熟练 PostgreSQL 设计与优化；掌握 Redis 在高并发场景下（击穿/雪崩/穿透）的解决方案。
+    \item \textbf{消息队列与事件驱动}：熟练使用 NATS，具备事件驱动架构设计与异步处理经验。
+    \item \textbf{工程与部署}：熟悉 Linux、Git。
+    \item \textbf{AI 与大模型}：了解大模型原理，具备 MCP 相关开源经验。
   \end{itemize}
 }
+
 \end{document}

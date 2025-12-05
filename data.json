@@ -5,19 +5,24 @@
         "avatar": "touxiang.jpg",
         "contacts": [
             {
+                "icon": "fa-solid fa-phone",
+                "text": "(+86) 13736707307",
+                "link": "tel:+8613736707307"
+            },
+            {
                 "icon": "fa-solid fa-envelope",
                 "text": "hsn.zj@foxmail.com",
                 "link": "mailto:hsn.zj@foxmail.com"
             },
             {
-                "icon": "fa-solid fa-envelope-open",
-                "text": "hsn2003zj@gmail.com",
-                "link": "mailto:hsn2003zj@gmail.com"
-            },
-            {
                 "icon": "fa-brands fa-weixin",
                 "text": "hsn7307",
                 "link": "#"
+            },
+            {
+                "icon": "fa-solid fa-globe",
+                "text": "resume.huangsn.dev",
+                "link": "https://resume.huangsn.dev"
             },
             {
                 "icon": "fa-brands fa-github",
@@ -29,7 +34,7 @@
     "education": {
         "school": "浙江理工大学科技与艺术学院",
         "degree": "计算机科学与技术 | 本科",
-        "period": "2021.09 - 2025.07"
+        "period": "2021.09 - 2025.06"
     },
     "skills": [
         {
@@ -39,7 +44,7 @@
         },
         {
             "category": "云原生技术",
-            "description": "<strong>熟悉 Kubernetes 核心机制</strong>，能通过<strong>源码分析</strong>定位并解决过问题。",
+            "description": "<strong>熟悉 Kubernetes 核心机制</strong>，具备通过<strong>源码分析</strong>定位问题的经验。",
             "icon": "fa-solid fa-cloud"
         },
         {
@@ -54,18 +59,18 @@
         },
         {
             "category": "工程与部署",
-            "description": "熟悉 <strong>Linux</strong> 与 <strong>Git</strong>，具备<strong>从开发到部署的全流程交付能力</strong>，熟悉 <strong>OpenTelemetry</strong> 链路追踪。",
+            "description": "熟悉 <strong>Linux</strong> 与 <strong>Git</strong>，具备从开发到部署的交付能力。",
             "icon": "fa-solid fa-terminal"
         },
         {
             "category": "AI 与大模型",
-            "description": "了解大模型原理，具备 <strong>MCP 相关开发经验</strong>。",
+            "description": "了解大模型原理，具备 <strong>MCP</strong> 相关开源经验。",
             "icon": "fa-solid fa-robot"
         }
     ],
     "workExperience": [
         {
-            "company": "武汉智识无垠科技有限公司",
+            "company": "智识无垠",
             "role": "后端开发工程师",
             "period": "2025.06-至今",
             "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
@@ -73,17 +78,17 @@
                 {
                     "icon": "fa-solid fa-network-wired",
                     "iconColor": "text-blue-500",
-                    "text": "参与核心文档解析产品后端系统的<strong>架构设计与迭代</strong>，在万级日活、千万级日解析量下保持 SLA 稳定。"
+                    "text": "参与核心文档解析平台后端架构演进，支撑<strong>万级 DAU、千万级日解析量</strong>，服务可用性稳定。"
                 },
                 {
                     "icon": "fa-solid fa-cogs",
                     "iconColor": "text-blue-500",
-                    "text": "推动<strong>内部平台建设</strong>与<strong>流程自动化</strong>，沉淀通用交付流程以支撑产品的快速迭代。"
+                    "text": "主导内部平台建设，推动关键流程<strong>自动化与标准化</strong>，运营效率提升<strong>2 倍以上</strong>。"
                 }
             ]
         },
         {
-            "company": "杭州谐云科技有限公司",
+            "company": "谐云",
             "role": "后端开发工程师",
             "period": "2024.07-2025.04",
             "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
@@ -91,74 +96,80 @@
                 {
                     "icon": "fa-solid fa-cogs",
                     "iconColor": "text-blue-500",
-                    "text": "参与 PaaS 云平台<strong>核心服务的重构与迭代</strong>，推进系统<strong>现代化改造</strong>与<strong>性能优化</strong>。"
+                    "text": "负责 PaaS 平台核心服务的<strong>Java→Go 重构</strong>与性能优化，使服务平均响应时间降低<strong>40%+</strong>。"
                 },
                 {
                     "icon": "fa-solid fa-users",
                     "iconColor": "text-blue-500",
-                    "text": "协助构建<strong>多租户与容器服务</strong>等模块，增强平台稳定性并改善用户体验。"
+                    "text": "参与多租户、容器服务等模块建设，优化资源调度与系统稳定性，显著提升用户体验。"
                 }
             ]
         }
     ],
     "projects": [
         {
-            "name": "Doc2X",
+            "name": "Doc2X — C/B 端智能文档解析平台",
             "role": "后端开发工程师",
             "period": "2025.06-至今",
             "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-            "description": "业界领先的<strong>智能文档解析器</strong>，支持无损提取 PDF 内容并转化为 Markdown/LaTeX/Word 等格式，服务日均解析量超 <strong>千万级</strong>，涵盖学术论文、合同文档、表格图表等多场景解析。",
-            "techStack": "Go、gRPC + ConnectRPC、PostgreSQL、Redis、NATS JetStream、Kubernetes、OpenTelemetry",
+            "description": "行业领先的文档解析平台，支持从 PDF 智能提取内容并转换为 <strong>Markdown / LaTeX / Word</strong>，覆盖学术论文、合同、图表等场景，日解析量超 <strong>千万级</strong>。",
+            "techStack": "Go、gRPC / ConnectRPC、PostgreSQL、Redis、NATS、Kubernetes、OpenTelemetry",
             "highlights": [
                 {
                     "title": "多渠道通知系统",
-                    "text": "设计并实现<strong>告警通知系统</strong>，采用<strong>策略 + 工厂模式</strong>接入短信、邮件、飞书等渠道，覆盖余额告警、资源告警、系统公告等场景，通过<strong>渠道优选与频次限流</strong>确保送达率。",
+                    "text": "基于<strong>策略模式 + 工厂模式</strong>设计可扩展通知框架，新渠道接入时间从<strong>2 天缩短至 0.5 天</strong>。",
                     "icon": "fa-solid fa-bell",
                     "iconColor": "text-blue-500"
                 },
                 {
                     "title": "消费者服务迭代",
-                    "text": "围绕 <strong>NATS</strong> 构建解析、翻译、订单、奖励等事件链路，统一实现<strong>用户额度扣减</strong>、<strong>限流与幂等校验</strong>及<strong>结果缓存</strong>，保障多业务配额一致性。",
+                    "text": "基于 <strong>NATS</strong> 构建事件链路，实现<strong>额度扣减、限流、幂等校验、缓存更新</strong>等核心处理流程。",
                     "icon": "fa-solid fa-network-wired",
                     "iconColor": "text-blue-500"
                 },
                 {
+                    "title": "大模型翻译",
+                    "text": "基于 <strong>Prefill 优化</strong> 请求结构，提升 <strong>KV Cache</strong> 命中率；整体 <strong>Token 消耗降低 20%～40%</strong>，显著减少推理成本。",
+                    "icon": "fa-solid fa-language",
+                    "iconColor": "text-blue-500"
+                },
+                {
                     "title": "运营后台迭代",
-                    "text": "整合 Admin 端<strong>公告投放</strong>、<strong>发票审核</strong>、<strong>退款审批</strong>与<strong>订单查询</strong>，帮助运营与财务在同一后台完成日常审核、对账与运营动作。",
+                    "text": "使用 <strong>Vibe Coding</strong> 完成公告管理、发票/退款审批、订单查询等功能全栈开发，推进运营流程<strong>数字化</strong>，显著提升内部效率。",
                     "icon": "fa-solid fa-users",
                     "iconColor": "text-blue-500"
                 }
             ]
         },
         {
-            "name": "观云台",
+            "name": "观云台 — Kubernetes PaaS 平台",
             "role": "后端开发工程师",
             "period": "2024.07-2025.05",
             "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-            "description": "基于 Kubernetes 的<strong>新一代 PaaS 平台</strong>，帮助企业提升 IT 管理能力，降低运维成本，保障业务稳定与高效迭代。",
+            "description": "基于 <strong>Kubernetes</strong> 的企业级 PaaS，帮助企业降低运维成本并提升业务交付效率。",
             "techStack": "Go、Gin、Kubernetes、Kubebuilder、MySQL",
             "highlights": [
                 {
                     "title": "资源管理重构",
-                    "text": "将Kubernetes资源服务管理从 <strong>Java 重构为 Go</strong>，接口参照 <strong>Kubernetes 规范</strong>并集成鉴权，<strong>增强平台安全性与一致性</strong>。",
+                    "text": "完成 <strong>Java→Go 重构</strong>，基于 <strong>Kubernetes API 规范</strong>引入<strong>原生 RBAC 鉴权</strong>；修复 <strong>StatefulSet 字段约束</strong>导致的部署死锁问题，显著提升扩容/发布稳定性。",
                     "icon": "fa-solid fa-arrows-rotate",
                     "iconColor": "text-blue-500"
                 },
                 {
                     "title": "性能优化",
-                    "text": "独立实现<strong>多租户备份服务</strong>，结合 <strong>MapReduce 思想</strong>与<strong>协程优化</strong>，<strong>响应时间从 30 秒缩短至 2 秒</strong>，并沉淀为可复用工具。",
+                    "text": "引入 <strong>MapReduce 思想</strong>与<strong>可配置协程池</strong>，将串行调用改为<strong>分片并行</strong>，显著减少任务总时长并沉淀为通用工具。",
                     "icon": "fa-solid fa-users",
                     "iconColor": "text-blue-500"
                 },
                 {
                     "title": "架构升级",
-                    "text": "将 Java 命令式容器服务改造为 <strong>Kubernetes 声明式架构</strong>，统一资源模型，<strong>核心接口响应时间从 20 秒降至 300 毫秒</strong>，显著改善用户体验。",
+                    "text": "将命令式接口切换为 <strong>Kubernetes 声明式架构</strong>，核心操作延迟从 <strong>20 秒 → 300 毫秒</strong>，显著提升用户体验。",
                     "icon": "fa-solid fa-cubes",
                     "iconColor": "text-blue-500"
                 },
                 {
                     "title": "基线合规检查",
-                    "text": "为保障售后服务资格，与基础设施部门合作建立<strong>自动化合规巡检机制</strong>。利用 <strong>Kubernetes CronJob</strong> 实现定时巡检，支持<strong>文件和命令</strong>两种检查模式，确保纳管组件版本 100% 符合规范。",
+                    "text": "基于 <strong>K8S CronJob</strong> 实现定时巡检，覆盖<strong>文件 + 命令</strong>两类检查，确保纳管组件版本<strong>100% 合规</strong>。",
                     "icon": "fa-solid fa-check-circle",
                     "iconColor": "text-blue-500"
                 }
