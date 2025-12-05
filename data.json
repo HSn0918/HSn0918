@@ -1,23 +1,13 @@
 {
     "profile": {
-        "name": "黄锡超",
-        "title": "后端开发工程师 | Go 语言开发者",
+        "name": "HSn",
+        "title": "Software Engineer | Go Developer",
         "avatar": "touxiang.jpg",
         "contacts": [
-            {
-                "icon": "fa-solid fa-phone",
-                "text": "(+86) 13736707307",
-                "link": "tel:+8613736707307"
-            },
             {
                 "icon": "fa-solid fa-envelope",
                 "text": "hsn.zj@foxmail.com",
                 "link": "mailto:hsn.zj@foxmail.com"
-            },
-            {
-                "icon": "fa-brands fa-weixin",
-                "text": "hsn7307",
-                "link": "#"
             },
             {
                 "icon": "fa-solid fa-globe",
@@ -78,7 +68,7 @@
                 {
                     "icon": "fa-solid fa-network-wired",
                     "iconColor": "text-blue-500",
-                    "text": "参与核心文档解析平台后端架构演进，支撑<strong>万级 DAU、千万级日解析量</strong>，服务可用性稳定。"
+                    "text": "参与核心文档解析平台的后端架构演进，支撑<strong>万级 DAU、千万级日解析量</strong>，服务可用性稳定。"
                 },
                 {
                     "icon": "fa-solid fa-cogs",
@@ -129,7 +119,7 @@
                 },
                 {
                     "title": "大模型翻译",
-                    "text": "基于 <strong>Prefill 优化</strong> 请求结构，提升 <strong>KV Cache</strong> 命中率；整体 <strong>Token 消耗降低 20%～40%</strong>，显著减少推理成本。",
+                    "text": "基于 <strong>Prefill 优化</strong> 请求结构，提升 <strong>整体 KV Cache 命中率</strong>；整体 <strong>Token 消耗降低 20%～40%</strong>，显著减少推理成本。",
                     "icon": "fa-solid fa-language",
                     "iconColor": "text-blue-500"
                 },
@@ -151,13 +141,13 @@
             "highlights": [
                 {
                     "title": "资源管理重构",
-                    "text": "完成 <strong>Java→Go 重构</strong>，基于 <strong>Kubernetes API 规范</strong>引入<strong>原生 RBAC 鉴权</strong>；修复 <strong>StatefulSet 字段约束</strong>导致的部署死锁问题，显著提升扩容/发布稳定性。",
+                    "text": "完成 <strong>Java→Go 重构</strong>，基于 <strong>Kubernetes API 规范</strong>引入<strong>原生 RBAC 鉴权</strong>；修复 <strong>StatefulSet 字段约束</strong>导致的部署死锁问题，显著提升扩容 / 发布稳定性。",
                     "icon": "fa-solid fa-arrows-rotate",
                     "iconColor": "text-blue-500"
                 },
                 {
                     "title": "性能优化",
-                    "text": "引入 <strong>MapReduce 思想</strong>与<strong>可配置协程池</strong>，将串行调用改为<strong>分片并行</strong>，显著减少任务总时长并沉淀为通用工具。",
+                    "text": "引入 <strong>MapReduce 思想</strong> 与 <strong>可配置协程池</strong>，将串行调用改为<strong>分片并行</strong>，显著减少任务总时长并沉淀为通用工具。",
                     "icon": "fa-solid fa-users",
                     "iconColor": "text-blue-500"
                 },
@@ -189,6 +179,7 @@
                 "link": "https://github.com/MiniApplication/tinyredis",
                 "repo": "MiniApplication/tinyredis",
                 "description": "TinyRedis 是一个使用 Go 语言原生 net 包实现的轻量级高性能 Redis 服务端，高效支持 Redis 各种基本数据类型。",
+                "image": "tinyredis.png",
                 "icon": "fa-solid fa-cube",
                 "iconColor": "text-red-500",
                 "itemIcon": "fa-solid fa-cubes",

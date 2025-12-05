@@ -1,883 +1,875 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>黄锡超 - 个人简历</title>
-    <!-- TailwindCSS 3.0+ CDN -->
+    <title>HSn-个人简历</title>
+    <!-- TailwindCSS 3.4+ CDN (Using latest stable) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <!-- Heti CSS -->
-    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css" />
-    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Confetti for Easter Egg -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
     <script>
-        // 设置Tailwind主题
+        // Configure Tailwind to match Shadcn UI variables/colors
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
                         primary: {
-                            50: "#f0f9ff",
-                            100: "#e0f2fe",
-                            200: "#bae6fd",
-                            300: "#7dd3fc",
-                            400: "#38bdf8",
-                            500: "#0ea5e9",
-                            600: "#0284c7",
-                            700: "#0369a1",
-                            800: "#075985",
-                            900: "#0c4a6e",
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
                         },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
                     },
                 },
             },
-            plugins: [],
         };
-
-        // 检查系统主题偏好并设置初始主题
-        if (
-            localStorage.theme === "dark" ||
-            (!("theme" in localStorage) &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-
-        // 缓存机制
-        const starsCache = new Map();
-        const CACHE_DURATION = 24 * 60 * 60 * 1000; // 1天缓存
-
-        // 获取GitHub仓库stars数量的函数
-        async function getGitHubStars(owner, repo) {
-            const cacheKey = `${owner}/${repo}`;
-            const cachedData = starsCache.get(cacheKey);
-
-            if (
-                cachedData &&
-                Date.now() - cachedData.timestamp < CACHE_DURATION
-            ) {
-                console.log(`使用缓存数据: ${cacheKey}`);
-                return cachedData.stars;
-            }
-
-            const maxRetries = 3;
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    console.log(
-                        `尝试获取 ${owner}/${repo} 的 stars... (第${i + 1}次尝试)`,
-                    );
-
-                    // 使用 CORS 代理或直接调用
-                    const apiUrl = `https://api.github.com/repos/${owner}/${repo}`;
-                    const response = await fetch(apiUrl, {
-                        method: "GET",
-                        headers: {
-                            Accept: "application/vnd.github.v3+json",
-                            "User-Agent": "Resume-Website",
-                        },
-                        mode: "cors",
-                        cache: "no-cache",
-                    });
-
-                    console.log(`API 响应状态: ${response.status}`);
-
-                    if (!response.ok) {
-                        if (response.status === 403) {
-                            console.error("达到 GitHub API 速率限制");
-                            return "速率受限";
-                        }
-                        if (response.status === 404) {
-                            console.error(`仓库 ${owner}/${repo} 不存在`);
-                            return 0;
-                        }
-                        throw new Error(
-                            `HTTP error! status: ${response.status}`,
-                        );
-                    }
-
-                    const data = await response.json();
-                    const stars = data.stargazers_count || 0;
-
-                    // 更新缓存
-                    starsCache.set(cacheKey, {
-                        stars,
-                        timestamp: Date.now(),
-                    });
-
-                    console.log(
-                        `成功获取 ${owner}/${repo} 的 stars: ${stars}`,
-                    );
-                    return stars;
-                } catch (error) {
-                    console.error(`第${i + 1}次尝试失败:`, error.message);
-                    if (i === maxRetries - 1) {
-                        // 如果有缓存数据，在失败时使用缓存
-                        if (cachedData) {
-                            console.log(`使用过期缓存数据: ${cacheKey}`);
-                            return cachedData.stars;
-                        }
-                        // 直接返回速率受限信息
-                        return "速率受限";
-                    }
-                    // 等待一段时间后重试
-                    await new Promise((resolve) =>
-                        setTimeout(resolve, 1000 * (i + 1)),
-                    );
-                }
-            }
-            return 0;
-        }
-
-        // 更新stars显示的函数
-        async function updateStarsCount(element, owner, repo) {
-            try {
-                const stars = await getGitHubStars(owner, repo);
-                element.innerHTML = `<i class="fa-solid fa-star mr-1"></i> ${stars} Stars`;
-            } catch (error) {
-                console.error(
-                    `更新 ${owner}/${repo} 的 stars 显示时发生错误:`,
-                    error,
-                );
-                element.innerHTML = `<i class="fa-solid fa-star mr-1"></i> 0 Stars`;
-            }
-        }
     </script>
 
     <style>
-        /* 优化 Heti 排版造成的间距过大问题 */
-        .heti p {
-            margin-bottom: 0.1em;
-            line-height: 1.5; /* 标准化行高 */
-        }
-        .heti li {
-            line-height: 1.5;
-            margin-bottom: 0;
-        }
-        .heti ul, .heti ol {
-            margin-bottom: 0.1em;
-        }
-
-        /* 修复 Heti 与 Font Awesome 图标冲突，避免图标倾斜 */
-        .fa,
-        .fas,
-        .far,
-        .fal,
-        .fab,
-        .fa-solid,
-        .fa-regular,
-        .fa-light,
-        .fa-brands,
-        [class^="fa-"],
-        [class*=" fa-"] {
-            font-style: normal !important;
-            text-decoration: none !important;
-            transform: none !important;
+        /* CSS Variables for Shadcn Theme (Zinc/Slate) */
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 240 10% 3.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 240 10% 3.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 240 10% 3.9%;
+            --primary: 240 5.9% 10%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 240 4.8% 95.9%;
+            --secondary-foreground: 240 5.9% 10%;
+            --muted: 240 4.8% 95.9%;
+            --muted-foreground: 240 3.8% 46.1%;
+            --accent: 240 4.8% 95.9%;
+            --accent-foreground: 240 5.9% 10%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 5.9% 90%;
+            --input: 240 5.9% 90%;
+            --ring: 240 5.9% 10%;
+            --radius: 0.5rem;
         }
 
-        i[class^="fa-"],
-        i[class*=" fa-"] {
-            font-style: normal !important;
+        .dark {
+            --background: 240 10% 3.9%;
+            --foreground: 0 0% 98%;
+            --card: 240 10% 3.9%;
+            --card-foreground: 0 0% 98%;
+            --popover: 240 10% 3.9%;
+            --popover-foreground: 0 0% 98%;
+            --primary: 0 0% 98%;
+            --primary-foreground: 240 5.9% 10%;
+            --secondary: 240 3.7% 15.9%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 64.9%;
+            --accent: 240 3.7% 15.9%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 3.7% 15.9%;
+            --input: 240 3.7% 15.9%;
+            --ring: 240 4.9% 83.9%;
         }
 
-        /* 自定义样式 */
-        input,
-        textarea {
-            background-color: white;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
+        body {
+            font-family: 'Inter', sans-serif;
         }
 
-        .dark input,
-        .dark textarea {
-            background-color: #374151;
-            border-color: #4b5563;
-            color: white;
+        /* Fix FontAwesome width consistency */
+        .icon-fixed {
+            width: 1.25rem;
+            text-align: center;
+            display: inline-block;
         }
 
-        input:focus,
-        textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
-            border-color: #0ea5e9;
+        /* Smooth fade in */
+        .fade-in-section {
+            opacity: 1;
+            /* Container stays visible, children animate */
         }
 
-        section {
-            transition:
-                    opacity 0.5s ease,
-                    transform 0.5s ease;
+        .fade-in-up-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .card-hover {
-            transition: all 0.3s ease;
+        .fade-in-section.is-visible .fade-in-up-item {
+            opacity: 1;
+            transform: none;
         }
 
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        /* Hover interaction enhancement */
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .skill-card {
-            transition: all 0.3s ease;
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
 
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        /* Matrix Rain Canvas */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 40;
+            /* Above regular content but below navbar/modals if needed */
+            pointer-events: none;
+            /* Let clicks pass through */
+            opacity: 0;
+            transition: opacity 1s ease;
         }
 
-        .skill-card:hover .skill-icon {
-            transform: scale(1.1);
-            color: #0ea5e9;
-        }
-
-        .skill-icon {
-            transition: all 0.3s ease;
-        }
-
-        .project-icon {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover .project-icon {
-            transform: scale(1.1);
-            color: #0ea5e9;
-        }
-
-        /* --- 核心修复：图标对齐类 --- */
-        .icon-align {
-            height: 1.5em; /* 匹配文字行高 (Tailwind text-base 默认为 1.5rem/24px) */
-            width: 1.5em;  /* 固定宽度，防止不同图标宽度不一导致错位 */
-            display: inline-flex;
-            align-items: center;     /* 垂直居中 */
-            justify-content: center; /* 水平居中 */
-            margin-right: 0.5rem;    /* 图标和文字的间距 */
-            flex-shrink: 0;          /* 防止被压缩 */
-            line-height: 1;
-        }
-
-        .icon-align > i,
-        .icon-align > img {
-            line-height: 1;
-            font-style: normal !important;
+        #matrix-canvas.active {
+            opacity: 1;
         }
     </style>
 </head>
 
 <body
-        class="antialiased bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300"
->
-<!-- 主题切换按钮 -->
-<div class="fixed top-4 right-4 z-50">
-    <button
-            id="theme-toggle"
-            class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 text-gray-800 dark:text-gray-200"
-    >
-        <i class="fa-solid fa-sun dark:hidden"></i>
-        <i class="fa-solid fa-moon hidden dark:inline"></i>
-    </button>
-</div>
+    class="bg-background text-foreground antialiased min-h-screen selection:bg-primary selection:text-primary-foreground pt-14">
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrix-canvas"></canvas>
 
-<!-- 导航栏 -->
-<nav
-        class="sticky top-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-sm z-40 border-b border-gray-200 dark:border-gray-700"
->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex items-center">
-                <div
-                        class="text-2xl font-bold text-primary-600 dark:text-primary-400"
-                >
-                    个人简历
-                </div>
+    <!-- Navbar -->
+    <nav
+        class="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div class="container mx-auto px-4 max-w-4xl flex h-14 items-center justify-between">
+            <a href="#" class="mr-6 flex items-center space-x-2">
+                <i class="fa-solid fa-code text-primary text-xl"></i>
+                <span class="font-bold hidden sm:inline-block">个人简历</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#education"
+                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-xs"></i> 教育背景
+                </a>
+                <a href="#skills"
+                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-code text-xs"></i> 专业技能
+                </a>
+                <a href="#work"
+                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-briefcase text-xs"></i> 工作经历
+                </a>
+                <a href="#projects"
+                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-laptop-code text-xs"></i> 项目经历
+                </a>
+                <a href="#opensource"
+                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-code-branch text-xs"></i> 开源经历
+                </a>
             </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a
-                        href="#education"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                >教育背景</a
-                >
-                <a
-                        href="#skills"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                >专业技能</a
-                >
-                <a
-                        href="#work"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                >工作经历</a
-                >
-                <a
-                        href="#projects"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                >项目经历</a
-                >
-                <a
-                        href="#opensource"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                >开源经历</a
-                >
-            </div>
-            <div class="md:hidden flex items-center">
-                <button
-                        id="mobile-menu-button"
-                        class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                >
-                    <i class="fa-solid fa-bars text-xl"></i>
+
+            <div class="flex items-center gap-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle"
+                    class="h-9 w-9 rounded-md border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                    <i class="fa-solid fa-sun rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"></i>
+                    <i
+                        class="fa-solid fa-moon absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"></i>
+                    <span class="sr-only">Toggle theme</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden h-9 w-9 rounded-md border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground flex items-center justify-center">
+                    <i class="fa-solid fa-bars text-sm"></i>
                 </button>
             </div>
         </div>
-    </div>
 
-    <!-- 移动端菜单 -->
-    <div
-            id="mobile-menu"
-            class="hidden md:hidden bg-white dark:bg-gray-800 shadow-md border-t border-gray-200 dark:border-gray-700"
-    >
-        <div class="pt-2 pb-4 space-y-1 px-4">
-            <a
-                    href="#education"
-                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
-            >教育背景</a
-            >
-            <a
-                    href="#skills"
-                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
-            >专业技能</a
-            >
-            <a
-                    href="#work"
-                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
-            >工作经历</a
-            >
-            <a
-                    href="#projects"
-                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
-            >项目经历</a
-            >
-            <a
-                    href="#opensource"
-                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
-            >开源经历</a
-            >
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-background">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="#education"
+                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                        class="fa-solid fa-graduation-cap mr-2 w-4 text-center"></i> 教育背景</a>
+                <a href="#skills"
+                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                        class="fa-solid fa-code mr-2 w-4 text-center"></i> 专业技能</a>
+                <a href="#work"
+                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                        class="fa-solid fa-briefcase mr-2 w-4 text-center"></i> 工作经历</a>
+                <a href="#projects"
+                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                        class="fa-solid fa-laptop-code mr-2 w-4 text-center"></i> 项目经历</a>
+                <a href="#opensource"
+                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                        class="fa-solid fa-code-branch mr-2 w-4 text-center"></i> 开源经历</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- 个人信息卡片 -->
-<header class="max-w-7xl mx-auto my-8 px-4 sm:px-6 lg:px-8" id="profile-section">
-    <div class="animate-pulse bg-white dark:bg-gray-800 h-64 rounded-2xl"></div>
-</header>
+    <!-- Main Container -->
+    <main class="container mx-auto max-w-4xl px-4 py-16 space-y-16">
 
-<!-- 主要内容 -->
-<main class="heti max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-    <!-- 教育背景 -->
-    <section id="education" class="mb-16 opacity-0 translate-y-4">
-        <div class="flex items-center mb-6">
-            <i
-                    class="fa-solid fa-graduation-cap text-3xl text-primary-500 mr-4"
-            ></i>
-            <h2
-                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-                教育背景
-            </h2>
-        </div>
-        <div id="education-content">
-            <div class="animate-pulse bg-white dark:bg-gray-800 h-32 rounded-2xl"></div>
-        </div>
-    </section>
+        <!-- Profile Header -->
+        <header id="profile-section" class="fade-in-section pt-8">
+            <!-- Content loaded via JS -->
+            <div class="animate-pulse space-y-4">
+                <div class="flex items-center space-x-4">
+                    <div class="rounded-full bg-muted h-24 w-24"></div>
+                    <div class="space-y-2">
+                        <div class="h-8 w-48 bg-muted rounded"></div>
+                        <div class="h-4 w-64 bg-muted rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <!-- 专业技能 -->
-    <section id="skills" class="mb-16 opacity-0 translate-y-4">
-        <div class="flex items-center mb-6">
-            <i
-                    class="fa-solid fa-code text-3xl text-primary-500 mr-4"
-            ></i>
-            <h2
-                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-                专业技能
-            </h2>
-        </div>
-        <div id="skills-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="animate-pulse bg-white dark:bg-gray-800 h-40 rounded-2xl"></div>
-            <div class="animate-pulse bg-white dark:bg-gray-800 h-40 rounded-2xl"></div>
-        </div>
-    </section>
+        <!-- Education -->
+        <section id="education" class="fade-in-section space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-border pb-3">
+                <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold tracking-tight">教育背景</h2>
+            </div>
+            <div id="education-content" class="space-y-4">
+                <!-- Content loaded via JS -->
+            </div>
+        </section>
 
-    <!-- 工作经历 -->
-    <section id="work" class="mb-8 opacity-0 translate-y-4">
-        <div class="flex items-center mb-4">
-            <i
-                    class="fa-solid fa-briefcase text-3xl text-primary-500 mr-4"
-            ></i>
-            <h2
-                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-                工作经历
-            </h2>
-        </div>
-        <div id="work-content">
-            <div class="animate-pulse bg-white dark:bg-gray-800 h-64 rounded-2xl"></div>
-        </div>
-    </section>
+        <!-- Skills -->
+        <section id="skills" class="fade-in-section space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-border pb-3">
+                <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-layer-group text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold tracking-tight">专业技能</h2>
+            </div>
+            <div id="skills-content" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Content loaded via JS -->
+            </div>
+        </section>
 
-    <!-- 项目经历 -->
-    <section id="projects" class="mb-8 opacity-0 translate-y-4">
-        <div class="flex items-center mb-4">
-            <i
-                    class="fa-solid fa-laptop-code text-3xl text-primary-500 mr-4"
-            ></i>
-            <h2
-                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-                项目经历
-            </h2>
-        </div>
-        <div id="projects-content">
-            <div class="animate-pulse bg-white dark:bg-gray-800 h-96 rounded-2xl"></div>
-        </div>
-    </section>
+        <!-- Work Experience -->
+        <section id="work" class="fade-in-section space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-border pb-3">
+                <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-briefcase text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold tracking-tight">工作经历</h2>
+            </div>
+            <div id="work-content" class="space-y-8">
+                <!-- Content loaded via JS -->
+            </div>
+        </section>
 
-    <!-- 开源经历 -->
-    <section id="opensource" class="mb-16 opacity-0 translate-y-4">
-        <div class="flex items-center mb-6">
-            <i
-                    class="fa-solid fa-code-branch text-3xl text-primary-500 mr-4"
-            ></i>
-            <h2
-                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-                开源经历
-            </h2>
-        </div>
-        <div id="opensource-content">
-            <div class="animate-pulse bg-white dark:bg-gray-800 h-64 rounded-2xl"></div>
-        </div>
-    </section>
-</main>
+        <!-- Projects -->
+        <section id="projects" class="fade-in-section space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-border pb-3">
+                <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold tracking-tight">项目经历</h2>
+            </div>
+            <div id="projects-content" class="grid gap-6">
+                <!-- Content loaded via JS -->
+            </div>
+        </section>
 
-<!-- 页脚 -->
-<footer
-        class="bg-white dark:bg-gray-800 py-8 border-t border-gray-200 dark:border-gray-700"
->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Open Source -->
+        <section id="opensource" class="fade-in-section space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-border pb-3">
+                <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-brands fa-github text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold tracking-tight">开源经历</h2>
+            </div>
+            <div id="opensource-content" class="space-y-8">
+                <!-- Content loaded via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-border py-8 mt-16 bg-muted/30">
         <div
-                class="flex flex-col md:flex-row justify-between items-center"
-        >
-            <div class="mb-4 md:mb-0">
-                <p
-                        class="text-gray-600 dark:text-gray-400 font-medium flex items-center"
-                >
-                    <i class="fa-regular fa-copyright mr-1"></i>
-                    <span>2025 HSn</span>
-                </p>
-                <p
-                        class="text-sm text-gray-500 dark:text-gray-400 mt-1"
-                >
-                    使用 Tailwind CSS、Font Awesome 和 Heti 构建
-                </p>
-            </div>
-            <div class="flex space-x-8" id="footer-contacts">
-                <!-- Footer contacts will be loaded via JS -->
+            class="container mx-auto max-w-4xl px-4 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+            <p>&copy; 2025 HSn. Built with Tailwind CSS & Shadcn Style.</p>
+            <div class="flex space-x-4 mt-4 md:mt-0" id="footer-contacts">
+                <!-- Loaded via JS -->
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- JavaScript -->
-<script>
-    // 主题切换
-    const themeToggle = document.getElementById("theme-toggle");
-    themeToggle.addEventListener("click", () => {
-        if (document.documentElement.classList.contains("dark")) {
-            document.documentElement.classList.remove("dark");
-            localStorage.theme = "light";
+    <!-- Logic -->
+    <script>
+        // --- 1. Theme Logic ---
+        const themeToggle = document.getElementById("theme-toggle");
+
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add("dark");
+                localStorage.theme = "dark";
+            } else {
+                document.documentElement.classList.remove("dark");
+                localStorage.theme = "light";
+            }
+        }
+
+        // Init Theme
+        if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            setTheme(true);
         } else {
-            document.documentElement.classList.add("dark");
-            localStorage.theme = "dark";
+            setTheme(false);
         }
-    });
 
-    // 移动端菜单
-    const mobileMenuButton =
-        document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-    });
-
-    // 导航链接点击后关闭移动端菜单
-    document.querySelectorAll("#mobile-menu a").forEach((link) => {
-        link.addEventListener("click", () => {
-            mobileMenu.classList.add("hidden");
+        themeToggle.addEventListener("click", () => {
+            setTheme(!document.documentElement.classList.contains("dark"));
         });
-    });
 
-    // Data Fetching and Rendering
-    document.addEventListener("DOMContentLoaded", async () => {
-        try {
-            const response = await fetch('data.json');
-            const data = await response.json();
+        // --- 2. Mobile Menu Logic ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            renderProfile(data.profile);
-            renderEducation(data.education);
-            renderSkills(data.skills);
-            renderWork(data.workExperience);
-            renderProjects(data.projects);
-            renderOpenSource(data.openSource);
-            renderFooter(data.profile.contacts);
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-            // Initialize Heti
-            if (window.Heti) {
-                const heti = new Heti(".heti");
-                heti.autoSpacing();
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+
+        // --- 3. Cache & Fetch Logic for Stars ---
+        const starsCache = new Map();
+        const CACHE_DURATION = 24 * 60 * 60 * 1000;
+
+        async function getGitHubStars(owner, repo) {
+            const cacheKey = `${owner}/${repo}`;
+            const cachedData = starsCache.get(cacheKey);
+            if (cachedData && Date.now() - cachedData.timestamp < CACHE_DURATION) return cachedData.stars;
+
+            try {
+                const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+                if (!res.ok) throw new Error("Failed");
+                const data = await res.json();
+                const stars = data.stargazers_count || 0;
+                starsCache.set(cacheKey, { stars, timestamp: Date.now() });
+                return stars;
+            } catch (e) {
+                return cachedData ? cachedData.stars : "N/A";
             }
-
-            // Initialize Star Fetching
-            initStarFetching();
-
-            // Initialize Scroll Animation
-            initScrollAnimation();
-
-        } catch (error) {
-            console.error("Error loading data:", error);
         }
-    });
 
-    function renderProfile(profile) {
-        const container = document.getElementById('profile-section');
-        const contactsHtml = profile.contacts.map(c => `
-                    <div class="flex items-center justify-center md:justify-start">
-                        <span class="icon-align text-primary-500">
-                            <i class="${c.icon}"></i>
+        async function updateStarsCount(element, owner, repo) {
+            const stars = await getGitHubStars(owner, repo);
+            element.innerHTML = `<i class="fa-solid fa-star mr-1 text-xs"></i> ${stars}`;
+        }
+
+
+        // --- 4. Rendering Logic ---
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+
+                renderProfile(data.profile);
+                renderEducation(data.education);
+                renderSkills(data.skills);
+                renderWork(data.workExperience);
+                renderProjects(data.projects);
+                renderOpenSource(data.openSource);
+                renderFooter(data.profile.contacts);
+
+                initStarFetching();
+                initScrollObserver();
+                initEasterEggs();
+            } catch (error) {
+                console.error("Error loading data:", error);
+            }
+        });
+
+        function renderProfile(profile) {
+            const container = document.getElementById('profile-section');
+            const contactsHtml = profile.contacts.map(c => `
+                <a href="${c.link}" target="_blank" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
+                    <i class="${c.icon} mr-2 text-primary"></i> ${c.text}
+                </a>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                    <div class="relative shrink-0">
+                        <div class="h-32 w-32 rounded-full overflow-hidden border-4 border-muted shadow-sm ring-2 ring-background">
+                            <img id="profile-avatar" src="${profile.avatar}" alt="${profile.name}" class="h-full w-full object-cover cursor-pointer transition-transform duration-700" />
+                        </div>
+                        <div class="absolute bottom-1 right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-background" title="Open to work"></div>
+                    </div>
+                    <div class="text-center md:text-left space-y-4">
+                        <div>
+                            <h1 class="text-4xl font-bold tracking-tight lg:text-5xl flex items-center justify-center md:justify-start gap-3">
+                                ${profile.name}
+                                <i class="fa-solid fa-certificate text-blue-500 text-2xl" title="Verified"></i>
+                            </h1>
+                            <p class="text-xl text-muted-foreground mt-2 flex items-center justify-center md:justify-start gap-2">
+                                <i id="terminal-icon" class="fa-solid fa-terminal text-sm cursor-pointer hover:text-green-500 transition-colors" title="Click to enter the Matrix"></i>
+                                ${profile.title}
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                            ${contactsHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderEducation(edu) {
+            const container = document.getElementById('education-content');
+            container.innerHTML = `
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 group hover:border-primary/50 transition-colors fade-in-up-item hover-lift" style="transition-delay: 100ms">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-secondary p-3 rounded-md hidden md:block">
+                            <i class="fa-solid fa-building-columns text-2xl text-primary"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold leading-none tracking-tight text-lg group-hover:text-primary transition-colors">${edu.school}</h3>
+                            <p class="text-sm text-muted-foreground flex items-center gap-2">
+                                <i class="fa-solid fa-certificate text-xs"></i>
+                                ${edu.degree}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-4 md:mt-0 pl-0 md:pl-0">
+                        <span class="inline-flex items-center rounded-full border border-transparent bg-secondary px-3 py-1 text-xs font-semibold transition-colors hover:bg-secondary/80 text-secondary-foreground gap-2">
+                            <i class="fa-regular fa-calendar"></i>
+                            ${edu.period}
                         </span>
-                        ${c.link !== '#' ? `<a href="${c.link}" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline text-sm">${c.text}</a>` : `<span class="text-sm">${c.text}</span>`}
                     </div>
-                `).join('');
-
-        container.innerHTML = `
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl rounded-2xl transition-all duration-300 hover:shadow-2xl card-hover">
-                        <div class="p-6">
-                            <div class="md:flex items-center">
-                                <div class="flex-shrink-0 mb-6 md:mb-0">
-                                    <div class="h-40 w-40 rounded-full overflow-hidden mx-auto md:mx-0 border-4 border-primary-100 dark:border-primary-900">
-                                        <img src="${profile.avatar}" alt="${profile.name}的照片" class="h-full w-full object-cover" />
-                                    </div>
-                                </div>
-                                <div class="md:ml-8 text-center md:text-left">
-                                    <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">${profile.name}</h1>
-                                    <p class="mt-2 text-xl text-gray-600 dark:text-gray-300">${profile.title}</p>
-                                    <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-2">
-                                        ${contactsHtml}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-    }
-
-    function renderEducation(edu) {
-        const container = document.getElementById('education-content');
-        container.innerHTML = `
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg card-hover">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">${edu.school}</h3>
-                                <p class="mt-1 text-gray-600 dark:text-gray-300">${edu.degree}</p>
-                            </div>
-                            <div class="mt-2 md:mt-0">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
-                                    ${edu.period}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-    }
-
-    function renderSkills(skills) {
-        const container = document.getElementById('skills-content');
-        container.innerHTML = skills.map(skill => `
-                    <div class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
-                        <div class="flex items-center mb-4">
-                            <i class="skill-icon ${skill.icon} text-3xl text-primary-500 mr-3"></i>
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">${skill.category}</h3>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300">${skill.description}</p>
-                    </div>
-                `).join('');
-    }
-
-    function renderWork(work) {
-        const container = document.getElementById('work-content');
-        container.innerHTML = `
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
-                        <div class="p-4 md:p-5">
-                            ${work.map((job, index) => {
-            // 修复：使用 icon-align 容器，并移除图标本身的 mr-2
-            const itemsHtml = job.items.map(item => `
-                                    <li class="flex items-start">
-                                        <div class="icon-align">
-                                            <i class="${item.icon} ${item.iconColor} project-icon"></i>
-                                        </div>
-                                        <p>${item.text}</p>
-                                    </li>
-                                `).join('');
-
-            let html = `
-                                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                                        <div>
-                                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">${job.company}</h3>
-                                            <p class="mt-1 text-gray-600 dark:text-gray-300">${job.role}</p>
-                                        </div>
-                                        <div class="mt-2 md:mt-0">
-                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${job.periodClass}">
-                                                ${job.period}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <ul class="mt-3 space-y-1 text-gray-600 dark:text-gray-300">
-                                        ${itemsHtml}
-                                    </ul>
-                                `;
-
-            if (index < work.length - 1) {
-                html += `<hr class="my-2 border-gray-200 dark:border-gray-700" />`;
-            }
-            return html;
-        }).join('')}
-                        </div>
-                    </div>
-                `;
-    }
-
-    function renderProjects(projects) {
-        const container = document.getElementById('projects-content');
-        container.innerHTML = `
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
-                        <div class="p-4 md:p-5">
-                             ${projects.map((project, index) => {
-            // 修复：添加 icon-align 容器，移除 mr-2
-            const highlightsHtml = project.highlights.map(h => `
-                                    <li class="flex items-start">
-                                        <div class="icon-align">
-                                            <i class="${h.icon} ${h.iconColor} project-icon"></i>
-                                        </div>
-                                        <p>
-                                            <span class="font-medium">${h.title}：</span>${h.text}
-                                        </p>
-                                    </li>
-                                `).join('');
-
-            let html = `
-                                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                                        <div>
-                                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">${project.name}</h3>
-                                            <p class="mt-1 text-gray-600 dark:text-gray-300">${project.role}</p>
-                                        </div>
-                                        <div class="mt-2 md:mt-0">
-                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${project.periodClass}">
-                                                ${project.period}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 dark:text-gray-300 mb-2">${project.description}</p>
-                                    <div class="mb-2">
-                                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                                            <strong>技术栈：</strong>${project.techStack}
-                                        </p>
-                                    </div>
-                                    <p class="font-medium text-gray-700 dark:text-gray-300 mb-2">贡献亮点：</p>
-                                    <ul class="mt-3 space-y-1 text-gray-600 dark:text-gray-300">
-                                        ${highlightsHtml}
-                                    </ul>
-                                `;
-
-            if (index < projects.length - 1) {
-                html += `<hr class="my-4 border-gray-200 dark:border-gray-700" />`;
-            }
-            return html;
-        }).join('')}
-                        </div>
-                    </div>
-                `;
-    }
-
-    function renderOpenSource(os) {
-        const container = document.getElementById('opensource-content');
-
-        // Featured projects
-        // 修复：添加 icon-align 容器
-        const featuredHtml = os.featured.map(item => `
-                    <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <div class="flex items-center">
-                                ${item.image
-            ? `<span class="icon-align"><img src="${item.image}" alt="${item.title} Logo" class="w-full h-full object-contain" /></span>`
-            : `<span class="icon-align"><i class="${item.mainIcon || item.icon} ${item.mainIconColor || item.iconColor} project-icon"></i></span>`
+                </div>
+            `;
         }
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">${item.title}</h3>
-                                    <a href="${item.link}" target="_blank" class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
-                                        ${item.link.replace('https://', '')}
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="mt-2 md:mt-0">
-                                <span data-github-stars="${item.repo}" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                                    <i class="fa-solid fa-star mr-1"></i> Loading...
-                                </span>
-                            </div>
+
+        function renderSkills(skills) {
+            const container = document.getElementById('skills-content');
+            container.innerHTML = skills.map((skill, index) => `
+                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 hover:shadow-md transition-all group fade-in-up-item hover-lift" style="transition-delay: ${index * 100}ms">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-primary/10 p-2 rounded-md group-hover:bg-primary/20 transition-colors">
+                            <i class="${skill.icon} text-primary text-lg"></i>
                         </div>
-                        <ul class="mt-4 space-y-2 text-gray-600 dark:text-gray-300">
-                            <li class="flex items-start">
-                                <div class="icon-align">
-                                    <i class="${item.itemIcon || 'fa-solid fa-cloud'} ${item.itemIconColor || 'text-blue-500'} project-icon"></i>
-                                </div>
-                                <p><span class="font-medium">项目概述：</span>${item.description}</p>
-                            </li>
-                        </ul>
+                        <h3 class="font-semibold leading-none tracking-tight">${skill.category}</h3>
                     </div>
+                    <p class="text-sm text-muted-foreground leading-relaxed">${skill.description}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderWork(work) {
+            const container = document.getElementById('work-content');
+            container.innerHTML = work.map((job, index) => {
+                const itemsHtml = job.items.map(item => `
+                    <li class="flex items-start text-sm text-muted-foreground group/item hover:text-foreground transition-colors">
+                        <span class="mt-1.5 mr-3 flex h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60 group-hover/item:bg-primary transition-colors"></span>
+                        <span class="flex-1">${item.text}</span>
+                    </li>
                 `).join('');
 
-        // Other projects
-        const othersHtml = os.others.map(item => `
-                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <div class="flex items-center mb-2">
-                                    <span class="icon-align">
-                                        <i class="${item.icon} ${item.iconColor} project-icon"></i>
-                                    </span>
-                                    <h4 class="font-bold">${item.title}</h4>
+                return `
+                    <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm group fade-in-up-item hover-lift" style="transition-delay: ${index * 150}ms">
+                        <div class="p-6 space-y-4">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-secondary p-2.5 rounded-md hidden md:block">
+                                         <i class="fa-solid fa-briefcase text-xl text-primary"></i>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <h3 class="font-semibold leading-none tracking-tight text-lg group-hover:text-primary transition-colors">${job.company}</h3>
+                                        <p class="text-sm text-muted-foreground font-medium flex items-center gap-2">
+                                            <i class="fa-solid fa-user-tag text-xs"></i>
+                                            ${job.role}
+                                        </p>
+                                    </div>
                                 </div>
-                                <a href="${item.link}" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline text-sm block mb-2">
-                                    ${item.link.replace('https://', '')}
-                                </a>
-                                <p class="text-sm">${item.description}</p>
+                                <span class="inline-flex items-center rounded-md border border-border bg-muted px-2.5 py-0.5 text-xs font-semibold transition-colors text-muted-foreground gap-2">
+                                    <i class="fa-regular fa-calendar-check"></i>
+                                    ${job.period}
+                                </span>
                             </div>
-                            <span data-github-stars="${item.repo}" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 whitespace-nowrap">
-                                <i class="fa-solid fa-star mr-1"></i> Loading...
+                            <ul class="space-y-2 pl-4 md:pl-14 border-l-2 border-muted md:border-none ml-2 md:ml-0">
+                                ${itemsHtml}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderProjects(projects) {
+            const container = document.getElementById('projects-content');
+            container.innerHTML = projects.map((project, index) => {
+                const highlightsHtml = project.highlights.map(h => `
+                    <li class="flex items-start text-sm text-muted-foreground">
+                        <div class="bg-primary/10 rounded-full p-1 mr-3 mt-0.5">
+                            <i class="${h.icon} text-primary w-3 h-3 flex items-center justify-center text-[10px]"></i>
+                        </div>
+                        <span class="flex-1"><span class="font-medium text-foreground">${h.title}：</span>${h.text}</span>
+                    </li>
+                `).join('');
+
+                return `
+                    <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 space-y-4 hover:border-primary/50 transition-colors fade-in-up-item hover-lift" style="transition-delay: ${index * 150}ms">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                            <div class="space-y-1">
+                                <h3 class="font-semibold leading-none tracking-tight text-lg flex items-center gap-2">
+                                    <i class="fa-solid fa-folder-open text-primary/70 text-base"></i>
+                                    ${project.name}
+                                </h3>
+                                <p class="text-sm text-muted-foreground flex items-center gap-2">
+                                    <i class="fa-solid fa-user-gear text-xs"></i>
+                                    ${project.role}
+                                </p>
+                            </div>
+                            <span class="inline-flex items-center rounded-md border border-border bg-secondary px-2.5 py-0.5 text-xs font-semibold transition-colors text-secondary-foreground gap-1">
+                                <i class="fa-regular fa-clock"></i>
+                                ${project.period}
                             </span>
                         </div>
-                    </div>
-                `).join('');
 
-        container.innerHTML = `
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
-                        <div class="p-6">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-                                <div class="flex items-center">
-                                    <span class="icon-align text-gray-700 dark:text-gray-300">
-                                        <i class="${os.profile.icon} text-lg project-icon"></i>
-                                    </span>
-                                    <div>
-                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">${os.profile.title}</h3>
-                                        <a href="${os.profile.link}" target="_blank" class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
-                                            ${os.profile.link.replace('https://', '')}
-                                        </a>
-                                        <p class="mt-2 text-gray-600 dark:text-gray-300">${os.profile.description}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            ${featuredHtml}
-                            
-                            <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
-                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">其他开源项目</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    ${othersHtml}
-                                </div>
-                            </div>
+                        <p class="text-sm text-muted-foreground border-l-2 border-primary/20 pl-3 italic">${project.description}</p>
+
+                        <div class="flex flex-wrap gap-2 my-2">
+                            ${project.techStack.split('、').map(tech => `
+                                <span class="inline-flex items-center rounded-full border border-transparent bg-primary/5 px-2.5 py-0.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 gap-1">
+                                    <i class="fa-solid fa-tag text-[10px]"></i>
+                                    ${tech}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <div class="rounded-lg bg-muted/40 p-4 border border-border/50">
+                            <h4 class="text-sm font-semibold mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-star text-yellow-500"></i>
+                                核心贡献
+                            </h4>
+                            <ul class="space-y-3">
+                                ${highlightsHtml}
+                            </ul>
                         </div>
                     </div>
                 `;
-    }
+            }).join('');
+        }
 
-    function renderFooter(contacts) {
-        const container = document.getElementById('footer-contacts');
-        container.innerHTML = contacts.filter(c => c.icon.includes('envelope') || c.icon.includes('weixin') || c.icon.includes('github')).map(c => {
-            // Special handling for weixin hover effect which is different from others
-            if (c.icon.includes('weixin')) {
-                return `
-                            <a href="${c.link}" class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110 group relative">
-                                <i class="${c.icon} text-xl"></i>
-                                <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 py-1 px-3 bg-gray-700 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                                    微信: ${c.text}
-                                </span>
-                            </a>
-                        `;
-            }
-            return `
-                        <a href="${c.link}" ${c.link.startsWith('http') ? 'target="_blank"' : ''} class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110">
-                            <i class="${c.icon} text-xl"></i>
+        function renderOpenSource(os) {
+            const container = document.getElementById('opensource-content');
+
+            // Header Profile
+            const headerHtml = `
+                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 mb-6 fade-in-up-item hover-lift" style="transition-delay: 0ms">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-primary/10 p-4 rounded-full text-primary ring-2 ring-primary/20">
+                            <i class="${os.profile.icon} text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg hover:underline decoration-primary flex items-center gap-2">
+                                <a href="${os.profile.link}" target="_blank">${os.profile.title}</a>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-muted-foreground"></i>
+                            </h3>
+                            <p class="text-sm text-muted-foreground mt-1">${os.profile.description}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Featured
+            const featuredHtml = os.featured.map((item, index) => `
+                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow group fade-in-up-item hover-lift" style="transition-delay: ${(index + 1) * 100}ms">
+                    ${item.image ?
+                    `<div class="h-48 w-full overflow-hidden border-b border-border">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        </div>` : ''
+                }
+                    <div class="p-6 flex flex-col flex-1 space-y-3">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-semibold hover:underline decoration-primary text-lg flex items-center gap-3">
+                                ${item.image ?
+                    `<div class="w-10 h-10 rounded-md overflow-hidden border border-border flex-shrink-0">
+                                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" />
+                                     </div>` :
+                    `<i class="fa-solid fa-book-bookmark text-primary/70 text-2xl"></i>`
+                }
+                                <a href="${item.link}" target="_blank">${item.title}</a>
+                            </h4>
+                            <span data-github-stars="${item.repo}" class="inline-flex items-center rounded-full border border-transparent bg-yellow-100 dark:bg-yellow-900/30 px-2.5 py-0.5 text-xs font-semibold text-yellow-700 dark:text-yellow-400 gap-1">
+                                <i class="fa-solid fa-star text-[10px]"></i> ...
+                            </span>
+                        </div>
+                        <p class="text-sm text-muted-foreground flex-1">${item.description}</p>
+                        <a href="${item.link}" target="_blank" class="pt-2 text-xs text-primary font-medium flex items-center gap-1 hover:underline cursor-pointer w-fit">
+                             <i class="fa-solid fa-code"></i> View Repository
                         </a>
-                     `;
-        }).join('');
-    }
+                    </div>
+                </div>
+            `).join('');
 
-    function initStarFetching() {
-        console.log("开始获取所有仓库的 stars...");
-        const starsElements = document.querySelectorAll("[data-github-stars]");
-        const updatePromises = Array.from(starsElements).map(element => {
-            const repoPath = element.getAttribute("data-github-stars");
-            console.log(`处理仓库: ${repoPath}`);
-            const [owner, repo] = repoPath.split("/");
-            return updateStarsCount(element, owner, repo);
-        });
+            // Others
+            const othersHtml = os.others.map((item, index) => `
+                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 hover:bg-accent/50 transition-colors group fade-in-up-item hover-lift" style="transition-delay: ${(index + 3) * 100}ms">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-medium text-sm flex items-center gap-2 group-hover:text-primary transition-colors">
+                            <i class="${item.icon} text-primary/70 text-xs"></i>
+                            <a href="${item.link}" target="_blank" class="hover:underline">${item.title}</a>
+                        </h4>
+                        <span data-github-stars="${item.repo}" class="text-[10px] bg-secondary px-2 py-0.5 rounded-full text-secondary-foreground flex items-center gap-1">
+                            <i class="fa-regular fa-star"></i>...
+                        </span>
+                    </div>
+                    <p class="text-xs text-muted-foreground line-clamp-2 pl-5 border-l-2 border-border/50 hover:border-primary/30 transition-colors">${item.description}</p>
+                </div>
+            `).join('');
 
-        Promise.all(updatePromises)
-            .then(() => { console.log("所有仓库的 stars 更新完成"); })
-            .catch((error) => { console.error("更新 stars 时发生错误:", error); });
-    }
+            container.innerHTML = `
+                ${headerHtml}
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold tracking-tight flex items-center gap-2">
+                        <i class="fa-solid fa-fire text-orange-500"></i>
+                        精选项目
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${featuredHtml}
+                    </div>
+                </div>
+                <div class="space-y-4 mt-8 pt-6 border-t border-border">
+                    <h3 class="text-lg font-semibold tracking-tight flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-blue-500"></i>
+                        其他项目
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        ${othersHtml}
+                    </div>
+                </div>
+            `;
+        }
 
-    function initScrollAnimation() {
-        const sections = document.querySelectorAll("section");
-        const revealSection = (entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.remove("opacity-0", "translate-y-4");
-                    entry.target.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-700", "ease-out");
-                    observer.unobserve(entry.target);
+        function renderFooter(contacts) {
+            const container = document.getElementById('footer-contacts');
+            container.innerHTML = contacts.map(c => `
+                <a href="${c.link}" target="_blank" class="text-muted-foreground hover:text-primary transition-all hover:scale-110">
+                    <i class="${c.icon} text-lg"></i>
+                </a>
+            `).join('');
+        }
+
+        function initStarFetching() {
+            const starsElements = document.querySelectorAll("[data-github-stars]");
+            starsElements.forEach(element => {
+                const repoPath = element.getAttribute("data-github-stars");
+                const [owner, repo] = repoPath.split("/");
+                updateStarsCount(element, owner, repo);
+            });
+        }
+
+        function initScrollObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        function initEasterEggs() {
+            // 1. Konami Code
+            const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+            let konamiIndex = 0;
+            document.addEventListener('keydown', (e) => {
+                if (e.key.toLowerCase() === konamiCode[konamiIndex].toLowerCase() || e.key === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        try {
+                            const duration = 3000;
+                            const end = Date.now() + duration;
+                            (function frame() {
+                                confetti({
+                                    particleCount: 7,
+                                    angle: 60,
+                                    spread: 55,
+                                    origin: { x: 0 }
+                                });
+                                confetti({
+                                    particleCount: 7,
+                                    angle: 120,
+                                    spread: 55,
+                                    origin: { x: 1 }
+                                });
+                                if (Date.now() < end) {
+                                    requestAnimationFrame(frame);
+                                }
+                            }());
+                        } catch (e) {
+                            console.log("Confetti!", e);
+                        }
+                        konamiIndex = 0;
+                    }
+                } else {
+                    konamiIndex = 0;
                 }
             });
-        };
 
-        const sectionObserver = new IntersectionObserver(revealSection, {
-            root: null,
-            threshold: 0.15,
-        });
+            // 2. Avatar Spin
+            const avatar = document.getElementById('profile-avatar');
+            if (avatar) {
+                let clickCount = 0;
+                let resetTimer;
+                avatar.addEventListener('click', () => {
+                    clickCount++;
+                    clearTimeout(resetTimer);
 
-        sections.forEach((section) => {
-            sectionObserver.observe(section);
-        });
+                    if (clickCount === 5) {
+                        avatar.style.transform = 'rotate(720deg) scale(1.1)';
+                        try {
+                            confetti({
+                                particleCount: 100,
+                                spread: 70,
+                                origin: { y: 0.6 }
+                            });
+                        } catch (e) { }
 
-        // Check immediately
-        setTimeout(() => {
-            const visibleSections = Array.from(sections).filter((section) => {
-                const rect = section.getBoundingClientRect();
-                return (rect.top < window.innerHeight && rect.bottom >= 0);
-            });
-            visibleSections.forEach((section) => {
-                section.classList.remove("opacity-0", "translate-y-4");
-                section.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-700", "ease-out");
-                sectionObserver.unobserve(section);
-            });
-        }, 100);
-    }
-</script>
+                        setTimeout(() => {
+                            avatar.style.transform = 'none';
+                            clickCount = 0;
+                        }, 1000);
+                    }
 
-<!-- Heti JavaScript -->
-<script src="//unpkg.com/heti/umd/heti-addon.min.js"></script>
+                    resetTimer = setTimeout(() => {
+                        clickCount = 0;
+                    }, 2000);
+                });
+            }
+
+            // 3. Matrix Rain
+            const terminalIcon = document.getElementById('terminal-icon');
+            const canvas = document.getElementById('matrix-canvas');
+
+            if (terminalIcon && canvas) {
+                const ctx = canvas.getContext('2d');
+                let interval;
+                let isActive = false;
+
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()";
+                const fontSize = 14;
+                let drops = [];
+
+                function resize() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    const columns = canvas.width / fontSize;
+                    drops = [];
+                    for (let i = 0; i < columns; i++) {
+                        drops[i] = 1;
+                    }
+                }
+
+                function draw() {
+                    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    ctx.fillStyle = "#0F0"; // Green text
+                    ctx.font = fontSize + "px monospace";
+
+                    for (let i = 0; i < drops.length; i++) {
+                        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                }
+
+                terminalIcon.addEventListener('click', () => {
+                    isActive = !isActive;
+
+                    if (isActive) {
+                        resize();
+                        window.addEventListener('resize', resize);
+                        canvas.classList.add('active');
+                        interval = setInterval(draw, 33);
+
+                        // Auto-off after 10 seconds to not annoy
+                        setTimeout(() => {
+                            if (isActive) terminalIcon.click();
+                        }, 10000);
+
+                    } else {
+                        canvas.classList.remove('active');
+                        setTimeout(() => {
+                            clearInterval(interval);
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            window.removeEventListener('resize', resize);
+                        }, 1000); // Wait for fade out
+                    }
+                });
+            }
+        }
+    </script>
 </body>
+
 </html>
