@@ -1,225 +1,452 @@
 {
-    "profile": {
-        "name": "HSn",
-        "title": "Software Engineer | Go Developer",
-        "avatar": "touxiang.jpg",
-        "contacts": [
-            {
-                "icon": "fa-solid fa-envelope",
-                "text": "hsn.zj@foxmail.com",
-                "link": "mailto:hsn.zj@foxmail.com"
-            },
-            {
-                "icon": "fa-solid fa-globe",
-                "text": "resume.huangsn.dev",
-                "link": "https://resume.huangsn.dev"
-            },
-            {
-                "icon": "fa-brands fa-github",
-                "text": "github.com/HSn0918",
-                "link": "https://github.com/HSn0918"
-            }
-        ]
-    },
-    "education": {
-        "school": "浙江理工大学科技与艺术学院",
-        "degree": "计算机科学与技术 | 本科",
-        "period": "2021.09 - 2025.06"
-    },
-    "skills": [
-        {
-            "category": "编程语言与框架",
-            "description": "<strong>熟练使用 Go</strong>，掌握 <strong>gRPC、ConnectRPC、Gin</strong> 等主流框架，具备<strong>微服务架构设计</strong>经验。",
-            "icon": "fa-solid fa-code"
-        },
-        {
-            "category": "云原生技术",
-            "description": "<strong>熟悉 Kubernetes 核心机制</strong>，具备通过<strong>源码分析</strong>定位问题的经验。",
-            "icon": "fa-solid fa-cloud"
-        },
-        {
-            "category": "数据库与缓存",
-            "description": "<strong>熟练 PostgreSQL 设计与优化</strong>，具备 <strong>Redis 在高并发场景下的实战经验</strong>（缓存击穿/雪崩/穿透）。",
-            "icon": "fa-solid fa-database"
-        },
-        {
-            "category": "消息队列与事件驱动",
-            "description": "熟练使用 <strong>NATS</strong>，具备<strong>事件驱动架构</strong>设计经验，掌握<strong>异步消息处理</strong>。",
-            "icon": "fa-solid fa-share-alt"
-        },
-        {
-            "category": "工程与部署",
-            "description": "熟悉 <strong>Linux</strong> 与 <strong>Git</strong>，具备从开发到部署的交付能力。",
-            "icon": "fa-solid fa-terminal"
-        },
-        {
-            "category": "AI 与大模型",
-            "description": "了解大模型原理，具备 <strong>MCP</strong> 相关开源经验。",
-            "icon": "fa-solid fa-robot"
-        }
-    ],
-    "workExperience": [
-        {
-            "company": "智识无垠",
-            "role": "后端开发工程师",
-            "period": "2025.06-至今",
-            "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-            "items": [
-                {
-                    "icon": "fa-solid fa-network-wired",
-                    "iconColor": "text-blue-500",
-                    "text": "参与核心文档解析平台的后端架构演进，支撑<strong>万级 DAU、千万级日解析量</strong>，服务可用性稳定。"
-                },
-                {
-                    "icon": "fa-solid fa-cogs",
-                    "iconColor": "text-blue-500",
-                    "text": "主导内部平台建设，推动关键流程<strong>自动化与标准化</strong>，运营效率提升<strong>2 倍以上</strong>。"
-                }
-            ]
-        },
-        {
-            "company": "谐云",
-            "role": "后端开发工程师",
-            "period": "2024.07-2025.04",
-            "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-            "items": [
-                {
-                    "icon": "fa-solid fa-cogs",
-                    "iconColor": "text-blue-500",
-                    "text": "负责 PaaS 平台核心服务的<strong>Java→Go 重构</strong>与性能优化，使服务平均响应时间降低<strong>40%+</strong>。"
-                },
-                {
-                    "icon": "fa-solid fa-users",
-                    "iconColor": "text-blue-500",
-                    "text": "参与多租户、容器服务等模块建设，优化资源调度与系统稳定性，显著提升用户体验。"
-                }
-            ]
-        }
-    ],
-    "projects": [
-        {
-            "name": "Doc2X — C/B 端智能文档解析平台",
-            "role": "后端开发工程师",
-            "period": "2025.06-至今",
-            "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-            "description": "行业领先的文档解析平台，支持从 PDF 智能提取内容并转换为 <strong>Markdown / LaTeX / Word</strong>，覆盖学术论文、合同、图表等场景，日解析量超 <strong>千万级</strong>。",
-            "techStack": "Go、gRPC / ConnectRPC、PostgreSQL、Redis、NATS、Kubernetes、OpenTelemetry",
-            "highlights": [
-                {
-                    "title": "多渠道通知系统",
-                    "text": "基于<strong>策略模式 + 工厂模式</strong>设计可扩展通知框架，新渠道接入时间从<strong>2 天缩短至 0.5 天</strong>。",
-                    "icon": "fa-solid fa-bell",
-                    "iconColor": "text-blue-500"
-                },
-                {
-                    "title": "消费者服务迭代",
-                    "text": "基于 <strong>NATS</strong> 构建事件链路，实现<strong>额度扣减、限流、幂等校验、缓存更新</strong>等核心处理流程。",
-                    "icon": "fa-solid fa-network-wired",
-                    "iconColor": "text-blue-500"
-                },
-                {
-                    "title": "大模型翻译",
-                    "text": "基于 <strong>Prefill 优化</strong> 请求结构，提升 <strong>整体 KV Cache 命中率</strong>；整体 <strong>Token 消耗降低 20%～40%</strong>，显著减少推理成本。",
-                    "icon": "fa-solid fa-language",
-                    "iconColor": "text-blue-500"
-                },
-                {
-                    "title": "运营后台迭代",
-                    "text": "使用 <strong>Vibe Coding</strong> 完成公告管理、发票/退款审批、订单查询等功能全栈开发，推进运营流程<strong>数字化</strong>，显著提升内部效率。",
-                    "icon": "fa-solid fa-users",
-                    "iconColor": "text-blue-500"
-                }
-            ]
-        },
-        {
-            "name": "观云台 — Kubernetes PaaS 平台",
-            "role": "后端开发工程师",
-            "period": "2024.07-2025.05",
-            "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-            "description": "基于 <strong>Kubernetes</strong> 的企业级 PaaS，帮助企业降低运维成本并提升业务交付效率。",
-            "techStack": "Go、Gin、Kubernetes、Kubebuilder、MySQL",
-            "highlights": [
-                {
-                    "title": "资源管理重构",
-                    "text": "完成 <strong>Java→Go 重构</strong>，基于 <strong>Kubernetes API 规范</strong>引入<strong>原生 RBAC 鉴权</strong>；修复 <strong>StatefulSet 字段约束</strong>导致的部署死锁问题，显著提升扩容 / 发布稳定性。",
-                    "icon": "fa-solid fa-arrows-rotate",
-                    "iconColor": "text-blue-500"
-                },
-                {
-                    "title": "性能优化",
-                    "text": "引入 <strong>MapReduce 思想</strong> 与 <strong>可配置协程池</strong>，将串行调用改为<strong>分片并行</strong>，显著减少任务总时长并沉淀为通用工具。",
-                    "icon": "fa-solid fa-users",
-                    "iconColor": "text-blue-500"
-                },
-                {
-                    "title": "架构升级",
-                    "text": "将命令式接口切换为 <strong>Kubernetes 声明式架构</strong>，核心操作延迟从 <strong>20 秒 → 300 毫秒</strong>，显著提升用户体验。",
-                    "icon": "fa-solid fa-cubes",
-                    "iconColor": "text-blue-500"
-                },
-                {
-                    "title": "基线合规检查",
-                    "text": "基于 <strong>K8S CronJob</strong> 实现定时巡检，覆盖<strong>文件 + 命令</strong>两类检查，确保纳管组件版本<strong>100% 合规</strong>。",
-                    "icon": "fa-solid fa-check-circle",
-                    "iconColor": "text-blue-500"
-                }
-            ]
-        }
-    ],
-    "openSource": {
+    "zh": {
         "profile": {
-            "title": "个人GitHub",
-            "link": "https://github.com/HSn0918",
-            "description": "Go工程师 | Kubernetes爱好者 | 42个代码仓库 | 47个Star",
-            "icon": "fa-brands fa-github"
+            "name": "HSn",
+            "title": "Software Engineer | Go Developer",
+            "avatar": "touxiang.jpg",
+            "contacts": [
+                {
+                    "icon": "fa-solid fa-envelope",
+                    "text": "hsn.zj@foxmail.com",
+                    "link": "mailto:hsn.zj@foxmail.com"
+                },
+                {
+                    "icon": "fa-solid fa-globe",
+                    "text": "resume.huangsn.dev",
+                    "link": "https://resume.huangsn.dev"
+                },
+                {
+                    "icon": "fa-brands fa-github",
+                    "text": "github.com/HSn0918",
+                    "link": "https://github.com/HSn0918"
+                }
+            ]
         },
-        "featured": [
+        "education": {
+            "school": "浙江理工大学科技与艺术学院",
+            "degree": "计算机科学与技术 | 本科",
+            "period": "2021.09 - 2025.06"
+        },
+        "skills": [
             {
-                "title": "TinyRedis",
-                "link": "https://github.com/MiniApplication/tinyredis",
-                "repo": "MiniApplication/tinyredis",
-                "description": "TinyRedis 是一个使用 Go 语言原生 net 包实现的轻量级高性能 Redis 服务端，高效支持 Redis 各种基本数据类型。",
-                "image": "tinyredis.png",
-                "icon": "fa-solid fa-cube",
-                "iconColor": "text-red-500",
-                "itemIcon": "fa-solid fa-cubes",
-                "itemIconColor": "text-yellow-500"
+                "category": "编程语言与框架",
+                "description": "<strong>熟练使用 Go</strong>，掌握 <strong>gRPC、ConnectRPC、Gin</strong> 等主流框架，具备<strong>微服务架构设计</strong>经验。",
+                "icon": "fa-solid fa-code"
             },
             {
-                "title": "Kubernetes-mcp",
-                "link": "https://github.com/HSn0918/kubernetes-mcp",
-                "repo": "HSn0918/kubernetes-mcp",
-                "description": "基于Go实现的 Model Context Protocol (MCP)服务器，用于与Kubernetes集群交互，提供高效的集群管理和资源调度能力。",
-                "image": "kubernetes-mcp.jpg",
-                "itemIcon": "fa-solid fa-cloud",
-                "itemIconColor": "text-blue-500"
+                "category": "云原生技术",
+                "description": "<strong>熟悉 Kubernetes 核心机制</strong>，具备通过<strong>源码分析</strong>定位问题的经验。",
+                "icon": "fa-solid fa-cloud"
+            },
+            {
+                "category": "数据库与缓存",
+                "description": "<strong>熟练 PostgreSQL 设计与优化</strong>，具备 <strong>Redis 在高并发场景下的实战经验</strong>（缓存击穿/雪崩/穿透）。",
+                "icon": "fa-solid fa-database"
+            },
+            {
+                "category": "消息队列与事件驱动",
+                "description": "熟练使用 <strong>NATS</strong>，具备<strong>事件驱动架构</strong>设计经验，掌握<strong>异步消息处理</strong>。",
+                "icon": "fa-solid fa-share-alt"
+            },
+            {
+                "category": "工程与部署",
+                "description": "熟悉 <strong>Linux</strong> 与 <strong>Git</strong>，具备从开发到部署的交付能力。",
+                "icon": "fa-solid fa-terminal"
+            },
+            {
+                "category": "AI 与大模型",
+                "description": "了解大模型原理，具备 <strong>MCP</strong> 相关开源经验。",
+                "icon": "fa-solid fa-robot"
             }
         ],
-        "others": [
+        "workExperience": [
             {
-                "title": "Learning-Notes",
-                "link": "https://github.com/HSn0918/Learning-Notes",
-                "repo": "HSn0918/Learning-Notes",
-                "description": "学习笔记与技术总结",
-                "icon": "fa-solid fa-book",
-                "iconColor": "text-green-500"
+                "company": "智识无垠",
+                "role": "后端开发工程师",
+                "period": "2025.06-至今",
+                "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+                "items": [
+                    {
+                        "icon": "fa-solid fa-network-wired",
+                        "iconColor": "text-blue-500",
+                        "text": "参与核心文档解析平台的后端架构演进，支撑<strong>万级 DAU、千万级日解析量</strong>，服务可用性稳定。"
+                    },
+                    {
+                        "icon": "fa-solid fa-cogs",
+                        "iconColor": "text-blue-500",
+                        "text": "主导内部平台建设，推动关键流程<strong>自动化与标准化</strong>，运营效率提升<strong>2 倍以上</strong>。"
+                    }
+                ]
             },
             {
-                "title": "big-market-go",
-                "link": "https://github.com/HSn0918/big-market-go",
-                "repo": "HSn0918/big-market-go",
-                "description": "Go实现的大营销系统",
-                "icon": "fa-solid fa-shopping-cart",
-                "iconColor": "text-indigo-500"
-            },
-            {
-                "title": "controller-demo",
-                "link": "https://github.com/HSn0918/controller-demo",
-                "repo": "HSn0918/controller-demo",
-                "description": "Kubernetes控制器示例",
-                "icon": "fa-solid fa-dharmachakra",
-                "iconColor": "text-blue-500"
+                "company": "谐云",
+                "role": "后端开发工程师",
+                "period": "2024.07-2025.04",
+                "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+                "items": [
+                    {
+                        "icon": "fa-solid fa-cogs",
+                        "iconColor": "text-blue-500",
+                        "text": "负责 PaaS 平台核心服务的<strong>Java→Go 重构</strong>与性能优化，使服务平均响应时间降低<strong>40%+</strong>。"
+                    },
+                    {
+                        "icon": "fa-solid fa-users",
+                        "iconColor": "text-blue-500",
+                        "text": "参与多租户、容器服务等模块建设，优化资源调度与系统稳定性，显著提升用户体验。"
+                    }
+                ]
             }
-        ]
+        ],
+        "projects": [
+            {
+                "name": "Doc2X — C/B 端智能文档解析平台",
+                "role": "后端开发工程师",
+                "period": "2025.06-至今",
+                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+                "description": "行业领先的文档解析平台，支持从 PDF 智能提取内容并转换为 <strong>Markdown / LaTeX / Word</strong>，覆盖学术论文、合同、图表等场景，日解析量超 <strong>千万级</strong>。",
+                "techStack": "Go、gRPC / ConnectRPC、PostgreSQL、Redis、NATS、Kubernetes、OpenTelemetry",
+                "highlights": [
+                    {
+                        "title": "多渠道通知系统",
+                        "text": "基于<strong>策略模式 + 工厂模式</strong>设计可扩展通知框架，新渠道接入时间从<strong>2 天缩短至 0.5 天</strong>。",
+                        "icon": "fa-solid fa-bell",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "消费者服务迭代",
+                        "text": "基于 <strong>NATS</strong> 构建事件链路，实现<strong>额度扣减、限流、幂等校验、缓存更新</strong>等核心处理流程。",
+                        "icon": "fa-solid fa-network-wired",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "大模型翻译",
+                        "text": "基于 <strong>Prefill 优化</strong> 请求结构，提升 <strong>整体 KV Cache 命中率</strong>；整体 <strong>Token 消耗降低 20%～40%</strong>，显著减少推理成本。",
+                        "icon": "fa-solid fa-language",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "运营后台迭代",
+                        "text": "使用 <strong>Vibe Coding</strong> 完成公告管理、发票/退款审批、订单查询等功能全栈开发，推进运营流程<strong>数字化</strong>，显著提升内部效率。",
+                        "icon": "fa-solid fa-users",
+                        "iconColor": "text-blue-500"
+                    }
+                ]
+            },
+            {
+                "name": "观云台 — Kubernetes PaaS 平台",
+                "role": "后端开发工程师",
+                "period": "2024.07-2025.05",
+                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+                "description": "基于 <strong>Kubernetes</strong> 的企业级 PaaS，帮助企业降低运维成本并提升业务交付效率。",
+                "techStack": "Go、Gin、Kubernetes、Kubebuilder、MySQL",
+                "highlights": [
+                    {
+                        "title": "资源管理重构",
+                        "text": "完成 <strong>Java→Go 重构</strong>，基于 <strong>Kubernetes API 规范</strong>引入<strong>原生 RBAC 鉴权</strong>；修复 <strong>StatefulSet 字段约束</strong>导致的部署死锁问题，显著提升扩容 / 发布稳定性。",
+                        "icon": "fa-solid fa-arrows-rotate",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "性能优化",
+                        "text": "引入 <strong>MapReduce 思想</strong> 与 <strong>可配置协程池</strong>，将串行调用改为<strong>分片并行</strong>，显著减少任务总时长并沉淀为通用工具。",
+                        "icon": "fa-solid fa-users",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "架构升级",
+                        "text": "将命令式接口切换为 <strong>Kubernetes 声明式架构</strong>，核心操作延迟从 <strong>20 秒 → 300 毫秒</strong>，显著提升用户体验。",
+                        "icon": "fa-solid fa-cubes",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "基线合规检查",
+                        "text": "基于 <strong>K8S CronJob</strong> 实现定时巡检，覆盖<strong>文件 + 命令</strong>两类检查，确保纳管组件版本<strong>100% 合规</strong>。",
+                        "icon": "fa-solid fa-check-circle",
+                        "iconColor": "text-blue-500"
+                    }
+                ]
+            }
+        ],
+        "openSource": {
+            "profile": {
+                "title": "个人GitHub",
+                "link": "https://github.com/HSn0918",
+                "description": "Go工程师 | Kubernetes爱好者 | 42个代码仓库 | 47个Star",
+                "icon": "fa-brands fa-github"
+            },
+            "featured": [
+                {
+                    "title": "Kubernetes-mcp",
+                    "link": "https://github.com/HSn0918/kubernetes-mcp",
+                    "repo": "HSn0918/kubernetes-mcp",
+                    "description": "基于Go实现的 Model Context Protocol (MCP)服务器，用于与Kubernetes集群交互，提供高效的集群管理和资源调度能力。",
+                    "image": "kubernetes-mcp.jpg",
+                    "itemIcon": "fa-solid fa-cloud",
+                    "itemIconColor": "text-blue-500"
+                },
+                {
+                    "title": "TinyRedis",
+                    "link": "https://github.com/MiniApplication/tinyredis",
+                    "repo": "MiniApplication/tinyredis",
+                    "description": "TinyRedis 是一个使用 Go 语言原生 net 包实现的轻量级高性能 Redis 服务端，高效支持 Redis 各种基本数据类型。",
+                    "image": "tinyredis.png",
+                    "icon": "fa-solid fa-cube",
+                    "iconColor": "text-red-500",
+                    "itemIcon": "fa-solid fa-cubes",
+                    "itemIconColor": "text-yellow-500"
+                }
+            ],
+            "others": [
+                {
+                    "title": "Learning-Notes",
+                    "link": "https://github.com/HSn0918/Learning-Notes",
+                    "repo": "HSn0918/Learning-Notes",
+                    "description": "学习笔记与技术总结",
+                    "icon": "fa-solid fa-book",
+                    "iconColor": "text-green-500"
+                },
+                {
+                    "title": "big-market-go",
+                    "link": "https://github.com/HSn0918/big-market-go",
+                    "repo": "HSn0918/big-market-go",
+                    "description": "Go实现的大营销系统",
+                    "icon": "fa-solid fa-shopping-cart",
+                    "iconColor": "text-indigo-500"
+                },
+                {
+                    "title": "controller-demo",
+                    "link": "https://github.com/HSn0918/controller-demo",
+                    "repo": "HSn0918/controller-demo",
+                    "description": "Kubernetes控制器示例",
+                    "icon": "fa-solid fa-dharmachakra",
+                    "iconColor": "text-blue-500"
+                }
+            ]
+        }
+    },
+    "en": {
+        "profile": {
+            "name": "HSn",
+            "title": "Software Engineer | Go Developer",
+            "avatar": "touxiang.jpg",
+            "contacts": [
+                {
+                    "icon": "fa-solid fa-envelope",
+                    "text": "hsn.zj@foxmail.com",
+                    "link": "mailto:hsn.zj@foxmail.com"
+                },
+                {
+                    "icon": "fa-solid fa-globe",
+                    "text": "resume.huangsn.dev",
+                    "link": "https://resume.huangsn.dev"
+                },
+                {
+                    "icon": "fa-brands fa-github",
+                    "text": "github.com/HSn0918",
+                    "link": "https://github.com/HSn0918"
+                }
+            ]
+        },
+        "education": {
+            "school": "Zhejiang Sci-Tech University (Science and Art College)",
+            "degree": "Computer Science & Technology | Bachelor's",
+            "period": "2021.09 - 2025.06"
+        },
+        "skills": [
+            {
+                "category": "Languages & Frameworks",
+                "description": "Proficient in <strong>Go</strong>, experienced with <strong>gRPC, ConnectRPC, Gin</strong>, and <strong>Microservices Architecture Design</strong>.",
+                "icon": "fa-solid fa-code"
+            },
+            {
+                "category": "Cloud Native",
+                "description": "Deep understanding of <strong>Kubernetes Core Mechanisms</strong>, experienced in <strong>Source Code Analysis</strong> for troubleshooting.",
+                "icon": "fa-solid fa-cloud"
+            },
+            {
+                "category": "Databases & Cache",
+                "description": "Proficient in <strong>PostgreSQL Design & Optimization</strong>, hands-on experience with <strong>Redis in High Concurrency</strong> scenarios (Cache Breakdown/Avalanche/Penetration).",
+                "icon": "fa-solid fa-database"
+            },
+            {
+                "category": "Messaging & Event-Driven",
+                "description": "Skilled in <strong>NATS</strong>, experienced in designing <strong>Event-Driven Architectures</strong> and handling <strong>Asynchronous Messaging</strong>.",
+                "icon": "fa-solid fa-share-alt"
+            },
+            {
+                "category": "DevOps & Engineering",
+                "description": "Familiar with <strong>Linux</strong> and <strong>Git</strong>, capable of handling the full lifecycle from development to deployment.",
+                "icon": "fa-solid fa-terminal"
+            },
+            {
+                "category": "AI & LLM",
+                "description": "Understanding of LLM principles, open-source experience with <strong>MCP</strong> (Model Context Protocol).",
+                "icon": "fa-solid fa-robot"
+            }
+        ],
+        "workExperience": [
+            {
+                "company": "NoEdgeAI",
+                "role": "Backend Engineer",
+                "period": "2025.06 - Present",
+                "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+                "items": [
+                    {
+                        "icon": "fa-solid fa-network-wired",
+                        "iconColor": "text-blue-500",
+                        "text": "Participated in the backend architecture evolution of a core document parsing platform, supporting <strong>10k+ DAU and 10M+ daily parses</strong> with high availability."
+                    },
+                    {
+                        "icon": "fa-solid fa-cogs",
+                        "iconColor": "text-blue-500",
+                        "text": "Led the construction of internal platforms, promoting <strong>Automation & Standardization</strong> of key processes, improving operational efficiency by <strong>2x+</strong>."
+                    }
+                ]
+            },
+            {
+                "company": "HarmonyCloud",
+                "role": "Backend Engineer",
+                "period": "2024.07 - 2025.04",
+                "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+                "items": [
+                    {
+                        "icon": "fa-solid fa-cogs",
+                        "iconColor": "text-blue-500",
+                        "text": "Responsible for the <strong>Java to Go Refactoring</strong> and performance optimization of core PaaS services, reducing average response time by <strong>40%+</strong>."
+                    },
+                    {
+                        "icon": "fa-solid fa-users",
+                        "iconColor": "text-blue-500",
+                        "text": "Contributed to Multi-tenancy and Container Service modules, optimizing resource scheduling and system stability, significantly enhancing user experience."
+                    }
+                ]
+            }
+        ],
+        "projects": [
+            {
+                "name": "Doc2X — Intelligent Document Parsing Platform",
+                "role": "Backend Engineer",
+                "period": "2025.06 - Present",
+                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+                "description": "Industry-leading parsing platform extracting content from PDFs to <strong>Markdown / LaTeX / Word</strong>, covering academic papers, contracts, charts, etc., with <strong>10M+ daily parses</strong>.",
+                "techStack": "Go, gRPC / ConnectRPC, PostgreSQL, Redis, NATS, Kubernetes, OpenTelemetry",
+                "highlights": [
+                    {
+                        "title": "Multi-Channel Notification System",
+                        "text": "Designed an extensible notification framework using <strong>Strategy + Factory Patterns</strong>, reducing new channel integration time from <strong>2 days to 0.5 days</strong>.",
+                        "icon": "fa-solid fa-bell",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "Consumer Service Iteration",
+                        "text": "Built event chains based on <strong>NATS</strong> to handle core processes like <strong>Quota Deduction, Rate Limiting, Idempotency Check, and Cache Updates</strong>.",
+                        "icon": "fa-solid fa-network-wired",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "LLM Translation",
+                        "text": "Optimized request structure with <strong>Prefill</strong>, improving <strong>KV Cache Hit Rate</strong>; reduced <strong>Token Consumption by 20%–40%</strong>, significantly lowering inference costs.",
+                        "icon": "fa-solid fa-language",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "Ops Dashboard Iteration",
+                        "text": "Utilized <strong>Vibe Coding</strong> for full-stack development of Announcement Management, Invoice/Refund Approval, and Order Query, promoting <strong>Digitalization</strong> of ops flows.",
+                        "icon": "fa-solid fa-users",
+                        "iconColor": "text-blue-500"
+                    }
+                ]
+            },
+            {
+                "name": "Embrace Cloud Native — Kubernetes PaaS Platform",
+                "role": "Backend Engineer",
+                "period": "2024.07 - 2025.05",
+                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+                "description": "Enterprise-grade PaaS based on <strong>Kubernetes</strong>, helping enterprises reduce O&M costs and improve delivery efficiency.",
+                "techStack": "Go, Gin, Kubernetes, Kubebuilder, MySQL",
+                "highlights": [
+                    {
+                        "title": "Resource Management Refactor",
+                        "text": "Completed <strong>Java to Go Refactoring</strong>, introduced <strong>Native RBAC</strong> based on <strong>K8S API Standards</strong>; fixed <strong>StatefulSet Constraints</strong> causing deadlock, stabilizing scaling/rollouts.",
+                        "icon": "fa-solid fa-arrows-rotate",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "Performance Optimization",
+                        "text": "Introduced <strong>MapReduce</strong> and <strong>Configurable Coroutine Pools</strong> to parallelize serial calls, significantly reducing latency and creating reusable tools.",
+                        "icon": "fa-solid fa-users",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "Architecture Upgrade",
+                        "text": "Switched from imperative interfaces to <strong>K8S Declarative Architecture</strong>, reducing core operation latency from <strong>20s to 300ms</strong>.",
+                        "icon": "fa-solid fa-cubes",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "Compliance Check",
+                        "text": "Implemented scheduled inspections via <strong>K8S CronJob</strong> covering <strong>File + Command</strong> checks, ensuring <strong>100% Compliance</strong> of managed components.",
+                        "icon": "fa-solid fa-check-circle",
+                        "iconColor": "text-blue-500"
+                    }
+                ]
+            }
+        ],
+        "openSource": {
+            "profile": {
+                "title": "GitHub Profile",
+                "link": "https://github.com/HSn0918",
+                "description": "Go Engineer | K8s Enthusiast | 42 Repositories | 47 Stars",
+                "icon": "fa-brands fa-github"
+            },
+            "featured": [
+                {
+                    "title": "Kubernetes-mcp",
+                    "link": "https://github.com/HSn0918/kubernetes-mcp",
+                    "repo": "HSn0918/kubernetes-mcp",
+                    "description": "Go-based Model Context Protocol (MCP) server for interacting with Kubernetes clusters, providing efficient cluster management and resource scheduling capabilities.",
+                    "image": "kubernetes-mcp.jpg",
+                    "itemIcon": "fa-solid fa-cloud",
+                    "itemIconColor": "text-blue-500"
+                },
+                {
+                    "title": "TinyRedis",
+                    "link": "https://github.com/MiniApplication/tinyredis",
+                    "repo": "MiniApplication/tinyredis",
+                    "description": "TinyRedis is a lightweight high-performance Redis server implemented using Go's native net package, supporting basic Redis data structures efficiently.",
+                    "image": "tinyredis.png",
+                    "icon": "fa-solid fa-cube",
+                    "iconColor": "text-red-500",
+                    "itemIcon": "fa-solid fa-cubes",
+                    "itemIconColor": "text-yellow-500"
+                }
+            ],
+            "others": [
+                {
+                    "title": "Learning-Notes",
+                    "link": "https://github.com/HSn0918/Learning-Notes",
+                    "repo": "HSn0918/Learning-Notes",
+                    "description": "Learning notes and technical summaries.",
+                    "icon": "fa-solid fa-book",
+                    "iconColor": "text-green-500"
+                },
+                {
+                    "title": "big-market-go",
+                    "link": "https://github.com/HSn0918/big-market-go",
+                    "repo": "HSn0918/big-market-go",
+                    "description": "Big marketing system implemented in Go.",
+                    "icon": "fa-solid fa-shopping-cart",
+                    "iconColor": "text-indigo-500"
+                },
+                {
+                    "title": "controller-demo",
+                    "link": "https://github.com/HSn0918/controller-demo",
+                    "repo": "HSn0918/controller-demo",
+                    "description": "Kubernetes controller example.",
+                    "icon": "fa-solid fa-dharmachakra",
+                    "iconColor": "text-blue-500"
+                }
+            ]
+        }
     }
 }
