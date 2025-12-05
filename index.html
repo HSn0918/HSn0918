@@ -1,47 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>黄锡超 - 个人简历</title>
     <!-- TailwindCSS 3.0+ CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Heti CSS -->
-    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+    <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css" />
     <!-- 自定义样式 -->
     <script>
         // 设置Tailwind主题
         tailwind.config = {
-            darkMode: 'class',
+            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
                         primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
+                            50: "#f0f9ff",
+                            100: "#e0f2fe",
+                            200: "#bae6fd",
+                            300: "#7dd3fc",
+                            400: "#38bdf8",
+                            500: "#0ea5e9",
+                            600: "#0284c7",
+                            700: "#0369a1",
+                            800: "#075985",
+                            900: "#0c4a6e",
                         },
                     },
                 },
             },
             plugins: [],
-        }
+        };
 
         // 检查系统主题偏好并设置初始主题
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
+        if (
+            localStorage.theme === "dark" ||
+            (!("theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
         } else {
-            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.remove("dark");
         }
 
         // 缓存机制
@@ -53,7 +59,10 @@
             const cacheKey = `${owner}/${repo}`;
             const cachedData = starsCache.get(cacheKey);
 
-            if (cachedData && (Date.now() - cachedData.timestamp) < CACHE_DURATION) {
+            if (
+                cachedData &&
+                Date.now() - cachedData.timestamp < CACHE_DURATION
+            ) {
                 console.log(`使用缓存数据: ${cacheKey}`);
                 return cachedData.stars;
             }
@@ -61,32 +70,36 @@
             const maxRetries = 3;
             for (let i = 0; i < maxRetries; i++) {
                 try {
-                    console.log(`尝试获取 ${owner}/${repo} 的 stars... (第${i + 1}次尝试)`);
+                    console.log(
+                        `尝试获取 ${owner}/${repo} 的 stars... (第${i + 1}次尝试)`,
+                    );
 
                     // 使用 CORS 代理或直接调用
                     const apiUrl = `https://api.github.com/repos/${owner}/${repo}`;
                     const response = await fetch(apiUrl, {
-                        method: 'GET',
+                        method: "GET",
                         headers: {
-                            'Accept': 'application/vnd.github.v3+json',
-                            'User-Agent': 'Resume-Website'
+                            Accept: "application/vnd.github.v3+json",
+                            "User-Agent": "Resume-Website",
                         },
-                        mode: 'cors',
-                        cache: 'no-cache'
+                        mode: "cors",
+                        cache: "no-cache",
                     });
 
                     console.log(`API 响应状态: ${response.status}`);
 
                     if (!response.ok) {
                         if (response.status === 403) {
-                            console.error('达到 GitHub API 速率限制');
-                            return '速率受限';
+                            console.error("达到 GitHub API 速率限制");
+                            return "速率受限";
                         }
                         if (response.status === 404) {
                             console.error(`仓库 ${owner}/${repo} 不存在`);
                             return 0;
                         }
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                        throw new Error(
+                            `HTTP error! status: ${response.status}`,
+                        );
                     }
 
                     const data = await response.json();
@@ -95,10 +108,12 @@
                     // 更新缓存
                     starsCache.set(cacheKey, {
                         stars,
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
                     });
 
-                    console.log(`成功获取 ${owner}/${repo} 的 stars: ${stars}`);
+                    console.log(
+                        `成功获取 ${owner}/${repo} 的 stars: ${stars}`,
+                    );
                     return stars;
                 } catch (error) {
                     console.error(`第${i + 1}次尝试失败:`, error.message);
@@ -109,10 +124,12 @@
                             return cachedData.stars;
                         }
                         // 直接返回速率受限信息
-                        return '速率受限';
+                        return "速率受限";
                     }
                     // 等待一段时间后重试
-                    await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+                    await new Promise((resolve) =>
+                        setTimeout(resolve, 1000 * (i + 1)),
+                    );
                 }
             }
             return 0;
@@ -124,66 +141,57 @@
                 const stars = await getGitHubStars(owner, repo);
                 element.innerHTML = `<i class="fa-solid fa-star mr-1"></i> ${stars} Stars`;
             } catch (error) {
-                console.error(`更新 ${owner}/${repo} 的 stars 显示时发生错误:`, error);
+                console.error(
+                    `更新 ${owner}/${repo} 的 stars 显示时发生错误:`,
+                    error,
+                );
                 element.innerHTML = `<i class="fa-solid fa-star mr-1"></i> 0 Stars`;
             }
         }
-
-        // 初始化时更新所有stars计数
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('开始获取所有仓库的 stars...');
-            const starsElements = document.querySelectorAll('[data-github-stars]');
-
-            // 使用 Promise.all 并行获取所有 stars
-            const updatePromises = Array.from(starsElements).map(element => {
-                const repoPath = element.getAttribute('data-github-stars');
-                console.log(`处理仓库: ${repoPath}`);
-                const [owner, repo] = repoPath.split('/');
-                return updateStarsCount(element, owner, repo);
-            });
-
-            Promise.all(updatePromises).then(() => {
-                console.log('所有仓库的 stars 更新完成');
-            }).catch(error => {
-                console.error('更新 stars 时发生错误:', error);
-            });
-        });
     </script>
 
     <style>
-        /* 修复 Heti 与 Font Awesome 图标冲突 */
-        .fa, .fas, .far, .fal, .fab, [class^="fa-"], [class*=" fa-"] {
-            font-style: normal !important;
-            text-decoration: none !important;
-            transform: none !important;
+        /* 优化 Heti 排版造成的间距过大问题 */
+        .heti p {
+            margin-bottom: 0.1em;
+            line-height: 1.5; /* 标准化行高 */
+        }
+        .heti li {
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+        .heti ul, .heti ol {
+            margin-bottom: 0.1em;
         }
 
         /* 自定义样式 */
-        input, textarea {
+        input,
+        textarea {
             background-color: white;
             border: 1px solid #d1d5db;
             border-radius: 0.375rem;
         }
 
-        .dark input, .dark textarea {
+        .dark input,
+        .dark textarea {
             background-color: #374151;
             border-color: #4b5563;
             color: white;
         }
 
-        /* 修复表单元素在黑暗模式下的问题 */
-        input:focus, textarea:focus {
+        input:focus,
+        textarea:focus {
             outline: none;
             box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
             border-color: #0ea5e9;
         }
 
-        /* 添加平滑过渡效果 */
         section {
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition:
+                    opacity 0.5s ease,
+                    transform 0.5s ease;
         }
 
-        /* 通用卡片悬停效果 */
         .card-hover {
             transition: all 0.3s ease;
         }
@@ -193,7 +201,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* 技能卡片悬停效果 */
         .skill-card {
             transition: all 0.3s ease;
         }
@@ -212,7 +219,6 @@
             transition: all 0.3s ease;
         }
 
-        /* 项目图标悬停效果 */
         .project-icon {
             transition: all 0.3s ease;
         }
@@ -221,588 +227,604 @@
             transform: scale(1.1);
             color: #0ea5e9;
         }
+
+        /* --- 核心修复：图标对齐类 --- */
+        .icon-align {
+            height: 1.5em; /* 匹配文字行高 (Tailwind text-base 默认为 1.5rem/24px) */
+            width: 1.5em;  /* 固定宽度，防止不同图标宽度不一导致错位 */
+            display: inline-flex;
+            align-items: center;     /* 垂直居中 */
+            justify-content: center; /* 水平居中 */
+            margin-right: 0.5rem;    /* 图标和文字的间距 */
+            flex-shrink: 0;          /* 防止被压缩 */
+            line-height: 1;
+        }
+
+        .icon-align > i,
+        .icon-align > img {
+            line-height: 1;
+        }
     </style>
 </head>
 
-<body class="antialiased bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
-    <!-- 主题切换按钮 -->
-    <div class="fixed top-4 right-4 z-50">
-        <button id="theme-toggle"
-            class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 text-gray-800 dark:text-gray-200">
-            <i class="fa-solid fa-sun dark:hidden"></i>
-            <i class="fa-solid fa-moon hidden dark:inline"></i>
-        </button>
+<body
+        class="antialiased bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300"
+>
+<!-- 主题切换按钮 -->
+<div class="fixed top-4 right-4 z-50">
+    <button
+            id="theme-toggle"
+            class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 text-gray-800 dark:text-gray-200"
+    >
+        <i class="fa-solid fa-sun dark:hidden"></i>
+        <i class="fa-solid fa-moon hidden dark:inline"></i>
+    </button>
+</div>
+
+<!-- 导航栏 -->
+<nav
+        class="sticky top-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-sm z-40 border-b border-gray-200 dark:border-gray-700"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+                <div
+                        class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+                >
+                    个人简历
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a
+                        href="#education"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                >教育背景</a
+                >
+                <a
+                        href="#skills"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                >专业技能</a
+                >
+                <a
+                        href="#work"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                >工作经历</a
+                >
+                <a
+                        href="#projects"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                >项目经历</a
+                >
+                <a
+                        href="#opensource"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                >开源经历</a
+                >
+            </div>
+            <div class="md:hidden flex items-center">
+                <button
+                        id="mobile-menu-button"
+                        class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                >
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- 导航栏 -->
-    <nav class="sticky top-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-sm z-40 border-b border-gray-200 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                        个人简历
-                    </div>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#education"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">教育背景</a>
-                    <a href="#skills"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">专业技能</a>
-                    <a href="#work"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">工作经历</a>
-                    <a href="#projects"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">项目经历</a>
-                    <a href="#opensource"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">开源经历</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button"
-                        class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
+    <!-- 移动端菜单 -->
+    <div
+            id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-gray-800 shadow-md border-t border-gray-200 dark:border-gray-700"
+    >
+        <div class="pt-2 pb-4 space-y-1 px-4">
+            <a
+                    href="#education"
+                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+            >教育背景</a
+            >
+            <a
+                    href="#skills"
+                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+            >专业技能</a
+            >
+            <a
+                    href="#work"
+                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+            >工作经历</a
+            >
+            <a
+                    href="#projects"
+                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+            >项目经历</a
+            >
+            <a
+                    href="#opensource"
+                    class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+            >开源经历</a
+            >
         </div>
+    </div>
+</nav>
 
-        <!-- 移动端菜单 -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-md border-t border-gray-200 dark:border-gray-700">
-            <div class="pt-2 pb-4 space-y-1 px-4">
-                <a href="#education" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">教育背景</a>
-                <a href="#skills" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">专业技能</a>
-                <a href="#work" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">工作经历</a>
-                <a href="#projects" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">项目经历</a>
-                <a href="#opensource" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">开源经历</a>
-            </div>
+<!-- 个人信息卡片 -->
+<header class="max-w-7xl mx-auto my-8 px-4 sm:px-6 lg:px-8" id="profile-section">
+    <div class="animate-pulse bg-white dark:bg-gray-800 h-64 rounded-2xl"></div>
+</header>
+
+<!-- 主要内容 -->
+<main class="heti max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <!-- 教育背景 -->
+    <section id="education" class="mb-16 opacity-0 translate-y-4">
+        <div class="flex items-center mb-6">
+            <i
+                    class="fa-solid fa-graduation-cap text-3xl text-primary-500 mr-4"
+            ></i>
+            <h2
+                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+                教育背景
+            </h2>
         </div>
-    </nav>
+        <div id="education-content">
+            <div class="animate-pulse bg-white dark:bg-gray-800 h-32 rounded-2xl"></div>
+        </div>
+    </section>
 
-    <!-- 个人信息卡片 -->
-    <header class="max-w-7xl mx-auto my-8 px-4 sm:px-6 lg:px-8">
+    <!-- 专业技能 -->
+    <section id="skills" class="mb-16 opacity-0 translate-y-4">
+        <div class="flex items-center mb-6">
+            <i
+                    class="fa-solid fa-code text-3xl text-primary-500 mr-4"
+            ></i>
+            <h2
+                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+                专业技能
+            </h2>
+        </div>
+        <div id="skills-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="animate-pulse bg-white dark:bg-gray-800 h-40 rounded-2xl"></div>
+            <div class="animate-pulse bg-white dark:bg-gray-800 h-40 rounded-2xl"></div>
+        </div>
+    </section>
+
+    <!-- 工作经历 -->
+    <section id="work" class="mb-8 opacity-0 translate-y-4">
+        <div class="flex items-center mb-4">
+            <i
+                    class="fa-solid fa-briefcase text-3xl text-primary-500 mr-4"
+            ></i>
+            <h2
+                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+                工作经历
+            </h2>
+        </div>
+        <div id="work-content">
+            <div class="animate-pulse bg-white dark:bg-gray-800 h-64 rounded-2xl"></div>
+        </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section id="projects" class="mb-8 opacity-0 translate-y-4">
+        <div class="flex items-center mb-4">
+            <i
+                    class="fa-solid fa-laptop-code text-3xl text-primary-500 mr-4"
+            ></i>
+            <h2
+                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+                项目经历
+            </h2>
+        </div>
+        <div id="projects-content">
+            <div class="animate-pulse bg-white dark:bg-gray-800 h-96 rounded-2xl"></div>
+        </div>
+    </section>
+
+    <!-- 开源经历 -->
+    <section id="opensource" class="mb-16 opacity-0 translate-y-4">
+        <div class="flex items-center mb-6">
+            <i
+                    class="fa-solid fa-code-branch text-3xl text-primary-500 mr-4"
+            ></i>
+            <h2
+                    class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+                开源经历
+            </h2>
+        </div>
+        <div id="opensource-content">
+            <div class="animate-pulse bg-white dark:bg-gray-800 h-64 rounded-2xl"></div>
+        </div>
+    </section>
+</main>
+
+<!-- 页脚 -->
+<footer
+        class="bg-white dark:bg-gray-800 py-8 border-t border-gray-200 dark:border-gray-700"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-            class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl rounded-2xl transition-all duration-300 hover:shadow-2xl card-hover">
-            <div class="p-6">
-                <div class="md:flex items-center">
-                    <div class="flex-shrink-0 mb-6 md:mb-0">
-                        <div
-                            class="h-40 w-40 rounded-full overflow-hidden mx-auto md:mx-0 border-4 border-primary-100 dark:border-primary-900">
-                            <img src="touxiang.jpg" alt="黄锡超的照片" class="h-full w-full object-cover">
-                        </div>
-                    </div>
-                    <div class="md:ml-8 text-center md:text-left">
-                        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">黄锡超</h1>
-                        <p class="mt-2 text-xl text-gray-600 dark:text-gray-300">后端开发工程师 | Go 语言开发者</p>
-                        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-2">
-                            <div class="flex items-center justify-center md:justify-start">
-                                <i class="fa-solid fa-envelope text-primary-500 mr-2"></i>
-                                <span class="text-sm">hsn.zj@foxmail.com</span>
-                            </div>
-                            <div class="flex items-center justify-center md:justify-start">
-                                <i class="fa-solid fa-envelope-open text-primary-500 mr-2"></i>
-                                <span class="text-sm">hsn2003zj@gmail.com</span>
-                            </div>
-                            <div class="flex items-center justify-center md:justify-start">
-                                <i class="fa-brands fa-weixin text-primary-500 mr-2"></i>
-                                <span class="text-sm">hsn7307</span>
-                            </div>
-                            <div class="flex items-center justify-center md:justify-start">
-                                <i class="fa-brands fa-github text-primary-500 mr-2"></i>
-                                <a href="https://github.com/HSn0918" target="_blank"
-                                    class="text-primary-600 dark:text-primary-400 hover:underline text-sm">github.com/HSn0918</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                class="flex flex-col md:flex-row justify-between items-center"
+        >
+            <div class="mb-4 md:mb-0">
+                <p
+                        class="text-gray-600 dark:text-gray-400 font-medium flex items-center"
+                >
+                    <i class="fa-regular fa-copyright mr-1"></i>
+                    <span>2025 HSn</span>
+                </p>
+                <p
+                        class="text-sm text-gray-500 dark:text-gray-400 mt-1"
+                >
+                    使用 Tailwind CSS、Font Awesome 和 Heti 构建
+                </p>
+            </div>
+            <div class="flex space-x-8" id="footer-contacts">
+                <!-- Footer contacts will be loaded via JS -->
             </div>
         </div>
-    </header>
+    </div>
+</footer>
 
-    <!-- 主要内容 -->
-    <main class="heti max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        <!-- 教育背景 -->
-        <section id="education" class="mb-16 opacity-0 translate-y-4">
-            <div class="flex items-center mb-6">
-                <i class="fa-solid fa-graduation-cap text-3xl text-primary-500 mr-4"></i>
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">教育背景</h2>
-            </div>
-            <div
-                class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg card-hover">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">浙江理工大学科技与艺术学院</h3>
-                        <p class="mt-1 text-gray-600 dark:text-gray-300">计算机科学与技术 | 本科</p>
-                    </div>
-                    <div class="mt-2 md:mt-0">
-                        <span
-                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
-                            2021.09 - 2025.07
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- JavaScript -->
+<script>
+    // 主题切换
+    const themeToggle = document.getElementById("theme-toggle");
+    themeToggle.addEventListener("click", () => {
+        if (document.documentElement.classList.contains("dark")) {
+            document.documentElement.classList.remove("dark");
+            localStorage.theme = "light";
+        } else {
+            document.documentElement.classList.add("dark");
+            localStorage.theme = "dark";
+        }
+    });
 
-        <!-- 专业技能 -->
-        <section id="skills" class="mb-16 opacity-0 translate-y-4">
-            <div class="flex items-center mb-6">
-                <i class="fa-solid fa-code text-3xl text-primary-500 mr-4"></i>
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">专业技能</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div
-                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
-                    <div class="flex items-center mb-4">
-                        <i class="skill-icon fa-solid fa-code text-3xl text-primary-500 mr-3"></i>
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">编程语言与框架</h3>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        <strong>熟练使用 Go</strong>，掌握 <strong>gRPC、ConnectRPC、Gin</strong> 等主流框架，具备<strong>微服务架构设计</strong>经验。
-                    </p>
-                </div>
-                <div
-                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
-                    <div class="flex items-center mb-4">
-                        <i class="skill-icon fa-solid fa-cloud text-3xl text-primary-500 mr-3"></i>
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">云原生技术</h3>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        <strong>熟悉 Kubernetes 核心机制</strong>，能通过<strong>源码分析</strong>定位并解决过问题。
-                    </p>
-                </div>
-                <div
-                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
-                    <div class="flex items-center mb-4">
-                        <i class="skill-icon fa-solid fa-database text-3xl text-primary-500 mr-3"></i>
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">数据库与缓存</h3>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        <strong>熟练 PostgreSQL 设计与优化</strong>，具备 <strong>Redis 在高并发场景下的实战经验</strong>（缓存击穿/雪崩/穿透）。
-                    </p>
-                </div>
-                <div
-                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
-                    <div class="flex items-center mb-4">
-                        <i class="skill-icon fa-solid fa-share-alt text-3xl text-primary-500 mr-3"></i>
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">消息队列与事件驱动</h3>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        熟练使用 <strong>NATS</strong>，具备<strong>事件驱动架构</strong>设计经验，掌握<strong>异步消息处理</strong>。
-                    </p>
-                </div>
-                <div
-                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
-                    <div class="flex items-center mb-4">
-                        <i class="skill-icon fa-solid fa-terminal text-3xl text-primary-500 mr-3"></i>
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">工程与部署</h3>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        熟悉 <strong>Linux</strong> 与 <strong>Git</strong>，具备<strong>从开发到部署的全流程交付能力</strong>，熟悉 <strong>OpenTelemetry</strong> 链路追踪。
-                    </p>
-                </div>
-                <div
-                    class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
-                    <div class="flex items-center mb-4">
-                        <i class="skill-icon fa-solid fa-robot text-3xl text-primary-500 mr-3"></i>
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">AI 与大模型</h3>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        了解大模型原理，具备 <strong>MCP 相关开发经验</strong>。
-                    </p>
-                </div>
-            </div>
-        </section>
+    // 移动端菜单
+    const mobileMenuButton =
+        document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-        <!-- 工作经历 -->
-        <section id="work" class="mb-16 opacity-0 translate-y-4">
-            <div class="flex items-center mb-6">
-                <i class="fa-solid fa-briefcase text-3xl text-primary-500 mr-4"></i>
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">工作经历</h2>
-            </div>
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
-                <div class="p-6">
-                    <!-- 武汉智识无垠科技有限公司 -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">武汉智识无垠科技有限公司</h3>
-                            <p class="mt-1 text-gray-600 dark:text-gray-300">后端开发工程师</p>
-                        </div>
-                        <div class="mt-2 md:mt-0">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                2025.06-至今
-                            </span>
-                        </div>
-                    </div>
-                    <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-network-wired text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p>参与核心文档解析产品后端系统的<strong>架构设计与迭代</strong>，支撑 <strong>万级日活、千万级日文档解析量</strong> 的稳定运行。</p>
-                        </li>
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-cogs text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p>推动<strong>内部平台建设</strong>与<strong>流程自动化</strong>，支撑产品的快速迭代。</p>
-                        </li>
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-users text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p>与算法团队紧密协作，推动<strong>模型能力的工程化落地</strong>，提升文档解析的准确率与稳定性。</p>
-                        </li>
-                    </ul>
-                    <hr class="my-6 border-gray-200 dark:border-gray-700">
-                    <!-- 杭州谐云科技有限公司 -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">杭州谐云科技有限公司</h3>
-                            <p class="mt-1 text-gray-600 dark:text-gray-300">后端开发工程师</p>
-                        </div>
-                        <div class="mt-2 md:mt-0">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                2024.07-2025.04
-                            </span>
-                        </div>
-                    </div>
-                    <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-cogs text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p>参与 PaaS 云平台<strong>核心服务的重构与迭代</strong>，推动系统<strong>现代化改造</strong>与<strong>性能优化</strong>。</p>
-                        </li>
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-users text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p>协助构建<strong>多租户、容器服务</strong>等模块，提升平台<strong>稳定性与用户体验</strong>。</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
 
-        <!-- 项目经历 -->
-        <section id="projects" class="mb-16 opacity-0 translate-y-4">
-            <div class="flex items-center mb-6">
-                <i class="fa-solid fa-laptop-code text-3xl text-primary-500 mr-4"></i>
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">项目经历</h2>
-            </div>
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
-                <div class="p-6">
-                    <!-- Doc2X 项目 -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Doc2X</h3>
-                            <p class="mt-1 text-gray-600 dark:text-gray-300">后端开发工程师</p>
-                        </div>
-                        <div class="mt-2 md:mt-0">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                                2025.06-至今
-                            </span>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">业界领先的<strong>智能文档解析器</strong>，支持无损提取 PDF 内容并转化为 Markdown/LaTeX/Word 等格式，服务日均解析量超 <strong>千万级</strong>，涵盖学术论文、合同文档、表格图表等多场景解析。</p>
-                    <div class="mb-4">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2"><strong>技术栈：</strong>Go、gRPC + ConnectRPC、PostgreSQL、Redis、NATS JetStream、Kubernetes、OpenTelemetry</p>
-                    </div>
-                    <p class="font-medium text-gray-700 dark:text-gray-300 mb-3">贡献亮点：</p>
-                    <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-project-diagram text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p><span class="font-medium">微服务架构设计：</span>构建<strong>事件驱动的异步微服务架构</strong>，通过 gRPC 服务间通信和 NATS JetStream 消息队列，将业务逻辑与算法服务解耦。</p>
-                        </li>
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-bell text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p><span class="font-medium">多渠道通知系统：</span>设计并实现<strong>告警通知系统</strong>，采用<strong>策略模式 + 工厂模式</strong>接入短信、邮件、飞书等渠道，支持余额告警、资源告警、系统公告等场景，通过<strong>智能渠道选择</strong>和<strong>频次限流机制</strong>确保通知送达率。</p>
-                        </li>
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-users text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p><span class="font-medium">算法服务协作：</span>与算法团队协作推进<strong>OCR/Layout 模型集成</strong>，设计异步处理流水线，优化文档解析链路的<strong>稳定性和准确率</strong>，支持大规模并发解析请求。</p>
-                        </li>
-                    </ul>
-                    <hr class="my-6 border-gray-200 dark:border-gray-700">
-                    <!-- 观云台项目 -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">观云台</h3>
-                            <p class="mt-1 text-gray-600 dark:text-gray-300">后端开发工程师</p>
-                        </div>
-                        <div class="mt-2 md:mt-0">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                                2024.07-2025.05
-                            </span>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">基于 Kubernetes 的<strong>新一代 PaaS 平台</strong>，帮助企业提升 IT 管理能力，降低运维成本，保障业务稳定与高效迭代。</p>
-                    <div class="mb-4">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2"><strong>技术栈：</strong>Go、Gin、Kubernetes、Kubebuilder、MySQL</p>
-                    </div>
-                    <p class="font-medium text-gray-700 dark:text-gray-300 mb-3">贡献亮点：</p>
-                    <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-arrows-rotate text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p><span class="font-medium">资源管理重构：</span>将Kubernetes资源服务管理从 <strong>Java 重构为 Go</strong>，接口参照 <strong>Kubernetes 规范</strong>并集成鉴权，<strong>增强平台安全性与一致性</strong>。</p>
-                        </li>
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-users text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p><span class="font-medium">性能优化：</span>独立实现<strong>多租户备份服务</strong>，结合 <strong>MapReduce 思想</strong>与<strong>协程优化</strong>，<strong>响应时间从 30 秒缩短至 2 秒</strong>，并沉淀为可复用工具。</p>
-                        </li>
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-cubes text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p><span class="font-medium">架构升级：</span>将 Java 命令式容器服务改造为 <strong>Kubernetes 声明式架构</strong>，统一资源模型，<strong>核心接口响应时间从 20 秒降至 300 毫秒</strong>，显著改善用户体验。</p>
-                        </li>
-                        <li class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-check-circle text-blue-500 mr-2 project-icon"></i>
-                            </div>
-                            <p><span class="font-medium">基线合规检查：</span>为保障售后服务资格，与基础设施部门合作建立<strong>自动化合规巡检机制</strong>。利用 <strong>Kubernetes CronJob</strong> 实现定时巡检，支持<strong>文件和命令</strong>两种检查模式，确保纳管组件版本 100% 符合规范。</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    // 导航链接点击后关闭移动端菜单
+    document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+        });
+    });
 
-        <!-- 开源经历 -->
-        <section id="opensource" class="mb-16 opacity-0 translate-y-4">
-            <div class="flex items-center mb-6">
-                <i class="fa-solid fa-code-branch text-3xl text-primary-500 mr-4"></i>
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">开源经历</h2>
-            </div>
-            <div
-                class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
-                <div class="p-6">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-                        <div class="flex items-center">
-                            <i class="fa-brands fa-github text-gray-700 dark:text-gray-300 text-2xl mr-3 project-icon"></i>
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">个人GitHub</h3>
-                                <a href="https://github.com/HSn0918" target="_blank"
-                                    class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
-                                    github.com/HSn0918
-                                </a>
-                                <p class="mt-2 text-gray-600 dark:text-gray-300">Go工程师 | Kubernetes爱好者 | 42个代码仓库 | 47个Star</p>
-                            </div>
-                        </div>
-                    </div>
+    // Data Fetching and Rendering
+    document.addEventListener("DOMContentLoaded", async () => {
+        try {
+            const response = await fetch('data.json');
+            const data = await response.json();
 
-                    <!-- TinyRedis 项目 -->
-                    <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-cube text-red-500 mr-3 project-icon"></i>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">TinyRedis</h3>
-                                    <a href="https://github.com/MiniApplication/tinyredis" target="_blank"
-                                        class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
-                                        github.com/MiniApplication/tinyredis
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="mt-2 md:mt-0">
-                                <span
-                                    data-github-stars="MiniApplication/tinyredis"
-                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                                    <i class="fa-solid fa-star mr-1"></i> Loading...
-                                </span>
-                            </div>
-                        </div>
-                        <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
-                            <li class="flex">
-                                <div class="flex-shrink-0 mt-1">
-                                    <i class="fa-solid fa-cubes text-yellow-500 mr-2 project-icon"></i>
-                                </div>
-                                <p><span class="font-medium">项目概述：</span>TinyRedis 是一个使用 Go 语言原生 net 包实现的轻量级高性能 Redis
-                                    服务端，高效支持 Redis 各种基本数据类型。</p>
-                            </li>
-                        </ul>
-                    </div>
+            renderProfile(data.profile);
+            renderEducation(data.education);
+            renderSkills(data.skills);
+            renderWork(data.workExperience);
+            renderProjects(data.projects);
+            renderOpenSource(data.openSource);
+            renderFooter(data.profile.contacts);
 
-                    <!-- Kubernetes-mcp 项目 -->
-                    <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 mr-3">
-                                    <img src="kubernetes-mcp.jpg" alt="Kubernetes MCP Logo" class="w-full h-full object-contain">
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">Kubernetes-mcp</h3>
-                                    <a href="https://github.com/HSn0918/kubernetes-mcp" target="_blank"
-                                        class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
-                                        github.com/HSn0918/kubernetes-mcp
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="mt-2 md:mt-0">
-                                <span
-                                    data-github-stars="HSn0918/kubernetes-mcp"
-                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                                    <i class="fa-solid fa-star mr-1"></i> Loading...
-                                </span>
-                            </div>
-                        </div>
-                        <ul class="mt-4 space-y-4 text-gray-600 dark:text-gray-300">
-                            <li class="flex">
-                                <div class="flex-shrink-0 mt-1">
-                                    <i class="fa-solid fa-cloud text-blue-500 mr-2 project-icon"></i>
-                                </div>
-                                <p><span class="font-medium">项目概述：</span>基于Go实现的 Model Context Protocol (MCP)服务器，用于与Kubernetes集群交互，提供高效的集群管理和资源调度能力。</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- 其他项目 -->
-                    <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
-                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">其他开源项目</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <!-- Learning-Notes -->
-                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <div class="flex items-center mb-2">
-                                            <i class="fa-solid fa-book text-green-500 mr-2 project-icon"></i>
-                                            <h4 class="font-bold">Learning-Notes</h4>
-                                        </div>
-                                        <a href="https://github.com/HSn0918/Learning-Notes" target="_blank"
-                                            class="text-primary-600 dark:text-primary-400 hover:underline text-sm block mb-2">
-                                            github.com/HSn0918/Learning-Notes
-                                        </a>
-                                        <p class="text-sm">学习笔记与技术总结</p>
-                                    </div>
-                                    <span
-                                        data-github-stars="HSn0918/Learning-Notes"
-                                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 whitespace-nowrap">
-                                        <i class="fa-solid fa-star mr-1"></i> Loading...
-                                    </span>
-                                </div>
-                            </div>
-
-                            <!-- big-market-go -->
-                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <div class="flex items-center mb-2">
-                                            <i class="fa-solid fa-shopping-cart text-indigo-500 mr-2 project-icon"></i>
-                                            <h4 class="font-bold">big-market-go</h4>
-                                        </div>
-                                        <a href="https://github.com/HSn0918/big-market-go" target="_blank"
-                                            class="text-primary-600 dark:text-primary-400 hover:underline text-sm block mb-2">
-                                            github.com/HSn0918/big-market-go
-                                        </a>
-                                        <p class="text-sm">Go实现的大营销系统</p>
-                                    </div>
-                                    <span
-                                        data-github-stars="HSn0918/big-market-go"
-                                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 whitespace-nowrap">
-                                        <i class="fa-solid fa-star mr-1"></i> Loading...
-                                    </span>
-                                </div>
-                            </div>
-
-                            <!-- controller-demo -->
-                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <div class="flex items-center mb-2">
-                                            <i class="fa-solid fa-dharmachakra text-blue-500 mr-2 project-icon"></i>
-                                            <h4 class="font-bold">controller-demo</h4>
-                                        </div>
-                                        <a href="https://github.com/HSn0918/controller-demo" target="_blank"
-                                            class="text-primary-600 dark:text-primary-400 hover:underline text-sm block mb-2">
-                                            github.com/HSn0918/controller-demo
-                                        </a>
-                                        <p class="text-sm">Kubernetes控制器示例</p>
-                                    </div>
-                                    <span
-                                        data-github-stars="HSn0918/controller-demo"
-                                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                                        <i class="fa-solid fa-star mr-1"></i> Loading...
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="bg-white dark:bg-gray-800 py-8 border-t border-gray-200 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p class="text-gray-600 dark:text-gray-400 font-medium flex items-center">
-                        <i class="fa-regular fa-copyright mr-1"></i>
-                        <span>2025 HSn</span>
-                    </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">使用 Tailwind CSS、Font Awesome 和 Heti 构建</p>
-                </div>
-                <div class="flex space-x-8">
-                    <a href="mailto:hsn2003zj@gmail.com" class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110">
-                        <i class="fa-solid fa-envelope text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110 group relative">
-                        <i class="fa-brands fa-weixin text-xl"></i>
-                        <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 py-1 px-3 bg-gray-700 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">微信: hsn7307</span>
-                    </a>
-                    <a href="https://github.com/HSn0918" target="_blank" class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110">
-                        <i class="fa-brands fa-github text-xl"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // 主题切换
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
+            // Initialize Heti
+            if (window.Heti) {
+                const heti = new Heti(".heti");
+                heti.autoSpacing();
             }
+
+            // Initialize Star Fetching
+            initStarFetching();
+
+            // Initialize Scroll Animation
+            initScrollAnimation();
+
+        } catch (error) {
+            console.error("Error loading data:", error);
+        }
+    });
+
+    function renderProfile(profile) {
+        const container = document.getElementById('profile-section');
+        const contactsHtml = profile.contacts.map(c => `
+                    <div class="flex items-center justify-center md:justify-start">
+                        <span class="icon-align text-primary-500">
+                            <i class="${c.icon}"></i>
+                        </span>
+                        ${c.link !== '#' ? `<a href="${c.link}" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline text-sm">${c.text}</a>` : `<span class="text-sm">${c.text}</span>`}
+                    </div>
+                `).join('');
+
+        container.innerHTML = `
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl rounded-2xl transition-all duration-300 hover:shadow-2xl card-hover">
+                        <div class="p-6">
+                            <div class="md:flex items-center">
+                                <div class="flex-shrink-0 mb-6 md:mb-0">
+                                    <div class="h-40 w-40 rounded-full overflow-hidden mx-auto md:mx-0 border-4 border-primary-100 dark:border-primary-900">
+                                        <img src="${profile.avatar}" alt="${profile.name}的照片" class="h-full w-full object-cover" />
+                                    </div>
+                                </div>
+                                <div class="md:ml-8 text-center md:text-left">
+                                    <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">${profile.name}</h1>
+                                    <p class="mt-2 text-xl text-gray-600 dark:text-gray-300">${profile.title}</p>
+                                    <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-2">
+                                        ${contactsHtml}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    }
+
+    function renderEducation(edu) {
+        const container = document.getElementById('education-content');
+        container.innerHTML = `
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg card-hover">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">${edu.school}</h3>
+                                <p class="mt-1 text-gray-600 dark:text-gray-300">${edu.degree}</p>
+                            </div>
+                            <div class="mt-2 md:mt-0">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
+                                    ${edu.period}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    }
+
+    function renderSkills(skills) {
+        const container = document.getElementById('skills-content');
+        container.innerHTML = skills.map(skill => `
+                    <div class="skill-card bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl p-6 transition-all duration-300 hover:shadow-lg border-l-4 border-primary-500">
+                        <div class="flex items-center mb-4">
+                            <i class="skill-icon ${skill.icon} text-3xl text-primary-500 mr-3"></i>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">${skill.category}</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">${skill.description}</p>
+                    </div>
+                `).join('');
+    }
+
+    function renderWork(work) {
+        const container = document.getElementById('work-content');
+        container.innerHTML = `
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
+                        <div class="p-4 md:p-5">
+                            ${work.map((job, index) => {
+            // 修复：使用 icon-align 容器，并移除图标本身的 mr-2
+            const itemsHtml = job.items.map(item => `
+                                    <li class="flex items-start">
+                                        <div class="icon-align">
+                                            <i class="${item.icon} ${item.iconColor} project-icon"></i>
+                                        </div>
+                                        <p>${item.text}</p>
+                                    </li>
+                                `).join('');
+
+            let html = `
+                                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">${job.company}</h3>
+                                            <p class="mt-1 text-gray-600 dark:text-gray-300">${job.role}</p>
+                                        </div>
+                                        <div class="mt-2 md:mt-0">
+                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${job.periodClass}">
+                                                ${job.period}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <ul class="mt-3 space-y-1 text-gray-600 dark:text-gray-300">
+                                        ${itemsHtml}
+                                    </ul>
+                                `;
+
+            if (index < work.length - 1) {
+                html += `<hr class="my-2 border-gray-200 dark:border-gray-700" />`;
+            }
+            return html;
+        }).join('')}
+                        </div>
+                    </div>
+                `;
+    }
+
+    function renderProjects(projects) {
+        const container = document.getElementById('projects-content');
+        container.innerHTML = `
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
+                        <div class="p-4 md:p-5">
+                             ${projects.map((project, index) => {
+            // 修复：添加 icon-align 容器，移除 mr-2
+            const highlightsHtml = project.highlights.map(h => `
+                                    <li class="flex items-start">
+                                        <div class="icon-align">
+                                            <i class="${h.icon} ${h.iconColor} project-icon"></i>
+                                        </div>
+                                        <p>
+                                            <span class="font-medium">${h.title}：</span>${h.text}
+                                        </p>
+                                    </li>
+                                `).join('');
+
+            let html = `
+                                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">${project.name}</h3>
+                                            <p class="mt-1 text-gray-600 dark:text-gray-300">${project.role}</p>
+                                        </div>
+                                        <div class="mt-2 md:mt-0">
+                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${project.periodClass}">
+                                                ${project.period}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-2">${project.description}</p>
+                                    <div class="mb-2">
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                            <strong>技术栈：</strong>${project.techStack}
+                                        </p>
+                                    </div>
+                                    <p class="font-medium text-gray-700 dark:text-gray-300 mb-2">贡献亮点：</p>
+                                    <ul class="mt-3 space-y-1 text-gray-600 dark:text-gray-300">
+                                        ${highlightsHtml}
+                                    </ul>
+                                `;
+
+            if (index < projects.length - 1) {
+                html += `<hr class="my-4 border-gray-200 dark:border-gray-700" />`;
+            }
+            return html;
+        }).join('')}
+                        </div>
+                    </div>
+                `;
+    }
+
+    function renderOpenSource(os) {
+        const container = document.getElementById('opensource-content');
+
+        // Featured projects
+        // 修复：添加 icon-align 容器
+        const featuredHtml = os.featured.map(item => `
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <div class="flex items-center">
+                                ${item.image
+            ? `<span class="icon-align"><img src="${item.image}" alt="${item.title} Logo" class="w-full h-full object-contain" /></span>`
+            : `<span class="icon-align"><i class="${item.mainIcon || item.icon} ${item.mainIconColor || item.iconColor} project-icon"></i></span>`
+        }
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">${item.title}</h3>
+                                    <a href="${item.link}" target="_blank" class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
+                                        ${item.link.replace('https://', '')}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="mt-2 md:mt-0">
+                                <span data-github-stars="${item.repo}" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                                    <i class="fa-solid fa-star mr-1"></i> Loading...
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <div class="icon-align">
+                                    <i class="${item.itemIcon || 'fa-solid fa-cloud'} ${item.itemIconColor || 'text-blue-500'} project-icon"></i>
+                                </div>
+                                <p><span class="font-medium">项目概述：</span>${item.description}</p>
+                            </li>
+                        </ul>
+                    </div>
+                `).join('');
+
+        // Other projects
+        const othersHtml = os.others.map(item => `
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg card-hover">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <span class="icon-align">
+                                        <i class="${item.icon} ${item.iconColor} project-icon"></i>
+                                    </span>
+                                    <h4 class="font-bold">${item.title}</h4>
+                                </div>
+                                <a href="${item.link}" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline text-sm block mb-2">
+                                    ${item.link.replace('https://', '')}
+                                </a>
+                                <p class="text-sm">${item.description}</p>
+                            </div>
+                            <span data-github-stars="${item.repo}" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 whitespace-nowrap">
+                                <i class="fa-solid fa-star mr-1"></i> Loading...
+                            </span>
+                        </div>
+                    </div>
+                `).join('');
+
+        container.innerHTML = `
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-2xl transition-all duration-300 hover:shadow-lg card-hover">
+                        <div class="p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                                <div class="flex items-center">
+                                    <span class="icon-align text-gray-700 dark:text-gray-300">
+                                        <i class="${os.profile.icon} text-lg project-icon"></i>
+                                    </span>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">${os.profile.title}</h3>
+                                        <a href="${os.profile.link}" target="_blank" class="mt-1 text-primary-600 dark:text-primary-400 hover:underline">
+                                            ${os.profile.link.replace('https://', '')}
+                                        </a>
+                                        <p class="mt-2 text-gray-600 dark:text-gray-300">${os.profile.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            ${featuredHtml}
+                            
+                            <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">其他开源项目</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    ${othersHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    }
+
+    function renderFooter(contacts) {
+        const container = document.getElementById('footer-contacts');
+        container.innerHTML = contacts.filter(c => c.icon.includes('envelope') || c.icon.includes('weixin') || c.icon.includes('github')).map(c => {
+            // Special handling for weixin hover effect which is different from others
+            if (c.icon.includes('weixin')) {
+                return `
+                            <a href="${c.link}" class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110 group relative">
+                                <i class="${c.icon} text-xl"></i>
+                                <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 py-1 px-3 bg-gray-700 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                                    微信: ${c.text}
+                                </span>
+                            </a>
+                        `;
+            }
+            return `
+                        <a href="${c.link}" ${c.link.startsWith('http') ? 'target="_blank"' : ''} class="text-gray-500 hover:text-primary-500 transition-colors duration-200 transform hover:scale-110">
+                            <i class="${c.icon} text-xl"></i>
+                        </a>
+                     `;
+        }).join('');
+    }
+
+    function initStarFetching() {
+        console.log("开始获取所有仓库的 stars...");
+        const starsElements = document.querySelectorAll("[data-github-stars]");
+        const updatePromises = Array.from(starsElements).map(element => {
+            const repoPath = element.getAttribute("data-github-stars");
+            console.log(`处理仓库: ${repoPath}`);
+            const [owner, repo] = repoPath.split("/");
+            return updateStarsCount(element, owner, repo);
         });
 
-        // 移动端菜单
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        Promise.all(updatePromises)
+            .then(() => { console.log("所有仓库的 stars 更新完成"); })
+            .catch((error) => { console.error("更新 stars 时发生错误:", error); });
+    }
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // 导航链接点击后关闭移动端菜单
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // 滚动动画
-        const sections = document.querySelectorAll('section');
-
+    function initScrollAnimation() {
+        const sections = document.querySelectorAll("section");
         const revealSection = (entries, observer) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.remove('opacity-0', 'translate-y-4');
-                    entry.target.classList.add('opacity-100', 'translate-y-0', 'transition-all', 'duration-700', 'ease-out');
+                    entry.target.classList.remove("opacity-0", "translate-y-4");
+                    entry.target.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-700", "ease-out");
                     observer.unobserve(entry.target);
                 }
             });
@@ -810,37 +832,29 @@
 
         const sectionObserver = new IntersectionObserver(revealSection, {
             root: null,
-            threshold: 0.15
+            threshold: 0.15,
         });
 
-        sections.forEach(section => {
+        sections.forEach((section) => {
             sectionObserver.observe(section);
         });
 
-        // 初始化页面时立即显示首屏内容
+        // Check immediately
         setTimeout(() => {
-            const visibleSections = Array.from(sections).filter(section => {
+            const visibleSections = Array.from(sections).filter((section) => {
                 const rect = section.getBoundingClientRect();
-                return rect.top < window.innerHeight && rect.bottom >= 0;
+                return (rect.top < window.innerHeight && rect.bottom >= 0);
             });
-
-            visibleSections.forEach(section => {
-                section.classList.remove('opacity-0', 'translate-y-4');
-                section.classList.add('opacity-100', 'translate-y-0', 'transition-all', 'duration-700', 'ease-out');
+            visibleSections.forEach((section) => {
+                section.classList.remove("opacity-0", "translate-y-4");
+                section.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-700", "ease-out");
                 sectionObserver.unobserve(section);
             });
         }, 100);
-    </script>
+    }
+</script>
 
-    <!-- Heti JavaScript -->
-    <script src="//unpkg.com/heti/umd/heti-addon.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 初始化 Heti 中文排版增强
-            const heti = new Heti('.heti');
-            heti.autoSpacing(); // 自动进行中西文混排美化和标点挤压
-        });
-    </script>
+<!-- Heti JavaScript -->
+<script src="//unpkg.com/heti/umd/heti-addon.min.js"></script>
 </body>
-
 </html>

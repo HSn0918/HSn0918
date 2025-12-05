@@ -24,9 +24,9 @@
     \begin{itemize}[leftmargin=*, parsep=0.5ex, itemsep=0.5ex]
       \item \textbf{编程语言与框架}：\textbf{熟练使用 Go}，掌握 \textbf{gRPC、ConnectRPC、Gin} 等主流框架，具备\textbf{微服务架构设计}经验。
       \item \textbf{云原生技术}：\textbf{熟悉 Kubernetes 核心机制}，能通过\textbf{源码分析}定位并解决过问题。
-      \item \textbf{数据库与缓存}：\textbf{熟练 PostgreSQL 设计与优化}，具备 \textbf{Redis 在高并发场景下的实战经验}（缓存击穿/雪崩/穿透）。
+      \item \textbf{数据库与缓存}：\textbf{熟练 PostgreSQL 设计与优化}，具备 \textbf{Redis 在高并发场景下的经验}（缓存击穿/雪崩/穿透）。
       \item \textbf{消息队列与事件驱动}：熟练使用 \textbf{NATS}，具备\textbf{事件驱动架构}设计经验，掌握\textbf{异步消息处理}。
-      \item \textbf{工程与部署}：熟悉 \textbf{Linux} 与 \textbf{Git}，具备\textbf{从开发到部署的全流程交付能力}，熟悉 \textbf{OpenTelemetry} 链路追踪。
+      \item \textbf{工程与部署}：熟悉 \textbf{Linux} 与 \textbf{Git}，具备\textbf{从开发到部署的全流程交付能力}。
       \item \textbf{AI 与大模型}：了解大模型原理，具备 \textbf{MCP 相关开发经验}。
     \end{itemize}
   }
@@ -37,7 +37,6 @@
   \begin{itemize}[leftmargin=*, parsep=0.5ex, itemsep=0.5ex]
     \item 参与核心文档解析产品后端系统的\textbf{架构设计与迭代}，支撑 \textbf{万级日活、千万级日文档解析量} 的稳定运行。
     \item 推动\textbf{内部平台建设}与\textbf{流程自动化}，支撑产品的快速迭代。
-    \item 与算法团队紧密协作，推动\textbf{模型能力的工程化落地}，提升文档解析的准确率与稳定性。
   \end{itemize}
 
   \datedsubsection{\textbf{谐云}，\textbf{后端开发工程师}}{2024.07 - 2025.04}
@@ -51,12 +50,13 @@
   \datedsubsection{\textbf{Doc2X — C/B端文档解析平台}，后端开发}{2025.06 - 至今}
     \begin{itemize}[parsep=0.5ex]
       \item \textbf{项目简介}：业界领先的\textbf{智能文档解析器}，支持无损提取 PDF 内容并转化为 Markdown/LaTeX/Word 等格式，服务日均解析量超 \textbf{千万级}，涵盖学术论文、合同文档、表格图表等多场景解析。
-      \item \textbf{技术栈}：\textbf{Go}、\textbf{gRPC + ConnectRPC}、\textbf{PostgreSQL}、\textbf{Redis}、\textbf{NATS JetStream}、\textbf{Kubernetes}、\textbf{OpenTelemetry}。
+      \item \textbf{技术栈}：\textbf{Go}、\textbf{gRPC + ConnectRPC}、\textbf{PostgreSQL}、\textbf{Redis}、\textbf{NATS}、\textbf{Kubernetes}、\textbf{OpenTelemetry}。
       \item \textbf{贡献亮点}：
         \begin{itemize}[leftmargin=*, parsep=0pt, itemsep=0.5ex]
-          \item {\textbf{微服务架构设计}}：构建\textbf{事件驱动的异步微服务架构}，通过 gRPC 服务间通信和 NATS JetStream 消息队列，将业务逻辑与算法服务解耦。
-          \item {\textbf{多渠道通知系统}}：设计并实现\textbf{告警通知系统}，采用\textbf{策略模式 + 工厂模式}接入短信、邮件、飞书等渠道，支持余额告警、资源告警、系统公告等场景，通过\textbf{智能渠道选择}和\textbf{频次限流机制}确保通知送达率。
-          \item {\textbf{算法服务协作}}：与算法团队协作推进\textbf{OCR/Layout 模型集成}，设计异步处理流水线，优化文档解析链路的\textbf{稳定性和准确率}，支持大规模并发解析请求。
+
+        \item {\textbf{多渠道通知系统}}：设计并实现\textbf{告警通知系统}，采用\textbf{策略模式 + 工厂模式}接入多个通知渠道，支持余额告警、资源告警、系统公告等场景。
+        \item {\textbf{消费者服务迭代}}：围绕 \textbf{NATS} 构建解析、翻译、订单、奖励等事件处理链路，统一实现 \textbf{用户额度扣减}、\textbf{限流幂等校验} 与 \textbf{结果缓存} 更新，保证多业务场景的配额与缓存一致性。
+        \item {\textbf{运营后台迭代}}：围绕 Admin 端整合 \textbf{公告投放}、\textbf{发票审核}、\textbf{退款审批} 与 \textbf{用户订单/消费查询} 等核心流程，帮助运营与财务在一个后台完成日常审核、对账与运营动作。
         \end{itemize}
     \end{itemize}
  \datedsubsection{\textbf{观云台 — Kubernetes PaaS 平台}，后端开发}{2024.07 - 2025.05}
@@ -66,22 +66,22 @@
    \item \textbf{贡献亮点}：
      \begin{itemize}[leftmargin=*, parsep=0pt, itemsep=0.5ex]
        \item \textbf{资源管理重构}：将Kubernetes资源服务管理从 \textbf{Java 重构为 Go}，接口参照 \textbf{Kubernetes 规范}并集成鉴权，\textbf{增强平台安全性与一致性}。
-       \item \textbf{性能优化}：独立实现\textbf{多租户备份服务}，结合 \textbf{MapReduce 思想}与\textbf{协程优化}，\textbf{响应时间从 30 秒缩短至 2 秒}，并沉淀为可复用工具。
-       \item \textbf{架构升级}：将 Java 命令式容器服务改造为 \textbf{Kubernetes 声明式架构}，统一资源模型，\textbf{核心接口响应时间从 20 秒降至 300 毫秒}，显著改善用户体验。
+       \item \textbf{性能优化}：实现\textbf{多租户备份服务}，结合 \textbf{MapReduce 思想}与\textbf{协程优化}，\textbf{响应时间从 30 秒缩短至 2 秒}，并沉淀为可复用工具。
+       \item \textbf{容器服务（网关）}：将 Java 命令式容器服务改造为 \textbf{Kubernetes 声明式架构}，统一资源模型，\textbf{核心接口响应时间从 20 秒降至 300 毫秒}，显著改善用户体验。
        \item \textbf{基线合规检查}：为保障售后服务资格，与基础设施部门合作建立\textbf{自动化合规巡检机制}。利用 \textbf{Kubernetes CronJob} 实现定时巡检，支持\textbf{文件和命令}两种检查模式，确保纳管组件版本 100\% 符合规范。
      \end{itemize}
  \end{itemize}
 }
 \CN{
   % \section{开源经历}
-  % \datedsubsection{\textbf{tiny-redis (Go)}}{11 Stars}
-  % \begin{itemize}[parsep=0.5ex]
-  %   \item 实现一个支持多种数据结构与 TTL 的\textbf{内存数据库}，熟悉底层\textbf{网络库}与\textbf{存储实现}。
-  % \end{itemize}
+  \datedsubsection{\textbf{tiny-redis (Go)}}{11 Stars}
+  \begin{itemize}[parsep=0.5ex]
+    \item 实现一个支持多种数据结构与 TTL 的\textbf{内存数据库}，熟悉底层\textbf{网络库}与\textbf{存储实现}。
+  \end{itemize}
 
-  % \datedsubsection{\textbf{Kubernetes-mcp (Go)}}{25 Stars}
-  % \begin{itemize}[parsep=0.5ex]
-  %   \item 实现 \textbf{Model Context Protocol (MCP)} 服务器，支持与 Kubernetes 集群交互，实现\textbf{高效资源管理与调度}。
-  % \end{itemize}
+  \datedsubsection{\textbf{Kubernetes-mcp (Go)}}{25 Stars}
+  \begin{itemize}[parsep=0.5ex]
+    \item 实现 \textbf{Model Context Protocol (MCP)} 服务器，支持与 Kubernetes 集群交互，实现\textbf{高效资源管理与调度}。
+  \end{itemize}
 }
 \end{document}
