@@ -12,6 +12,8 @@
     <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="./touxiang.jpg" type="image/jpeg">
     <!-- Confetti for Easter Egg -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -607,52 +609,69 @@
             const container = document.getElementById('projects-content');
             container.innerHTML = projects.map((project, index) => {
                 const highlightsHtml = project.highlights.map(h => `
-                    <li class="flex items-start text-sm text-muted-foreground">
-                        <div class="bg-primary/10 rounded-full p-1 mr-3 mt-0.5">
-                            <i class="${h.icon} text-primary w-3 h-3 flex items-center justify-center text-[10px]"></i>
+                    <li class="pl-0">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-semibold text-foreground flex items-center gap-2 text-sm">
+                                <span class="bg-primary/10 rounded-full p-1 flex items-center justify-center w-5 h-5 shrink-0">
+                                    <i class="${h.icon} ${h.iconColor} text-[10px]"></i>
+                                </span>
+                                ${h.title}
+                            </span>
+                            <span class="text-sm text-muted-foreground pl-7">${h.text}</span>
                         </div>
-                        <span class="flex-1"><span class="font-medium text-foreground">${h.title}：</span>${h.text}</span>
                     </li>
                 `).join('');
 
+                // Split tech stack by multiple delimiters (comma, chinese comma, slash) and filter empty
+                const techBadges = project.techStack
+                    .split(/[,，、/]/)
+                    .map(t => t.trim())
+                    .filter(t => t.length > 0)
+                    .map(tech => `
+                        <span class="inline-flex items-center rounded-full border border-transparent bg-primary/5 px-2.5 py-0.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 gap-1">
+                            <i class="fa-solid fa-tag text-[10px]"></i>
+                            ${tech}
+                        </span>
+                    `).join('');
+
                 return `
-                    <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 space-y-4 hover:border-primary/50 transition-colors fade-in-up-item hover-lift" style="transition-delay: ${index * 150}ms">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                            <div class="space-y-1">
-                                <h3 class="font-semibold leading-none tracking-tight text-lg flex items-center gap-2">
-                                    <i class="fa-solid fa-folder-open text-primary/70 text-base"></i>
-                                    ${project.name}
-                                </h3>
-                                <p class="text-sm text-muted-foreground flex items-center gap-2">
-                                    <i class="fa-solid fa-user-gear text-xs"></i>
-                                    ${project.role}
-                                </p>
-                            </div>
-                            <span class="inline-flex items-center rounded-md border border-border bg-secondary px-2.5 py-0.5 text-xs font-semibold transition-colors text-secondary-foreground gap-1">
-                                <i class="fa-regular fa-clock"></i>
-                                ${project.period}
-                            </span>
-                        </div>
-
-                        <p class="text-sm text-muted-foreground border-l-2 border-primary/20 pl-3 italic">${project.description}</p>
-
-                        <div class="flex flex-wrap gap-2 my-2">
-                            ${project.techStack.split('、').map(tech => `
-                                <span class="inline-flex items-center rounded-full border border-transparent bg-primary/5 px-2.5 py-0.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 gap-1">
-                                    <i class="fa-solid fa-tag text-[10px]"></i>
-                                    ${tech}
+                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow fade-in-up-item hover-lift transition-all" style="transition-delay: ${index * 150}ms">
+                        <div class="p-6 md:p-8 space-y-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                                <div class="space-y-1">
+                                    <h3 class="font-bold text-xl flex items-center gap-2">
+                                        <i class="fa-solid fa-folder-open text-primary/70 text-lg"></i>
+                                        ${project.name}
+                                    </h3>
+                                    <div class="flex items-center gap-2 text-sm text-muted-foreground">
+                                        <span class="flex items-center gap-1"><i class="fa-solid fa-user-gear text-xs"></i> ${project.role}</span>
+                                        <span>•</span>
+                                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-xs"></i> ${project.period}</span>
+                                    </div>
+                                </div>
+                                <span class="${project.periodClass} px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shadow-sm ring-1 ring-inset ring-current/20">
+                                    ${project.period}
                                 </span>
-                            `).join('')}
-                        </div>
+                            </div>
 
-                        <div class="rounded-lg bg-muted/40 p-4 border border-border/50">
-                            <h4 class="text-sm font-semibold mb-3 flex items-center gap-2">
-                                <i class="fa-solid fa-star text-yellow-500"></i>
-                                ${i18n[currentLang]["core-contribution"]}
-                            </h4>
-                            <ul class="space-y-3">
-                                ${highlightsHtml}
-                            </ul>
+                            <div class="text-base text-muted-foreground leading-relaxed">
+                                ${project.description}
+                            </div>
+
+                            <!-- Tech Stack Indicators -->
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                ${techBadges}
+                            </div>
+
+                            <div class="rounded-lg bg-muted/40 p-4 border border-border/50">
+                                <h4 class="text-sm font-semibold mb-3 flex items-center gap-2">
+                                    <i class="fa-solid fa-star text-yellow-500"></i>
+                                    ${i18n[currentLang]["core-contribution"]}
+                                </h4>
+                                <ul class="space-y-3">
+                                    ${highlightsHtml}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 `;
