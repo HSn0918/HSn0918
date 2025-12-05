@@ -164,6 +164,28 @@
             margin-bottom: 0.1em;
         }
 
+        /* 修复 Heti 与 Font Awesome 图标冲突，避免图标倾斜 */
+        .fa,
+        .fas,
+        .far,
+        .fal,
+        .fab,
+        .fa-solid,
+        .fa-regular,
+        .fa-light,
+        .fa-brands,
+        [class^="fa-"],
+        [class*=" fa-"] {
+            font-style: normal !important;
+            text-decoration: none !important;
+            transform: none !important;
+        }
+
+        i[class^="fa-"],
+        i[class*=" fa-"] {
+            font-style: normal !important;
+        }
+
         /* 自定义样式 */
         input,
         textarea {
@@ -243,6 +265,7 @@
         .icon-align > i,
         .icon-align > img {
             line-height: 1;
+            font-style: normal !important;
         }
     </style>
 </head>
