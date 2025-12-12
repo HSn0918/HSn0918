@@ -423,6 +423,9 @@
                 "core-contribution": "核心贡献",
                 "featured-projects": "精选项目",
                 "other-projects": "其他项目",
+                "skill-tags": "技能标签",
+                "skill-tools": "工具链",
+                "skill-tools-badge": "工具",
                 "footer": "&copy; 2025 HSn. Built with Tailwind CSS & Shadcn Style."
             },
             en: {
@@ -436,6 +439,9 @@
                 "core-contribution": "Key Contributions",
                 "featured-projects": "Featured Projects",
                 "other-projects": "Other Projects",
+                "skill-tags": "Tags",
+                "skill-tools": "Tooling",
+                "skill-tools-badge": "Tools",
                 "footer": "&copy; 2025 HSn. Built with Tailwind CSS & Shadcn Style."
             }
         };
@@ -552,22 +558,100 @@
 
         function renderSkills(skills) {
             const container = document.getElementById('skills-content');
-            container.innerHTML = skills.map((skill, index) => `
-                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 hover:shadow-md transition-all group fade-in-up-item hover-lift" style="transition-delay: ${index * 100}ms">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="bg-primary/10 p-2 rounded-md group-hover:bg-primary/20 transition-colors">
-                            <i class="${skill.icon} text-primary text-lg"></i>
+            const tagLabel = i18n[currentLang]["skill-tags"] || "Tags";
+            const toolsLabel = i18n[currentLang]["skill-tools"] || "Tools";
+            const toolsBadge = i18n[currentLang]["skill-tools-badge"] || "Tools";
+
+            const categoryCards = (skills.categories || []).map((skill, index) => {
+                const tags = (skill.tags || []).map(tagItem => {
+                    const tag = typeof tagItem === 'string' ? { name: tagItem } : tagItem;
+                    const icon = tag.icon || '';
+                    const iconHtml = icon
+                        ? (icon.startsWith('http')
+                            ? `<img src="${icon}" alt="${tag.name}" class="w-4 h-4 rounded-[3px] bg-white/70 p-[1px]" loading="lazy" />`
+                            : `<i class="${icon} text-primary/80 text-sm"></i>`)
+                        : `<i class="fa-solid fa-hashtag text-[10px] text-primary/80"></i>`;
+                    return `
+                        <span class="inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors">
+                            ${iconHtml}
+                            <span>${tag.name}</span>
+                        </span>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 hover:shadow-md transition-all group fade-in-up-item hover-lift" style="transition-delay: ${index * 100}ms">
+                        <div class="flex items-start justify-between mb-3 gap-3">
+                            <div class="flex items-start gap-3">
+                                <div class="bg-primary/10 p-2 rounded-md group-hover:bg-primary/20 transition-colors">
+                                    <i class="${skill.icon || 'fa-solid fa-circle'} text-primary text-lg"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="font-semibold leading-none tracking-tight">${skill.category}</h3>
+                                    ${skill.summary ? `<p class="text-xs text-muted-foreground">${skill.summary}</p>` : ''}
+                                </div>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">${tagLabel}</span>
                         </div>
-                        <h3 class="font-semibold leading-none tracking-tight">${skill.category}</h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${tags}
+                        </div>
                     </div>
-                    <p class="text-sm text-muted-foreground leading-relaxed">${skill.description}</p>
-                </div>
+                `;
+            }).join('');
+
+            const toolsBadges = (skills.tools || []).map(tool => `
+                <span class="inline-flex items-center rounded-full border border-border bg-primary/5 px-3 py-1.5 text-xs font-semibold text-foreground gap-2 hover:bg-primary/10 hover:text-primary transition-colors">
+                    ${tool.icon ? (tool.icon.startsWith('http')
+                        ? `<img src="${tool.icon}" alt="${tool.name}" class="w-4 h-4 rounded-[3px] bg-white/70 p-[1px]" loading="lazy" />`
+                        : `<i class="${tool.icon} text-primary/80 text-sm"></i>`)
+                        : `<i class="fa-solid fa-screwdriver-wrench text-primary/80 text-sm"></i>`}
+                    ${tool.name}
+                </span>
             `).join('');
+
+            const toolsSection = toolsBadges ? `
+                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 md:col-span-2 hover:shadow-md transition-all fade-in-up-item hover-lift" style="transition-delay: ${(skills.categories?.length || 0) * 100}ms">
+                    <div class="flex items-start justify-between mb-3 gap-3">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-primary/10 p-2 rounded-md">
+                                <i class="fa-solid fa-screwdriver-wrench text-primary text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold leading-none tracking-tight">${toolsLabel}</h3>
+                                ${skills.toolsDescription ? `<p class="text-xs text-muted-foreground mt-1">${skills.toolsDescription}</p>` : ''}
+                            </div>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">${toolsBadge}</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        ${toolsBadges}
+                    </div>
+                </div>
+            ` : '';
+
+            container.innerHTML = categoryCards + toolsSection;
         }
 
         function renderWork(work) {
             const container = document.getElementById('work-content');
             container.innerHTML = work.map((job, index) => {
+                const tagsHtml = (job.tags || []).map(tagItem => {
+                    const tag = typeof tagItem === 'string' ? { name: tagItem } : tagItem;
+                    const icon = tag.icon || '';
+                    const iconHtml = icon
+                        ? (icon.startsWith('http')
+                            ? `<img src="${icon}" alt="${tag.name}" class="w-4 h-4 rounded-[3px] bg-white/70 p-[1px]" loading="lazy" />`
+                            : `<i class="${icon} text-primary/80 text-xs"></i>`)
+                        : `<i class="fa-solid fa-hashtag text-[10px] text-primary/80"></i>`;
+                    return `
+                        <span class="inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[11px] font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors">
+                            ${iconHtml}
+                            <span>${tag.name}</span>
+                        </span>
+                    `;
+                }).join('');
+
                 const itemsHtml = job.items.map(item => `
                     <li class="flex items-start text-sm text-muted-foreground group/item hover:text-foreground transition-colors">
                         <span class="mt-1.5 mr-3 flex h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60 group-hover/item:bg-primary transition-colors"></span>
@@ -596,6 +680,7 @@
                                     ${job.period}
                                 </span>
                             </div>
+                            ${tagsHtml ? `<div class="flex flex-wrap gap-2 mt-2">${tagsHtml}</div>` : ''}
                             <ul class="space-y-2 pl-4 md:pl-14 border-l-2 border-muted md:border-none ml-2 md:ml-0">
                                 ${itemsHtml}
                             </ul>

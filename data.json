@@ -27,38 +27,134 @@
             "degree": "计算机科学与技术 | 本科",
             "period": "2021.09 - 2025.06"
         },
-        "skills": [
-            {
-                "category": "编程语言与框架",
-                "description": "<strong>熟练使用 Go</strong>，掌握 <strong>gRPC、ConnectRPC、Gin</strong> 等主流框架，具备<strong>微服务架构设计</strong>经验。",
-                "icon": "fa-solid fa-code"
-            },
-            {
-                "category": "云原生技术",
-                "description": "<strong>熟悉 Kubernetes 核心机制</strong>，具备通过<strong>源码分析</strong>定位问题的经验。",
-                "icon": "fa-solid fa-cloud"
-            },
-            {
-                "category": "数据库与缓存",
-                "description": "<strong>熟练 PostgreSQL 设计与优化</strong>，具备 <strong>Redis 在高并发场景下的实战经验</strong>（缓存击穿/雪崩/穿透）。",
-                "icon": "fa-solid fa-database"
-            },
-            {
-                "category": "消息队列与事件驱动",
-                "description": "熟练使用 <strong>NATS</strong>，具备<strong>事件驱动架构</strong>设计经验，掌握<strong>异步消息处理</strong>。",
-                "icon": "fa-solid fa-share-alt"
-            },
-            {
-                "category": "工程与部署",
-                "description": "熟悉 <strong>Linux</strong> 与 <strong>Git</strong>，具备从开发到部署的交付能力。",
-                "icon": "fa-solid fa-terminal"
-            },
-            {
-                "category": "AI 与大模型",
-                "description": "了解大模型原理，具备 <strong>MCP</strong> 相关开源经验。",
-                "icon": "fa-solid fa-robot"
-            }
-        ],
+        "skills": {
+            "categories": [
+                {
+                    "category": "后端技能",
+                    "summary": "一些后端技术栈",
+                    "icon": "fa-solid fa-server",
+                    "tags": [
+                        {
+                            "name": "Go",
+                            "icon": "https://cdn.simpleicons.org/go/00ADD8"
+                        },
+                        {
+                            "name": "gRPC & ConnectRPC ",
+                            "icon": "https://cdn.simpleicons.org/google/4285F4"
+                        },
+                        {
+                            "name": "Gin",
+                            "icon": "https://cdn.simpleicons.org/gin/008ECF"
+                        }
+                    ]
+                },
+                {
+                    "category": "云原生",
+                    "summary": "一些云原生技术栈",
+                    "icon": "fa-solid fa-cloud",
+                    "tags": [
+                        {
+                            "name": "Kubernetes",
+                            "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
+                        },
+                        {
+                            "name": "Kubebuilder",
+                            "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
+                        },
+                        {
+                            "name": "Docker",
+                            "icon": "https://cdn.simpleicons.org/docker/2496ED"
+
+                        }
+                    ]
+                },
+                {
+                    "category": "中间件",
+                    "summary": "一些中间件",
+                    "icon": "fa-solid fa-database",
+                    "tags": [
+                        {
+                            "name": "PostgreSQL",
+                            "icon": "https://cdn.simpleicons.org/postgresql/4169E1"
+                        },
+                        {
+                            "name": "MySQL",
+                            "icon": "https://cdn.simpleicons.org/mysql/4479A1"
+                        },
+                        {
+                            "name": "Redis",
+                            "icon": "https://cdn.simpleicons.org/redis/DC382D"
+                        },
+                        {
+                            "name": "NATS",
+                            "icon": "https://cdn.simpleicons.org/natsdotio/27AAE1"
+                        }
+                    ]
+                },
+                {
+                    "category": "AI & LLM",
+                    "summary": "模型服务化与降本",
+                    "icon": "fa-solid fa-robot",
+                    "tags": [
+                        {
+                            "name": "MCP",
+                            "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000"
+                        },
+                        {
+                            "name": "Prompt",
+                            "icon": "fa-solid fa-code"
+                        },
+                        {
+                            "name": "Prefill / KV Cache",
+                            "icon": "fa-solid fa-memory"
+                        }
+                    ]
+                }
+            ],
+            "toolsDescription": "日常偏好的工具链",
+            "tools": [
+                {
+                    "name": "jetbrains",
+                    "icon": "https://cdn.simpleicons.org/jetbrains/000000"
+                },
+                {
+                    "name": "Neovim",
+                    "icon": "https://cdn.simpleicons.org/neovim/57A143"
+                },
+                {
+                    "name": "ChatGPT / Codex",
+                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg"
+                },
+                {
+                    "name": "Claude / Claude Code",
+                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg"
+                },
+                {
+                    "name": "Gemini / Gemini Cli",
+                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg"
+                },
+                {
+                    "name": "Git / GitHub Actions",
+                    "icon": "https://cdn.simpleicons.org/github/F05032"
+                },
+                {
+                    "name": "Docker / Docker Compose",
+                    "icon": "https://cdn.simpleicons.org/docker/2496ED"
+                },
+                {
+                    "name": "kubectl / Aptakube",
+                    "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
+                },
+                {
+                    "name": "Helm",
+                    "icon": "https://cdn.simpleicons.org/helm/0F1689"
+                },
+                {
+                    "name": "Postman",
+                    "icon": "https://cdn.simpleicons.org/postman/FF6C37"
+                }
+            ]
+        },
         "workExperience": [
             {
                 "company": "智识无垠",
@@ -252,44 +348,235 @@
             "degree": "Computer Science & Technology | Bachelor's",
             "period": "2021.09 - 2025.06"
         },
-        "skills": [
-            {
-                "category": "Languages & Frameworks",
-                "description": "Proficient in <strong>Go</strong>, experienced with <strong>gRPC, ConnectRPC, Gin</strong>, and <strong>Microservices Architecture Design</strong>.",
-                "icon": "fa-solid fa-code"
-            },
-            {
-                "category": "Cloud Native",
-                "description": "Deep understanding of <strong>Kubernetes Core Mechanisms</strong>, experienced in <strong>Source Code Analysis</strong> for troubleshooting.",
-                "icon": "fa-solid fa-cloud"
-            },
-            {
-                "category": "Databases & Cache",
-                "description": "Proficient in <strong>PostgreSQL Design & Optimization</strong>, hands-on experience with <strong>Redis in High Concurrency</strong> scenarios (Cache Breakdown/Avalanche/Penetration).",
-                "icon": "fa-solid fa-database"
-            },
-            {
-                "category": "Messaging & Event-Driven",
-                "description": "Skilled in <strong>NATS</strong>, experienced in designing <strong>Event-Driven Architectures</strong> and handling <strong>Asynchronous Messaging</strong>.",
-                "icon": "fa-solid fa-share-alt"
-            },
-            {
-                "category": "DevOps & Engineering",
-                "description": "Familiar with <strong>Linux</strong> and <strong>Git</strong>, capable of handling the full lifecycle from development to deployment.",
-                "icon": "fa-solid fa-terminal"
-            },
-            {
-                "category": "AI & LLM",
-                "description": "Understanding of LLM principles, open-source experience with <strong>MCP</strong> (Model Context Protocol).",
-                "icon": "fa-solid fa-robot"
-            }
-        ],
+        "skills": {
+            "categories": [
+                {
+                    "category": "Go / Microservices",
+                    "summary": "High throughput & evolution",
+                    "icon": "fa-solid fa-server",
+                    "tags": [
+                        {
+                            "name": "Go Concurrency",
+                            "icon": "https://cdn.simpleicons.org/go/00ADD8"
+                        },
+                        {
+                            "name": "gRPC / ConnectRPC",
+                            "icon": "https://cdn.simpleicons.org/grpc/5A00D3"
+                        },
+                        {
+                            "name": "Gin / REST",
+                            "icon": "https://cdn.simpleicons.org/go/00ADD8"
+                        },
+                        {
+                            "name": "Clean Architecture",
+                            "icon": "fa-solid fa-sitemap"
+                        },
+                        {
+                            "name": "Resilience",
+                            "icon": "fa-solid fa-shield-halved"
+                        }
+                    ]
+                },
+                {
+                    "category": "Cloud Native",
+                    "summary": "Kubernetes internals & delivery",
+                    "icon": "fa-solid fa-cloud",
+                    "tags": [
+                        {
+                            "name": "Kubernetes",
+                            "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
+                        },
+                        {
+                            "name": "Kubebuilder",
+                            "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
+                        },
+                        {
+                            "name": "Helm / Kustomize",
+                            "icon": "https://cdn.simpleicons.org/helm/0F1689"
+                        },
+                        {
+                            "name": "Autoscaling",
+                            "icon": "fa-solid fa-arrows-rotate"
+                        },
+                        {
+                            "name": "Service Mesh",
+                            "icon": "fa-solid fa-wave-square"
+                        }
+                    ]
+                },
+                {
+                    "category": "Data & Cache",
+                    "summary": "Predictable, efficient data layer",
+                    "icon": "fa-solid fa-database",
+                    "tags": [
+                        {
+                            "name": "PostgreSQL",
+                            "icon": "https://cdn.simpleicons.org/postgresql/4169E1"
+                        },
+                        {
+                            "name": "Index & Query Tuning",
+                            "icon": "fa-solid fa-magnifying-glass-chart"
+                        },
+                        {
+                            "name": "Tx Isolation / Locks",
+                            "icon": "fa-solid fa-lock"
+                        },
+                        {
+                            "name": "Redis High Concurrency",
+                            "icon": "https://cdn.simpleicons.org/redis/DC382D"
+                        },
+                        {
+                            "name": "Cache Hardening",
+                            "icon": "fa-solid fa-bolt"
+                        }
+                    ]
+                },
+                {
+                    "category": "Messaging & Async",
+                    "summary": "Decoupled & reliable pipelines",
+                    "icon": "fa-solid fa-share-nodes",
+                    "tags": [
+                        {
+                            "name": "NATS EDA",
+                            "icon": "https://cdn.simpleicons.org/nats/199BFC"
+                        },
+                        {
+                            "name": "Reliable Delivery",
+                            "icon": "fa-solid fa-route"
+                        },
+                        {
+                            "name": "Idempotency",
+                            "icon": "fa-solid fa-clone"
+                        },
+                        {
+                            "name": "Backpressure & QoS",
+                            "icon": "fa-solid fa-tachograph-digital"
+                        },
+                        {
+                            "name": "Notification Orchestration",
+                            "icon": "fa-solid fa-bell"
+                        }
+                    ]
+                },
+                {
+                    "category": "Observability & Quality",
+                    "summary": "Traceable, explainable systems",
+                    "icon": "fa-solid fa-chart-line",
+                    "tags": [
+                        {
+                            "name": "OpenTelemetry",
+                            "icon": "https://cdn.simpleicons.org/opentelemetry/000000"
+                        },
+                        {
+                            "name": "pprof / Profiling",
+                            "icon": "fa-solid fa-chart-pie"
+                        },
+                        {
+                            "name": "SLO / Error Budget",
+                            "icon": "fa-solid fa-gauge-high"
+                        },
+                        {
+                            "name": "Canary / Progressive",
+                            "icon": "fa-solid fa-traffic-light"
+                        },
+                        {
+                            "name": "Chaos & Regression",
+                            "icon": "fa-solid fa-flask"
+                        }
+                    ]
+                },
+                {
+                    "category": "AI & LLM",
+                    "summary": "Serving models efficiently",
+                    "icon": "fa-solid fa-robot",
+                    "tags": [
+                        {
+                            "name": "MCP",
+                            "icon": "fa-solid fa-plug"
+                        },
+                        {
+                            "name": "Prompt Safety",
+                            "icon": "fa-solid fa-shield-heart"
+                        },
+                        {
+                            "name": "Prefill / KV Cache",
+                            "icon": "fa-solid fa-memory"
+                        },
+                        {
+                            "name": "Token Optimization",
+                            "icon": "fa-solid fa-coins"
+                        },
+                        {
+                            "name": "LLM Observability",
+                            "icon": "fa-solid fa-binoculars"
+                        }
+                    ]
+                }
+            ],
+            "toolsDescription": "Daily toolchain for building, shipping, and observing systems",
+            "tools": [
+                {
+                    "name": "GoLand / VS Code",
+                    "icon": "fa-solid fa-laptop-code"
+                },
+                {
+                    "name": "Neovim + tmux",
+                    "icon": "fa-solid fa-terminal"
+                },
+                {
+                    "name": "Git / GitHub Actions",
+                    "icon": "fa-brands fa-github"
+                },
+                {
+                    "name": "Docker / Docker Compose",
+                    "icon": "fa-brands fa-docker"
+                },
+                {
+                    "name": "kubectl / k9s",
+                    "icon": "fa-solid fa-network-wired"
+                },
+                {
+                    "name": "Helm",
+                    "icon": "https://cdn.simpleicons.org/helm/0F1689"
+                },
+                {
+                    "name": "PostgreSQL",
+                    "icon": "https://cdn.simpleicons.org/postgresql/4169E1"
+                },
+                {
+                    "name": "Redis",
+                    "icon": "https://cdn.simpleicons.org/redis/DC382D"
+                },
+                {
+                    "name": "Jaeger",
+                    "icon": "https://cdn.simpleicons.org/jaeger/65A2CE"
+                },
+                {
+                    "name": "Postman",
+                    "icon": "https://cdn.simpleicons.org/postman/FF6C37"
+                }
+            ]
+        },
         "workExperience": [
             {
                 "company": "NoEdgeAI",
                 "role": "Backend Engineer",
                 "period": "2025.06 - Present",
                 "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+                "tags": [
+                    {
+                        "name": "gRPC / ConnectRPC",
+                        "icon": "fa-solid fa-plug"
+                    },
+                    {
+                        "name": "NATS",
+                        "icon": "fa-solid fa-diagram-project"
+                    },
+                    {
+                        "name": "PostgreSQL",
+                        "icon": "fa-solid fa-database"
+                    }
+                ],
                 "items": [
                     {
                         "icon": "fa-solid fa-network-wired",
@@ -308,6 +595,20 @@
                 "role": "Backend Engineer",
                 "period": "2024.07 - 2025.04",
                 "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+                "tags": [
+                    {
+                        "name": "Kubernetes",
+                        "icon": "fa-solid fa-cloud"
+                    },
+                    {
+                        "name": "Gin",
+                        "icon": "fa-solid fa-fire-flame-curved"
+                    },
+                    {
+                        "name": "Helm",
+                        "icon": "https://cdn.simpleicons.org/helm/0F1689"
+                    }
+                ],
                 "items": [
                     {
                         "icon": "fa-solid fa-cogs",
