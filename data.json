@@ -351,35 +351,27 @@
         "skills": {
             "categories": [
                 {
-                    "category": "Go / Microservices",
-                    "summary": "High throughput & evolution",
+                    "category": "Backend Skills",
+                    "summary": "Core backend stack",
                     "icon": "fa-solid fa-server",
                     "tags": [
                         {
-                            "name": "Go Concurrency",
+                            "name": "Go",
                             "icon": "https://cdn.simpleicons.org/go/00ADD8"
                         },
                         {
-                            "name": "gRPC / ConnectRPC",
-                            "icon": "https://cdn.simpleicons.org/grpc/5A00D3"
+                            "name": "gRPC & ConnectRPC",
+                            "icon": "https://cdn.simpleicons.org/google/4285F4"
                         },
                         {
-                            "name": "Gin / REST",
-                            "icon": "https://cdn.simpleicons.org/go/00ADD8"
-                        },
-                        {
-                            "name": "Clean Architecture",
-                            "icon": "fa-solid fa-sitemap"
-                        },
-                        {
-                            "name": "Resilience",
-                            "icon": "fa-solid fa-shield-halved"
+                            "name": "Gin",
+                            "icon": "https://cdn.simpleicons.org/gin/008ECF"
                         }
                     ]
                 },
                 {
                     "category": "Cloud Native",
-                    "summary": "Kubernetes internals & delivery",
+                    "summary": "Cloud-native stack",
                     "icon": "fa-solid fa-cloud",
                     "tags": [
                         {
@@ -391,22 +383,14 @@
                             "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
                         },
                         {
-                            "name": "Helm / Kustomize",
-                            "icon": "https://cdn.simpleicons.org/helm/0F1689"
-                        },
-                        {
-                            "name": "Autoscaling",
-                            "icon": "fa-solid fa-arrows-rotate"
-                        },
-                        {
-                            "name": "Service Mesh",
-                            "icon": "fa-solid fa-wave-square"
+                            "name": "Docker",
+                            "icon": "https://cdn.simpleicons.org/docker/2496ED"
                         }
                     ]
                 },
                 {
-                    "category": "Data & Cache",
-                    "summary": "Predictable, efficient data layer",
+                    "category": "Middleware",
+                    "summary": "Storage and messaging middleware",
                     "icon": "fa-solid fa-database",
                     "tags": [
                         {
@@ -414,142 +398,76 @@
                             "icon": "https://cdn.simpleicons.org/postgresql/4169E1"
                         },
                         {
-                            "name": "Index & Query Tuning",
-                            "icon": "fa-solid fa-magnifying-glass-chart"
+                            "name": "MySQL",
+                            "icon": "https://cdn.simpleicons.org/mysql/4479A1"
                         },
                         {
-                            "name": "Tx Isolation / Locks",
-                            "icon": "fa-solid fa-lock"
-                        },
-                        {
-                            "name": "Redis High Concurrency",
+                            "name": "Redis",
                             "icon": "https://cdn.simpleicons.org/redis/DC382D"
                         },
                         {
-                            "name": "Cache Hardening",
-                            "icon": "fa-solid fa-bolt"
-                        }
-                    ]
-                },
-                {
-                    "category": "Messaging & Async",
-                    "summary": "Decoupled & reliable pipelines",
-                    "icon": "fa-solid fa-share-nodes",
-                    "tags": [
-                        {
-                            "name": "NATS EDA",
-                            "icon": "https://cdn.simpleicons.org/nats/199BFC"
-                        },
-                        {
-                            "name": "Reliable Delivery",
-                            "icon": "fa-solid fa-route"
-                        },
-                        {
-                            "name": "Idempotency",
-                            "icon": "fa-solid fa-clone"
-                        },
-                        {
-                            "name": "Backpressure & QoS",
-                            "icon": "fa-solid fa-tachograph-digital"
-                        },
-                        {
-                            "name": "Notification Orchestration",
-                            "icon": "fa-solid fa-bell"
-                        }
-                    ]
-                },
-                {
-                    "category": "Observability & Quality",
-                    "summary": "Traceable, explainable systems",
-                    "icon": "fa-solid fa-chart-line",
-                    "tags": [
-                        {
-                            "name": "OpenTelemetry",
-                            "icon": "https://cdn.simpleicons.org/opentelemetry/000000"
-                        },
-                        {
-                            "name": "pprof / Profiling",
-                            "icon": "fa-solid fa-chart-pie"
-                        },
-                        {
-                            "name": "SLO / Error Budget",
-                            "icon": "fa-solid fa-gauge-high"
-                        },
-                        {
-                            "name": "Canary / Progressive",
-                            "icon": "fa-solid fa-traffic-light"
-                        },
-                        {
-                            "name": "Chaos & Regression",
-                            "icon": "fa-solid fa-flask"
+                            "name": "NATS",
+                            "icon": "https://cdn.simpleicons.org/natsdotio/27AAE1"
                         }
                     ]
                 },
                 {
                     "category": "AI & LLM",
-                    "summary": "Serving models efficiently",
+                    "summary": "Model serving and cost efficiency",
                     "icon": "fa-solid fa-robot",
                     "tags": [
                         {
                             "name": "MCP",
-                            "icon": "fa-solid fa-plug"
+                            "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000"
                         },
                         {
-                            "name": "Prompt Safety",
-                            "icon": "fa-solid fa-shield-heart"
+                            "name": "Prompt",
+                            "icon": "fa-solid fa-code"
                         },
                         {
                             "name": "Prefill / KV Cache",
                             "icon": "fa-solid fa-memory"
-                        },
-                        {
-                            "name": "Token Optimization",
-                            "icon": "fa-solid fa-coins"
-                        },
-                        {
-                            "name": "LLM Observability",
-                            "icon": "fa-solid fa-binoculars"
                         }
                     ]
                 }
             ],
-            "toolsDescription": "Daily toolchain for building, shipping, and observing systems",
+            "toolsDescription": "Preferred daily toolchain",
             "tools": [
                 {
-                    "name": "GoLand / VS Code",
-                    "icon": "fa-solid fa-laptop-code"
+                    "name": "JetBrains IDEs",
+                    "icon": "https://cdn.simpleicons.org/jetbrains/000000"
                 },
                 {
-                    "name": "Neovim + tmux",
-                    "icon": "fa-solid fa-terminal"
+                    "name": "Neovim",
+                    "icon": "https://cdn.simpleicons.org/neovim/57A143"
+                },
+                {
+                    "name": "ChatGPT / Codex",
+                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg"
+                },
+                {
+                    "name": "Claude / Claude Code",
+                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg"
+                },
+                {
+                    "name": "Gemini / Gemini CLI",
+                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg"
                 },
                 {
                     "name": "Git / GitHub Actions",
-                    "icon": "fa-brands fa-github"
+                    "icon": "https://cdn.simpleicons.org/github/F05032"
                 },
                 {
                     "name": "Docker / Docker Compose",
-                    "icon": "fa-brands fa-docker"
+                    "icon": "https://cdn.simpleicons.org/docker/2496ED"
                 },
                 {
-                    "name": "kubectl / k9s",
-                    "icon": "fa-solid fa-network-wired"
+                    "name": "kubectl / Aptakube",
+                    "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
                 },
                 {
                     "name": "Helm",
                     "icon": "https://cdn.simpleicons.org/helm/0F1689"
-                },
-                {
-                    "name": "PostgreSQL",
-                    "icon": "https://cdn.simpleicons.org/postgresql/4169E1"
-                },
-                {
-                    "name": "Redis",
-                    "icon": "https://cdn.simpleicons.org/redis/DC382D"
-                },
-                {
-                    "name": "Jaeger",
-                    "icon": "https://cdn.simpleicons.org/jaeger/65A2CE"
                 },
                 {
                     "name": "Postman",
