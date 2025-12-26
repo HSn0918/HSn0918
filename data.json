@@ -231,7 +231,7 @@
             {
                 "name": "观云台 — Kubernetes PaaS 平台",
                 "role": "后端开发工程师",
-                "period": "2024.07-2025.05",
+                "period": "2024.07-2025.04",
                 "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
                 "description": "基于 <strong>Kubernetes</strong> 的企业级 PaaS，帮助企业降低运维成本并提升业务交付效率。",
                 "techStack": "Go、Gin、Kubernetes、Kubebuilder、MySQL",

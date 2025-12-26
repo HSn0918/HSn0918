@@ -200,12 +200,12 @@
         }
 
         nav {
-            background: linear-gradient(180deg, hsl(var(--background) / 0.95), hsl(36 45% 96% / 0.65));
-            box-shadow: 0 10px 30px -26px rgba(18, 20, 24, 0.45);
+            background: hsl(var(--background));
+            box-shadow: 0 10px 30px -26px rgba(18, 20, 24, 0.35);
         }
 
         .dark nav {
-            background: linear-gradient(180deg, hsl(var(--background) / 0.95), hsl(222 26% 12% / 0.75));
+            background: hsl(var(--background));
         }
 
         .nav-link {
@@ -278,6 +278,64 @@
             background: linear-gradient(180deg, transparent, hsl(var(--border)), transparent);
             opacity: 0.6;
             pointer-events: none;
+        }
+
+        .layout-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 260px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .content-stack {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 1.5rem;
+            align-self: start;
+        }
+
+        .sidebar-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: hsl(var(--muted-foreground));
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .sidebar-link:hover {
+            color: hsl(var(--foreground));
+            transform: translateX(2px);
+        }
+
+        .sidebar-link::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: hsl(var(--primary));
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                order: -1;
+            }
         }
 
         #profile-section {
@@ -380,11 +438,10 @@
 </head>
 
 <body
-    class="page-shell text-foreground antialiased min-h-screen selection:bg-primary selection:text-primary-foreground pt-14">
+    class="page-shell text-foreground antialiased min-h-screen selection:bg-primary selection:text-primary-foreground">
 
     <!-- Navbar -->
-    <nav
-        class="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav class="w-full border-b border-border/40 bg-background">
         <div class="container mx-auto px-4 max-w-4xl flex h-14 items-center justify-between">
             <a href="#" class="mr-6 flex items-center space-x-2">
                 <i class="fa-solid fa-code text-primary text-xl"></i>
@@ -467,7 +524,9 @@
     </nav>
 
     <!-- Main Container -->
-    <main class="container mx-auto max-w-4xl px-4 py-16 space-y-16 editor-rail">
+    <main class="container mx-auto max-w-4xl px-4 py-16 editor-rail">
+        <div class="layout-grid">
+            <div class="content-stack space-y-16">
 
         <!-- Profile Header -->
         <header id="profile-section" class="fade-in-section pt-8">
@@ -547,7 +606,11 @@
                 <!-- Content loaded via JS -->
             </div>
         </section>
-
+            </div>
+            <aside id="sidebar" class="sidebar surface rounded-2xl border border-border p-5 space-y-6">
+                <!-- Content loaded via JS -->
+            </aside>
+        </div>
     </main>
 
     <footer class="border-t border-border py-8 mt-16 bg-muted/30">
@@ -647,6 +710,9 @@
                 "skill-tags": "技能标签",
                 "skill-tools": "工具链",
                 "skill-tools-badge": "工具",
+                "sidebar-onpage": "页面导航",
+                "sidebar-focus": "技能方向",
+                "sidebar-contact": "联系方式",
                 "footer": "&copy; 2025 HSn. Built with Tailwind CSS & Shadcn Style."
             },
             en: {
@@ -663,6 +729,9 @@
                 "skill-tags": "Tags",
                 "skill-tools": "Tooling",
                 "skill-tools-badge": "Tools",
+                "sidebar-onpage": "On this page",
+                "sidebar-focus": "Focus",
+                "sidebar-contact": "Contact",
                 "footer": "&copy; 2025 HSn. Built with Tailwind CSS & Shadcn Style."
             }
         };
@@ -713,6 +782,7 @@
             renderWork(data.workExperience);
             renderProjects(data.projects);
             renderOpenSource(data.openSource);
+            renderSidebar(data.profile, data.skills);
             renderFooter(data.profile.contacts);
         }
 
@@ -1087,6 +1157,62 @@
                         `).join('')}
                     </div>
                     <p>${i18n[currentLang]["footer"]}</p>
+                </div>
+            `;
+        }
+
+        function renderSidebar(profile, skills) {
+            const sidebar = document.getElementById('sidebar');
+            if (!sidebar || !profile) return;
+
+            const navItems = [
+                { id: "education", label: i18n[currentLang]["nav-education"], icon: "fa-graduation-cap" },
+                { id: "skills", label: i18n[currentLang]["nav-skills"], icon: "fa-code" },
+                { id: "work", label: i18n[currentLang]["nav-work"], icon: "fa-briefcase" },
+                { id: "projects", label: i18n[currentLang]["nav-projects"], icon: "fa-laptop-code" },
+                { id: "opensource", label: i18n[currentLang]["nav-opensource"], icon: "fa-code-branch" }
+            ];
+
+            const navHtml = navItems.map(item => `
+                <a href="#${item.id}" class="sidebar-link">
+                    <i class="fa-solid ${item.icon} text-xs text-primary/70"></i>
+                    <span>${item.label}</span>
+                </a>
+            `).join('');
+
+            const focusTags = (skills?.categories || []).map(category => `
+                <span class="tag-pill inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground gap-1">
+                    <i class="${category.icon || 'fa-solid fa-star'} text-[10px] text-primary/70"></i>
+                    <span>${category.category}</span>
+                </span>
+            `).join('');
+
+            const contactsHtml = (profile.contacts || []).map(contact => `
+                <a href="${contact.link}" target="_blank" rel="noreferrer"
+                    class="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                    <i class="${contact.icon} text-xs text-primary/80"></i>
+                    <span>${contact.text}</span>
+                </a>
+            `).join('');
+
+            sidebar.innerHTML = `
+                <div class="space-y-3">
+                    <p class="sidebar-title">${i18n[currentLang]["sidebar-onpage"]}</p>
+                    <div class="space-y-2">
+                        ${navHtml}
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <p class="sidebar-title">${i18n[currentLang]["sidebar-focus"]}</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${focusTags}
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <p class="sidebar-title">${i18n[currentLang]["sidebar-contact"]}</p>
+                    <div class="space-y-2">
+                        ${contactsHtml}
+                    </div>
                 </div>
             `;
         }
