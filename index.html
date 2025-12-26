@@ -9,8 +9,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Karla:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" href="./touxiang.jpg" type="image/jpeg">
@@ -24,7 +25,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['"Karla"', 'ui-sans-serif', 'sans-serif'],
+                        display: ['"Fraunces"', 'serif'],
                     },
                     colors: {
                         border: "hsl(var(--border))",
@@ -74,52 +76,157 @@
     <style>
         /* CSS Variables for Shadcn Theme (Zinc/Slate) */
         :root {
-            --background: 0 0% 100%;
-            --foreground: 240 10% 3.9%;
-            --card: 0 0% 100%;
-            --card-foreground: 240 10% 3.9%;
-            --popover: 0 0% 100%;
-            --popover-foreground: 240 10% 3.9%;
-            --primary: 240 5.9% 10%;
-            --primary-foreground: 0 0% 98%;
-            --secondary: 240 4.8% 95.9%;
-            --secondary-foreground: 240 5.9% 10%;
-            --muted: 240 4.8% 95.9%;
-            --muted-foreground: 240 3.8% 46.1%;
-            --accent: 240 4.8% 95.9%;
-            --accent-foreground: 240 5.9% 10%;
-            --destructive: 0 84.2% 60.2%;
+            --background: 36 42% 96%;
+            --foreground: 220 28% 12%;
+            --card: 36 45% 98%;
+            --card-foreground: 220 28% 12%;
+            --popover: 36 45% 98%;
+            --popover-foreground: 220 28% 12%;
+            --primary: 18 78% 52%;
+            --primary-foreground: 40 50% 97%;
+            --secondary: 32 28% 90%;
+            --secondary-foreground: 220 25% 16%;
+            --muted: 32 24% 92%;
+            --muted-foreground: 220 12% 40%;
+            --accent: 197 38% 32%;
+            --accent-foreground: 40 50% 97%;
+            --destructive: 0 72% 50%;
             --destructive-foreground: 0 0% 98%;
-            --border: 240 5.9% 90%;
-            --input: 240 5.9% 90%;
-            --ring: 240 5.9% 10%;
-            --radius: 0.5rem;
+            --border: 32 18% 84%;
+            --input: 32 18% 84%;
+            --ring: 18 78% 52%;
+            --radius: 0.9rem;
         }
 
         .dark {
-            --background: 240 10% 3.9%;
-            --foreground: 0 0% 98%;
-            --card: 240 10% 3.9%;
-            --card-foreground: 0 0% 98%;
-            --popover: 240 10% 3.9%;
-            --popover-foreground: 0 0% 98%;
-            --primary: 0 0% 98%;
-            --primary-foreground: 240 5.9% 10%;
-            --secondary: 240 3.7% 15.9%;
-            --secondary-foreground: 0 0% 98%;
-            --muted: 240 3.7% 15.9%;
-            --muted-foreground: 240 5% 64.9%;
-            --accent: 240 3.7% 15.9%;
-            --accent-foreground: 0 0% 98%;
-            --destructive: 0 62.8% 30.6%;
+            --background: 222 28% 10%;
+            --foreground: 36 35% 92%;
+            --card: 222 26% 12%;
+            --card-foreground: 36 35% 92%;
+            --popover: 222 26% 12%;
+            --popover-foreground: 36 35% 92%;
+            --primary: 24 86% 60%;
+            --primary-foreground: 222 28% 10%;
+            --secondary: 222 20% 18%;
+            --secondary-foreground: 36 35% 92%;
+            --muted: 222 18% 18%;
+            --muted-foreground: 36 18% 70%;
+            --accent: 190 40% 45%;
+            --accent-foreground: 222 28% 10%;
+            --destructive: 0 62% 40%;
             --destructive-foreground: 0 0% 98%;
-            --border: 240 3.7% 15.9%;
-            --input: 240 3.7% 15.9%;
-            --ring: 240 4.9% 83.9%;
+            --border: 222 18% 22%;
+            --input: 222 18% 22%;
+            --ring: 24 86% 60%;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Karla', sans-serif;
+            color: hsl(var(--foreground));
+            position: relative;
+            isolation: isolate;
+        }
+
+        body.page-shell {
+            background:
+                radial-gradient(1200px 900px at 10% -15%, hsl(34 80% 96%) 0%, transparent 60%),
+                radial-gradient(900px 700px at 88% 0%, hsl(200 60% 92%) 0%, transparent 58%),
+                linear-gradient(180deg, hsl(var(--background)) 0%, hsl(34 40% 94%) 100%);
+        }
+
+        body.page-shell::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 18% 30%, rgba(30, 20, 10, 0.08) 0, transparent 2px),
+                radial-gradient(1px 1px at 82% 70%, rgba(30, 20, 10, 0.06) 0, transparent 2px),
+                repeating-linear-gradient(0deg, rgba(30, 20, 10, 0.03), rgba(30, 20, 10, 0.03) 1px, transparent 1px, transparent 3px);
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body.page-shell::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(700px 500px at 12% 75%, hsl(20 80% 92% / 0.55) 0%, transparent 60%),
+                radial-gradient(600px 420px at 88% 72%, hsl(188 55% 88% / 0.45) 0%, transparent 65%);
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .dark body.page-shell {
+            background:
+                radial-gradient(900px 700px at 10% -10%, hsl(216 28% 18% / 0.9) 0%, transparent 60%),
+                radial-gradient(800px 600px at 88% 0%, hsl(192 40% 20% / 0.9) 0%, transparent 62%),
+                linear-gradient(180deg, hsl(var(--background)) 0%, hsl(222 29% 10%) 100%);
+        }
+
+        .dark body.page-shell::before {
+            background-image:
+                radial-gradient(1px 1px at 25% 35%, rgba(255, 255, 255, 0.07) 0, transparent 2px),
+                radial-gradient(1px 1px at 75% 65%, rgba(255, 255, 255, 0.05) 0, transparent 2px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 3px);
+            opacity: 0.3;
+        }
+
+        .dark body.page-shell::after {
+            opacity: 0.25;
+        }
+
+        body.page-shell>nav,
+        body.page-shell>main,
+        body.page-shell>footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Fraunces', serif;
+            letter-spacing: 0.01em;
+        }
+
+        .brand-title {
+            font-family: 'Fraunces', serif;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        nav {
+            background: linear-gradient(180deg, hsl(var(--background) / 0.95), hsl(36 45% 96% / 0.65));
+            box-shadow: 0 10px 30px -26px rgba(18, 20, 24, 0.45);
+        }
+
+        .dark nav {
+            background: linear-gradient(180deg, hsl(var(--background) / 0.95), hsl(222 26% 12% / 0.75));
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -6px;
+            height: 2px;
+            background: linear-gradient(90deg, hsl(var(--primary)), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
         }
 
         /* Fix FontAwesome width consistency */
@@ -137,8 +244,9 @@
 
         .fade-in-up-item {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            will-change: opacity, transform;
         }
 
         .fade-in-section.is-visible .fade-in-up-item {
@@ -148,18 +256,131 @@
 
         /* Hover interaction enhancement */
         .hover-lift {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
         .hover-lift:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 22px 40px -24px rgba(18, 20, 24, 0.45);
+        }
+
+        main.editor-rail {
+            position: relative;
+        }
+
+        main.editor-rail::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -16px;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, hsl(var(--border)), transparent);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        #profile-section {
+            position: relative;
+        }
+
+        #profile-section .profile-orb::before {
+            content: "";
+            position: absolute;
+            inset: -18px;
+            border-radius: 999px;
+            background: conic-gradient(from 120deg, hsl(var(--primary)), transparent, hsl(var(--accent)));
+            opacity: 0.16;
+            filter: blur(12px);
+            z-index: 0;
+        }
+
+        #profile-section .avatar-frame {
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 18px 32px -24px rgba(20, 26, 32, 0.55);
+        }
+
+        #profile-section a {
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: none;
+        }
+
+        #profile-section a::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dark #profile-section a::after {
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+        }
+
+        #profile-section a:hover::after {
+            opacity: 1;
+        }
+
+        #profile-section a:hover {
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-name {
+            font-size: clamp(2.4rem, 1.8rem + 2.4vw, 3.6rem);
+            letter-spacing: 0.01em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            letter-spacing: 0.03em;
+        }
+
+        .cta-pill {
+            border-color: hsl(var(--border));
+            background: linear-gradient(120deg, hsl(var(--background)) 0%, hsl(34 35% 94%) 100%);
+            box-shadow: 0 12px 24px -20px rgba(18, 20, 24, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-pill:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 28px -22px rgba(18, 20, 24, 0.45);
+        }
+
+        .dark .cta-pill {
+            background: linear-gradient(120deg, hsl(222 24% 14%) 0%, hsl(222 24% 16%) 100%);
+        }
+
+        .surface {
+            background: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(34 40% 96% / 0.9) 100%);
+            border-color: hsl(var(--border));
+            box-shadow: 0 20px 40px -30px rgba(18, 20, 24, 0.35);
+        }
+
+        .dark .surface {
+            background: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(222 24% 14% / 0.9) 100%);
+        }
+
+        .tag-pill {
+            border-color: hsl(var(--border));
+            background: hsl(var(--muted) / 0.65);
+        }
+
+        footer {
+            background-image: linear-gradient(180deg, transparent, hsl(34 35% 92% / 0.9));
+        }
+
+        .dark footer {
+            background-image: linear-gradient(180deg, transparent, hsl(222 25% 12% / 0.95));
         }
     </style>
 </head>
 
 <body
-    class="bg-background text-foreground antialiased min-h-screen selection:bg-primary selection:text-primary-foreground pt-14">
+    class="page-shell text-foreground antialiased min-h-screen selection:bg-primary selection:text-primary-foreground pt-14">
 
     <!-- Navbar -->
     <nav
@@ -167,7 +388,7 @@
         <div class="container mx-auto px-4 max-w-4xl flex h-14 items-center justify-between">
             <a href="#" class="mr-6 flex items-center space-x-2">
                 <i class="fa-solid fa-code text-primary text-xl"></i>
-                <span class="font-bold hidden sm:inline-block">
+                <span class="font-bold hidden sm:inline-block brand-title">
                     <span data-i18n="nav-title">个人简历</span>
                 </span>
             </a>
@@ -175,23 +396,23 @@
             <!-- Desktop Nav -->
             <div class="hidden md:flex items-center gap-6 text-sm font-medium">
                 <a href="#education"
-                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    class="nav-link transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
                     <i class="fa-solid fa-graduation-cap text-xs"></i> <span data-i18n="nav-education">教育背景</span>
                 </a>
                 <a href="#skills"
-                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    class="nav-link transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
                     <i class="fa-solid fa-code text-xs"></i> <span data-i18n="nav-skills">专业技能</span>
                 </a>
                 <a href="#work"
-                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    class="nav-link transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
                     <i class="fa-solid fa-briefcase text-xs"></i> <span data-i18n="nav-work">工作经历</span>
                 </a>
                 <a href="#projects"
-                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    class="nav-link transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
                     <i class="fa-solid fa-laptop-code text-xs"></i> <span data-i18n="nav-projects">项目经历</span>
                 </a>
                 <a href="#opensource"
-                    class="transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
+                    class="nav-link transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2">
                     <i class="fa-solid fa-code-branch text-xs"></i> <span data-i18n="nav-opensource">开源经历</span>
                 </a>
             </div>
@@ -223,22 +444,22 @@
         <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-background">
             <div class="container mx-auto px-4 py-4 space-y-2">
                 <a href="#education"
-                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                    class="nav-link block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
                         class="fa-solid fa-graduation-cap mr-2 w-4 text-center"></i> <span
                         data-i18n="nav-education">教育背景</span></a>
                 <a href="#skills"
-                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                    class="nav-link block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
                         class="fa-solid fa-code mr-2 w-4 text-center"></i> <span data-i18n="nav-skills">专业技能</span></a>
                 <a href="#work"
-                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                    class="nav-link block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
                         class="fa-solid fa-briefcase mr-2 w-4 text-center"></i> <span
                         data-i18n="nav-work">工作经历</span></a>
                 <a href="#projects"
-                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                    class="nav-link block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
                         class="fa-solid fa-laptop-code mr-2 w-4 text-center"></i> <span
                         data-i18n="nav-projects">项目经历</span></a>
                 <a href="#opensource"
-                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
+                    class="nav-link block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"><i
                         class="fa-solid fa-code-branch mr-2 w-4 text-center"></i> <span
                         data-i18n="nav-opensource">开源经历</span></a>
             </div>
@@ -246,7 +467,7 @@
     </nav>
 
     <!-- Main Container -->
-    <main class="container mx-auto max-w-4xl px-4 py-16 space-y-16">
+    <main class="container mx-auto max-w-4xl px-4 py-16 space-y-16 editor-rail">
 
         <!-- Profile Header -->
         <header id="profile-section" class="fade-in-section pt-8">
@@ -498,26 +719,26 @@
         function renderProfile(profile) {
             const container = document.getElementById('profile-section');
             const contactsHtml = profile.contacts.map(c => `
-                <a href="${c.link}" target="_blank" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
+                <a href="${c.link}" target="_blank" class="cta-pill inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
                     <i class="${c.icon} mr-2 text-primary"></i> ${c.text}
                 </a>
             `).join('');
 
             container.innerHTML = `
                 <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
-                    <div class="relative shrink-0">
-                        <div class="h-32 w-32 rounded-full overflow-hidden border-4 border-muted shadow-sm ring-2 ring-background">
+                    <div class="relative shrink-0 profile-orb">
+                        <div class="h-32 w-32 rounded-full overflow-hidden border-4 border-muted shadow-sm ring-2 ring-background avatar-frame">
                             <img id="profile-avatar" src="${profile.avatar}" alt="${profile.name}" class="h-full w-full object-cover cursor-pointer transition-transform duration-700" />
                         </div>
                         <div class="absolute bottom-1 right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-background" title="Open to work"></div>
                     </div>
                     <div class="text-center md:text-left space-y-4">
                         <div>
-                            <h1 class="text-4xl font-bold tracking-tight lg:text-5xl flex items-center justify-center md:justify-start gap-3">
+                            <h1 class="hero-name text-4xl font-bold tracking-tight lg:text-5xl flex items-center justify-center md:justify-start gap-3">
                                 ${profile.name}
-                                <i class="fa-solid fa-certificate text-blue-500 text-2xl" title="Verified"></i>
+                                <i class="fa-solid fa-certificate text-primary text-2xl" title="Verified"></i>
                             </h1>
-                            <p class="text-xl text-muted-foreground mt-2 flex items-center justify-center md:justify-start gap-2">
+                            <p class="hero-subtitle text-xl text-muted-foreground mt-2 flex items-center justify-center md:justify-start gap-2">
                                 <i class="fa-solid fa-terminal text-sm"></i>
                                 ${profile.title}
                             </p>
@@ -533,7 +754,7 @@
         function renderEducation(edu) {
             const container = document.getElementById('education-content');
             container.innerHTML = `
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 group hover:border-primary/50 transition-colors fade-in-up-item hover-lift" style="transition-delay: 100ms">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-lg border border-border bg-card surface text-card-foreground shadow-sm p-6 group hover:border-primary/50 transition-colors fade-in-up-item hover-lift" style="transition-delay: 100ms">
                     <div class="flex items-start gap-4">
                         <div class="bg-secondary p-3 rounded-md hidden md:block">
                             <i class="fa-solid fa-building-columns text-2xl text-primary"></i>
@@ -572,7 +793,7 @@
                             : `<i class="${icon} text-primary/80 text-sm"></i>`)
                         : `<i class="fa-solid fa-hashtag text-[10px] text-primary/80"></i>`;
                     return `
-                        <span class="inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors">
+                        <span class="tag-pill inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors">
                             ${iconHtml}
                             <span>${tag.name}</span>
                         </span>
@@ -580,7 +801,7 @@
                 }).join('');
 
                 return `
-                    <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 hover:shadow-md transition-all group fade-in-up-item hover-lift" style="transition-delay: ${index * 100}ms">
+                    <div class="rounded-lg border border-border bg-card surface text-card-foreground shadow-sm p-6 hover:shadow-md transition-all group fade-in-up-item hover-lift" style="transition-delay: ${index * 100}ms">
                         <div class="flex items-start justify-between mb-3 gap-3">
                             <div class="flex items-start gap-3">
                                 <div class="bg-primary/10 p-2 rounded-md group-hover:bg-primary/20 transition-colors">
@@ -601,7 +822,7 @@
             }).join('');
 
             const toolsBadges = (skills.tools || []).map(tool => `
-                <span class="inline-flex items-center rounded-full border border-border bg-primary/5 px-3 py-1.5 text-xs font-semibold text-foreground gap-2 hover:bg-primary/10 hover:text-primary transition-colors">
+                <span class="tag-pill inline-flex items-center rounded-full border border-border bg-primary/5 px-3 py-1.5 text-xs font-semibold text-foreground gap-2 hover:bg-primary/10 hover:text-primary transition-colors">
                     ${tool.icon ? (tool.icon.startsWith('http')
                         ? `<img src="${tool.icon}" alt="${tool.name}" class="w-4 h-4 rounded-[3px] bg-white/70 p-[1px]" loading="lazy" />`
                         : `<i class="${tool.icon} text-primary/80 text-sm"></i>`)
@@ -611,7 +832,7 @@
             `).join('');
 
             const toolsSection = toolsBadges ? `
-                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 md:col-span-2 hover:shadow-md transition-all fade-in-up-item hover-lift" style="transition-delay: ${(skills.categories?.length || 0) * 100}ms">
+                <div class="rounded-lg border border-border bg-card surface text-card-foreground shadow-sm p-6 md:col-span-2 hover:shadow-md transition-all fade-in-up-item hover-lift" style="transition-delay: ${(skills.categories?.length || 0) * 100}ms">
                     <div class="flex items-start justify-between mb-3 gap-3">
                         <div class="flex items-start gap-3">
                             <div class="bg-primary/10 p-2 rounded-md">
@@ -645,7 +866,7 @@
                             : `<i class="${icon} text-primary/80 text-xs"></i>`)
                         : `<i class="fa-solid fa-hashtag text-[10px] text-primary/80"></i>`;
                     return `
-                        <span class="inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[11px] font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors">
+                        <span class="tag-pill inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[11px] font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors">
                             ${iconHtml}
                             <span>${tag.name}</span>
                         </span>
@@ -660,7 +881,7 @@
                 `).join('');
 
                 return `
-                    <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm group fade-in-up-item hover-lift" style="transition-delay: ${index * 150}ms">
+                    <div class="rounded-lg border border-border bg-card surface text-card-foreground shadow-sm group fade-in-up-item hover-lift" style="transition-delay: ${index * 150}ms">
                         <div class="p-6 space-y-4">
                             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
                                 <div class="flex items-start gap-4">
@@ -713,14 +934,14 @@
                     .map(t => t.trim())
                     .filter(t => t.length > 0)
                     .map(tech => `
-                        <span class="inline-flex items-center rounded-full border border-transparent bg-primary/5 px-2.5 py-0.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 gap-1">
+                        <span class="tag-pill inline-flex items-center rounded-full border border-transparent bg-primary/5 px-2.5 py-0.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 gap-1">
                             <i class="fa-solid fa-tag text-[10px]"></i>
                             ${tech}
                         </span>
                     `).join('');
 
                 return `
-                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow fade-in-up-item hover-lift transition-all" style="transition-delay: ${index * 150}ms">
+                    <div class="rounded-xl border border-border bg-card surface text-card-foreground shadow fade-in-up-item hover-lift transition-all" style="transition-delay: ${index * 150}ms">
                         <div class="p-6 md:p-8 space-y-6">
                             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                                 <div class="space-y-1">
@@ -768,7 +989,7 @@
 
             // Header Profile
             const headerHtml = `
-                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-6 mb-6 fade-in-up-item hover-lift" style="transition-delay: 0ms">
+                <div class="rounded-lg border border-border bg-card surface text-card-foreground shadow-sm p-6 mb-6 fade-in-up-item hover-lift" style="transition-delay: 0ms">
                     <div class="flex items-center gap-4">
                         <div class="bg-primary/10 p-4 rounded-full text-primary ring-2 ring-primary/20">
                             <i class="${os.profile.icon} text-3xl"></i>
@@ -786,7 +1007,7 @@
 
             // Featured
             const featuredHtml = os.featured.map((item, index) => `
-                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow group fade-in-up-item hover-lift" style="transition-delay: ${(index + 1) * 100}ms">
+                <div class="rounded-lg border border-border bg-card surface text-card-foreground shadow-sm overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow group fade-in-up-item hover-lift" style="transition-delay: ${(index + 1) * 100}ms">
                     ${item.image ?
                     `<div class="h-48 w-full overflow-hidden border-b border-border">
                             <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -817,7 +1038,7 @@
 
             // Others
             const othersHtml = os.others.map((item, index) => `
-                <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 hover:bg-accent/50 transition-colors group fade-in-up-item hover-lift" style="transition-delay: ${(index + 3) * 100}ms">
+                <div class="rounded-lg border border-border bg-card surface text-card-foreground shadow-sm p-4 hover:bg-accent/50 transition-colors group fade-in-up-item hover-lift" style="transition-delay: ${(index + 3) * 100}ms">
                     <div class="flex justify-between items-center mb-2">
                         <h4 class="font-medium text-sm flex items-center gap-2 group-hover:text-primary transition-colors">
                             <i class="${item.icon} text-primary/70 text-xs"></i>
