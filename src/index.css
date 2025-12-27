@@ -358,10 +358,11 @@
             background-image: linear-gradient(180deg, transparent, hsl(220 22% 12% / 0.95));
         }
 
-        .sidebar {
+        aside.sidebar {
             position: sticky;
             top: 5rem;
             align-self: start;
+            z-index: 10;
         }
 
         .sidebar-title {
@@ -406,7 +407,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .sidebar {
+            aside.sidebar {
                 position: static;
                 order: -1;
                 margin-bottom: 2rem;
