@@ -105,9 +105,9 @@ const ProfileSection = ({ profile, avatarRef }: ProfileSectionProps) => {
               href={contact.link}
               target="_blank"
               rel="noreferrer"
-              className="cta-pill inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
+              className="cta-pill group inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input shadow-sm h-9 px-4 py-2"
             >
-              <i className={`${contact.icon} mr-2 text-primary`}></i>
+              <i className={`${contact.icon} mr-2 text-primary group-hover:text-primary-foreground transition-colors`}></i>
               {contact.text}
             </a>
           ))}

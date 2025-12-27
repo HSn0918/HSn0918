@@ -303,6 +303,9 @@
         .cta-pill:hover {
             transform: translateY(-2px);
             box-shadow: 0 20px 34px -24px rgba(18, 20, 24, 0.5);
+            background: hsl(var(--primary));
+            border-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
         }
 
         .dark .cta-pill {
