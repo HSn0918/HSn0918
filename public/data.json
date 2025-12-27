@@ -294,7 +294,38 @@
                     "tags": [
                         { "name": "Go", "icon": "https://cdn.simpleicons.org/go/00ADD8" },
                         { "name": "gRPC & ConnectRPC", "icon": "https://cdn.simpleicons.org/google/4285F4" },
+                        { "name": "Gin", "icon": "https://cdn.simpleicons.org/gin/008ECF" }
+                    ]
+                },
+                {
+                    "category": "Cloud Native",
+                    "summary": "Deep dive into Kubernetes and containerization technologies",
+                    "icon": "fa-solid fa-cloud",
+                    "tags": [
+                        { "name": "Kubernetes", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
+                        { "name": "Kubebuilder", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
+                        { "name": "Docker", "icon": "https://cdn.simpleicons.org/docker/2496ED" }
+                    ]
+                },
+                {
+                    "category": "Middleware",
+                    "summary": "Proficient in middleware application in high concurrency scenarios",
+                    "icon": "fa-solid fa-database",
+                    "tags": [
+                        { "name": "PostgreSQL", "icon": "https://cdn.simpleicons.org/postgresql/4169E1" },
+                        { "name": "MySQL", "icon": "https://cdn.simpleicons.org/mysql/4479A1" },
+                        { "name": "Redis", "icon": "https://cdn.simpleicons.org/redis/DC382D" },
                         { "name": "NATS", "icon": "https://cdn.simpleicons.org/natsdotio/27AAE1" }
+                    ]
+                },
+                {
+                    "category": "AI & LLM",
+                    "summary": "Experience in model serving and cost reduction",
+                    "icon": "fa-solid fa-robot",
+                    "tags": [
+                        { "name": "MCP", "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000" },
+                        { "name": "Prompt", "icon": "fa-solid fa-code" },
+                        { "name": "Prefill / KV Cache", "icon": "fa-solid fa-memory" }
                     ]
                 }
             ],
@@ -327,6 +358,21 @@
                         "text": "Led internal platform construction, improving operational efficiency by <strong>2x+</strong>."
                     }
                 ]
+            },
+            {
+                "company": "HarmonyCloud",
+                "role": "Backend Engineer",
+                "period": "2024.07 - 2025.04",
+                "items": [
+                    {
+                        "icon": "fa-solid fa-arrows-rotate",
+                        "text": "Responsible for <strong>Java→Go refactoring</strong> of PaaS container services, reducing average response time by <strong>40%+</strong>."
+                    },
+                    {
+                        "icon": "fa-solid fa-users",
+                        "text": "Participated in multi-tenancy and container service modules, optimizing resource scheduling and stability."
+                    }
+                ]
             }
         ],
         "projects": [
@@ -341,6 +387,30 @@
                         "title": "LLM Optimization",
                         "text": "Reduced <strong>Token consumption by 20%–40%</strong> via Prefill optimization and KV Cache hit rate improvement.",
                         "icon": "fa-solid fa-language"
+                    }
+                ]
+            },
+            {
+                "name": "ViewCloud — Kubernetes PaaS Platform",
+                "role": "Backend Engineer",
+                "period": "2024.07 - 2025.04",
+                "description": "Enterprise-level PaaS based on <strong>Kubernetes</strong>, helping enterprises reduce O&M costs and improve business delivery efficiency.",
+                "techStack": "Go, Gin, Kubernetes, Kubebuilder, MySQL",
+                "highlights": [
+                    {
+                        "title": "Resource Management Refactoring",
+                        "text": "Led core component refactoring from Java to Go, integrating <strong>K8s native RBAC</strong>; fixed deadlock issues caused by StatefulSet constraints.",
+                        "icon": "fa-solid fa-code-branch"
+                    },
+                    {
+                        "title": "Architecture Upgrade",
+                        "text": "Promoted transformation of container gateway from <strong>imperative to declarative architecture</strong>, improving core response from <strong>20s → 300ms</strong> using Reconcile mechanism.",
+                        "icon": "fa-solid fa-cubes"
+                    },
+                    {
+                        "title": "Automated Compliance Inspection",
+                        "text": "Built baseline audit module based on CronJob + custom detection engine, ensuring <strong>100%</strong> compliance of managed components.",
+                        "icon": "fa-solid fa-check-double"
                     }
                 ]
             }
