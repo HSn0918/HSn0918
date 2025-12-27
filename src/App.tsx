@@ -152,6 +152,15 @@ const App = () => {
     let rafId = 0;
 
     const updateActive = () => {
+      // If we are at the bottom of the page, activate the last section
+      if (
+        window.innerHeight + Math.round(window.scrollY) >=
+        document.body.offsetHeight - 50
+      ) {
+        setActiveSectionId(sectionIds[sectionIds.length - 1]);
+        return;
+      }
+
       const offset = 120;
       let nextActive: SectionId = sectionIds[0];
 
