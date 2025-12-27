@@ -1,4 +1,4 @@
-import { useEffect, useState, type RefObject } from "react";
+import { useEffect, useMemo, useState, type RefObject } from "react";
 import type { Profile } from "../types/resume";
 
 type ProfileSectionProps = {
@@ -7,24 +7,45 @@ type ProfileSectionProps = {
 };
 
 const Typewriter = ({ text }: { text: string }) => {
+  const parts = useMemo(() => text.split("|").map((s) => s.trim()), [text]);
+  const [partIndex, setPartIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
-  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    // Reset if parts change (e.g. language change)
     setDisplayedText("");
-    setIndex(0);
+    setPartIndex(0);
+    setIsDeleting(false);
   }, [text]);
 
   useEffect(() => {
-    if (index < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + text[index]);
-        setIndex((prev) => prev + 1);
-      }, 70);
-      return () => clearTimeout(timeout);
-    }
-    return undefined;
-  }, [index, text]);
+    const currentPart = parts[partIndex];
+    if (!currentPart) return undefined;
+
+    const speed = isDeleting ? 40 : 80;
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayedText.length < currentPart.length) {
+          setDisplayedText(currentPart.substring(0, displayedText.length + 1));
+        } else if (parts.length > 1 || currentPart.length > 0) {
+          // If multiple parts, or even just one, wait then delete to loop
+          // But if only one part, we might just want to stay there. 
+          // Usually typewriter loops are expected for multiple titles.
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (displayedText.length > 0) {
+          setDisplayedText(currentPart.substring(0, displayedText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setPartIndex((prev) => (prev + 1) % parts.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, partIndex, parts]);
 
   return <span className="typewriter-cursor">{displayedText}</span>;
 };
