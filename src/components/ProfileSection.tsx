@@ -85,7 +85,9 @@ const ProfileSection = ({ profile, avatarRef }: ProfileSectionProps) => {
       <div className="text-center md:text-left space-y-4">
         <div>
           <h1 className="hero-name text-4xl font-bold tracking-tight lg:text-5xl flex items-center justify-center md:justify-start gap-3">
-            {profile.name}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-400 dark:to-orange-300 animate-gradient">
+              {profile.name}
+            </span>
             <i
               className="fa-solid fa-certificate text-primary text-2xl"
               title="Verified"

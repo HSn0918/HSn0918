@@ -1,6 +1,7 @@
 import type { Project } from "../types/resume";
 import { splitTechStack } from "../utils";
 import HtmlBlock from "./HtmlBlock";
+import { SpotlightCard } from "./SpotlightCard";
 
 type ProjectsSectionProps = {
   projects?: Project[];
@@ -11,10 +12,11 @@ const ProjectsSection = ({ projects, coreLabel }: ProjectsSectionProps) => {
   if (!projects) return null;
 
   return projects.map((project, index) => (
-    <div
+    <SpotlightCard
       key={`${project.name}-${index}`}
       className="rounded-xl border border-border bg-card surface text-card-foreground shadow fade-in-up-item hover-lift transition-all"
       style={{ transitionDelay: `${index * 150}ms` }}
+      spotlightColor="hsl(var(--primary) / 0.15)"
     >
       <div className="p-6 md:p-8 space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -87,7 +89,7 @@ const ProjectsSection = ({ projects, coreLabel }: ProjectsSectionProps) => {
           </ul>
         </div>
       </div>
-    </div>
+    </SpotlightCard>
   ));
 };
 

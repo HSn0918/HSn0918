@@ -445,3 +445,22 @@
             from, to { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        .animate-gradient {
+            background-size: 200% auto;
+            animation: gradient-move 4s linear infinite;
+        }
+
+        @keyframes gradient-move {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        /* Icon Hover Effects */
+        .group:hover .fa-solid,
+        .group:hover .fa-brands,
+        .group:hover .fa-regular {
+             /* Subtle pop */
+             transition: transform 0.3s ease;
+        }

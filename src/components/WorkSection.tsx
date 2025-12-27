@@ -1,5 +1,6 @@
 import type { WorkExperience } from "../types/resume";
 import HtmlBlock from "./HtmlBlock";
+import { SpotlightCard } from "./SpotlightCard";
 
 type WorkSectionProps = {
   work?: WorkExperience[];
@@ -9,10 +10,11 @@ const WorkSection = ({ work }: WorkSectionProps) => {
   if (!work) return null;
 
   return work.map((job, index) => (
-    <div
+    <SpotlightCard
       key={`${job.company}-${index}`}
       className="rounded-lg border border-border bg-card surface text-card-foreground shadow-sm group fade-in-up-item hover-lift"
       style={{ transitionDelay: `${index * 150}ms` }}
+      spotlightColor="hsl(var(--primary) / 0.1)"
     >
       <div className="p-6 space-y-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
@@ -51,7 +53,7 @@ const WorkSection = ({ work }: WorkSectionProps) => {
           ))}
         </ul>
       </div>
-    </div>
+    </SpotlightCard>
   ));
 };
 

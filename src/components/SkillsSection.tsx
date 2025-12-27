@@ -48,18 +48,18 @@ const SkillsSection = ({ skills, labels }: SkillsSectionProps) => {
               return (
                 <span
                   key={`${tagName}-${tagIndex}`}
-                  className="tag-pill inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors"
+                  className="tag-pill inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors group/tag"
                 >
                   {iconIsUrl ? (
                     <img
                       src={icon}
                       alt=""
                       aria-hidden="true"
-                      className="w-4 h-4 rounded-[3px] bg-white/70 p-[1px]"
+                      className="w-4 h-4 rounded-[3px] bg-white/70 p-[1px] transition-transform duration-300 group-hover/tag:scale-110"
                       loading="lazy"
                     />
                   ) : (
-                    <i className={`${icon} text-primary/80 text-sm`}></i>
+                    <i className={`${icon} text-primary/80 text-sm transition-transform duration-300 group-hover/tag:scale-110`}></i>
                   )}
                   <span>{tagName}</span>
                 </span>
@@ -103,18 +103,18 @@ const SkillsSection = ({ skills, labels }: SkillsSectionProps) => {
               return (
                 <span
                   key={toolName}
-                  className="tag-pill inline-flex items-center rounded-full border border-border bg-primary/5 px-3 py-1.5 text-xs font-semibold text-foreground gap-2 hover:bg-primary/10 hover:text-primary transition-colors"
+                  className="tag-pill inline-flex items-center rounded-full border border-border bg-primary/5 px-3 py-1.5 text-xs font-semibold text-foreground gap-2 hover:bg-primary/10 hover:text-primary transition-colors group/tag"
                 >
                   {iconIsUrl ? (
                     <img
                       src={icon}
                       alt=""
                       aria-hidden="true"
-                      className="w-4 h-4 rounded-[3px] bg-white/70 p-[1px]"
+                      className="w-4 h-4 rounded-[3px] bg-white/70 p-[1px] transition-transform duration-300 group-hover/tag:scale-110"
                       loading="lazy"
                     />
                   ) : (
-                    <i className={`${icon} text-primary/80 text-sm`}></i>
+                    <i className={`${icon} text-primary/80 text-sm transition-transform duration-300 group-hover/tag:scale-110`}></i>
                   )}
                   {toolName}
                 </span>
