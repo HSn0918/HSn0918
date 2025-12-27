@@ -1,8 +1,8 @@
 {
     "zh": {
         "profile": {
-            "name": "HSn",
-            "title": "Software Engineer | Go Developer",
+            "name": "黄锡超",
+            "title": "后端开发工程师 | Go Developer",
             "avatar": "touxiang.jpg",
             "contacts": [
                 {
@@ -31,164 +31,94 @@
             "categories": [
                 {
                     "category": "后端技能",
-                    "summary": "一些后端技术栈",
+                    "summary": "精通 Go 语言及其微服务生态",
                     "icon": "fa-solid fa-server",
                     "tags": [
-                        {
-                            "name": "Go",
-                            "icon": "https://cdn.simpleicons.org/go/00ADD8"
-                        },
-                        {
-                            "name": "gRPC & ConnectRPC ",
-                            "icon": "https://cdn.simpleicons.org/google/4285F4"
-                        },
-                        {
-                            "name": "Gin",
-                            "icon": "https://cdn.simpleicons.org/gin/008ECF"
-                        }
+                        { "name": "Go", "icon": "https://cdn.simpleicons.org/go/00ADD8" },
+                        { "name": "gRPC & ConnectRPC ", "icon": "https://cdn.simpleicons.org/google/4285F4" },
+                        { "name": "Gin", "icon": "https://cdn.simpleicons.org/gin/008ECF" }
                     ]
                 },
                 {
                     "category": "云原生",
-                    "summary": "一些云原生技术栈",
+                    "summary": "深耕 Kubernetes 与容器化技术",
                     "icon": "fa-solid fa-cloud",
                     "tags": [
-                        {
-                            "name": "Kubernetes",
-                            "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
-                        },
-                        {
-                            "name": "Kubebuilder",
-                            "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
-                        },
-                        {
-                            "name": "Docker",
-                            "icon": "https://cdn.simpleicons.org/docker/2496ED"
-
-                        }
+                        { "name": "Kubernetes", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
+                        { "name": "Kubebuilder", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
+                        { "name": "Docker", "icon": "https://cdn.simpleicons.org/docker/2496ED" }
                     ]
                 },
                 {
                     "category": "中间件",
-                    "summary": "一些中间件",
+                    "summary": "熟练掌握高并发场景下的中间件应用",
                     "icon": "fa-solid fa-database",
                     "tags": [
-                        {
-                            "name": "PostgreSQL",
-                            "icon": "https://cdn.simpleicons.org/postgresql/4169E1"
-                        },
-                        {
-                            "name": "MySQL",
-                            "icon": "https://cdn.simpleicons.org/mysql/4479A1"
-                        },
-                        {
-                            "name": "Redis",
-                            "icon": "https://cdn.simpleicons.org/redis/DC382D"
-                        },
-                        {
-                            "name": "NATS",
-                            "icon": "https://cdn.simpleicons.org/natsdotio/27AAE1"
-                        }
+                        { "name": "PostgreSQL", "icon": "https://cdn.simpleicons.org/postgresql/4169E1" },
+                        { "name": "MySQL", "icon": "https://cdn.simpleicons.org/mysql/4479A1" },
+                        { "name": "Redis", "icon": "https://cdn.simpleicons.org/redis/DC382D" },
+                        { "name": "NATS", "icon": "https://cdn.simpleicons.org/natsdotio/27AAE1" }
                     ]
                 },
                 {
                     "category": "AI & LLM",
-                    "summary": "模型服务化与降本",
+                    "summary": "模型服务化与降本增效经验",
                     "icon": "fa-solid fa-robot",
                     "tags": [
-                        {
-                            "name": "MCP",
-                            "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000"
-                        },
-                        {
-                            "name": "Prompt",
-                            "icon": "fa-solid fa-code"
-                        },
-                        {
-                            "name": "Prefill / KV Cache",
-                            "icon": "fa-solid fa-memory"
-                        }
+                        { "name": "MCP", "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000" },
+                        { "name": "Prompt", "icon": "fa-solid fa-code" },
+                        { "name": "Prefill / KV Cache", "icon": "fa-solid fa-memory" }
                     ]
                 }
             ],
             "toolsDescription": "日常偏好的工具链",
             "tools": [
-                {
-                    "name": "jetbrains",
-                    "icon": "https://cdn.simpleicons.org/jetbrains/000000"
-                },
-                {
-                    "name": "Neovim",
-                    "icon": "https://cdn.simpleicons.org/neovim/57A143"
-                },
-                {
-                    "name": "ChatGPT / Codex",
-                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg"
-                },
-                {
-                    "name": "Claude / Claude Code",
-                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg"
-                },
-                {
-                    "name": "Gemini / Gemini Cli",
-                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg"
-                },
-                {
-                    "name": "Git / GitHub Actions",
-                    "icon": "https://cdn.simpleicons.org/github/F05032"
-                },
-                {
-                    "name": "Docker / Docker Compose",
-                    "icon": "https://cdn.simpleicons.org/docker/2496ED"
-                },
-                {
-                    "name": "kubectl / Aptakube",
-                    "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
-                },
-                {
-                    "name": "Helm",
-                    "icon": "https://cdn.simpleicons.org/helm/0F1689"
-                },
-                {
-                    "name": "Postman",
-                    "icon": "https://cdn.simpleicons.org/postman/FF6C37"
-                }
+                { "name": "jetbrains", "icon": "https://cdn.simpleicons.org/jetbrains/000000" },
+                { "name": "Neovim", "icon": "https://cdn.simpleicons.org/neovim/57A143" },
+                { "name": "ChatGPT / Codex", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" },
+                { "name": "Claude / Claude Code", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" },
+                { "name": "Gemini / Gemini Cli", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg" },
+                { "name": "Git / GitHub Actions", "icon": "https://cdn.simpleicons.org/github/F05032" },
+                { "name": "Docker / Docker Compose", "icon": "https://cdn.simpleicons.org/docker/2496ED" },
+                { "name": "kubectl / Aptakube", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
+                { "name": "Helm", "icon": "https://cdn.simpleicons.org/helm/0F1689" },
+                { "name": "Postman", "icon": "https://cdn.simpleicons.org/postman/FF6C37" }
             ]
         },
         "workExperience": [
             {
                 "company": "智识无垠",
                 "role": "后端开发工程师",
-                "period": "2025.06-至今",
+                "period": "2025.06 - 至今",
                 "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
                 "items": [
                     {
                         "icon": "fa-solid fa-network-wired",
                         "iconColor": "text-blue-500",
-                        "text": "参与核心文档解析平台的后端架构演进，支撑<strong>万级 DAU、千万级日解析量</strong>，服务可用性稳定。"
+                        "text": "参与核心文档解析平台的后端架构演进，支撑<strong>十万级 DAU、千万级日解析量</strong>，保持服务高可用。"
                     },
                     {
                         "icon": "fa-solid fa-cogs",
                         "iconColor": "text-blue-500",
-                        "text": "主导内部平台建设，推动关键流程<strong>自动化与标准化</strong>，运营效率提升<strong>2 倍以上</strong>。"
+                        "text": "主导内部平台建设，推动关键业务流程<strong>自动化与标准化</strong>，使运营效率提升 <strong>2 倍以上</strong>。"
                     }
                 ]
             },
             {
                 "company": "谐云",
                 "role": "后端开发工程师",
-                "period": "2024.07-2025.04",
+                "period": "2024.07 - 2025.04",
                 "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
                 "items": [
                     {
-                        "icon": "fa-solid fa-cogs",
+                        "icon": "fa-solid fa-arrows-rotate",
                         "iconColor": "text-blue-500",
-                        "text": "负责 PaaS 平台核心服务的<strong>Java→Go 重构</strong>与性能优化，使服务平均响应时间降低<strong>40%+</strong>。"
+                        "text": "负责 PaaS 平台容器服务的 <strong>Java→Go 重构</strong>，使服务平均响应时间降低 <strong>40%+</strong>。"
                     },
                     {
                         "icon": "fa-solid fa-users",
                         "iconColor": "text-blue-500",
-                        "text": "参与多租户、容器服务等模块建设，优化资源调度与系统稳定性，显著提升用户体验。"
+                        "text": "参与多租户、容器服务等模块建设，优化资源调度与系统稳定性。"
                     }
                 ]
             }
@@ -196,68 +126,62 @@
         "projects": [
             {
                 "name": "Doc2X — C/B 端智能文档解析平台",
-                "role": "后端开发工程师",
-                "period": "2025.06-至今",
+                "role": "后端开发",
+                "period": "2025.06 - 至今",
                 "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-                "description": "行业领先的文档解析平台，支持从 PDF 智能提取内容并转换为 <strong>Markdown / LaTeX / Word</strong>，覆盖学术论文、合同、图表等场景，日解析量超 <strong>千万级</strong>。",
-                "techStack": "Go、gRPC / ConnectRPC、PostgreSQL、Redis、NATS、Kubernetes、OpenTelemetry",
+                "description": "行业领先的文档解析平台，支持从 PDF 智能提取内容并转换为 <strong>Markdown / LaTeX / Word</strong>，日解析量超 <strong>千万级</strong>。",
+                "techStack": "Go, gRPC, PostgreSQL, Redis, NATS, Kubernetes, OpenTelemetry",
                 "highlights": [
                     {
+                        "title": "核心服务高可用",
+                        "text": "构建<strong>分级限流与闲时排队</strong>体系，针对解析/导出环节实施<strong>多级缓存策略</strong>，确保超额流量下的系统稳定性。",
+                        "icon": "fa-solid fa-shield-halved",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
                         "title": "多渠道通知系统",
-                        "text": "基于<strong>策略模式 + 工厂模式</strong>设计可扩展通知框架，新渠道接入时间从<strong>2 天缩短至 0.5 天</strong>。",
+                        "text": "基于<strong>策略+工厂模式</strong>设计通知中台，接入短信、邮件及飞书/钉钉，实现业务解耦与高度可扩展性。",
                         "icon": "fa-solid fa-bell",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "消费者服务迭代",
-                        "text": "基于 <strong>NATS</strong> 构建事件链路，实现<strong>额度扣减、限流、幂等校验、缓存更新</strong>等核心处理流程。",
-                        "icon": "fa-solid fa-network-wired",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "大模型翻译",
-                        "text": "基于 <strong>Prefill 优化</strong> 请求结构，提升 <strong>整体 KV Cache 命中率</strong>；整体 <strong>Token 消耗降低 20%～40%</strong>，显著减少推理成本。",
+                        "title": "大模型翻译优化",
+                        "text": "通过 <strong>Prefill 优化</strong> 请求结构提升 <strong>KV Cache 命中率</strong>，使整体 <strong>Token 消耗降低 20%～40%</strong>。",
                         "icon": "fa-solid fa-language",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "运营后台迭代",
-                        "text": "使用 <strong>Vibe Coding</strong> 完成公告管理、发票/退款审批、订单查询等功能全栈开发，推进运营流程<strong>数字化</strong>，显著提升内部效率。",
-                        "icon": "fa-solid fa-users",
+                        "title": "管理后台开发",
+                        "text": "运用 <strong>Vibe Coding</strong> 独立完成公告管理、审批流（发票/退款）、订单分析等全栈开发，显著提升运营效率。",
+                        "icon": "fa-solid fa-user-gear",
                         "iconColor": "text-blue-500"
                     }
                 ]
             },
             {
                 "name": "观云台 — Kubernetes PaaS 平台",
-                "role": "后端开发工程师",
-                "period": "2024.07-2025.04",
+                "role": "后端开发",
+                "period": "2024.07 - 2025.04",
                 "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
                 "description": "基于 <strong>Kubernetes</strong> 的企业级 PaaS，帮助企业降低运维成本并提升业务交付效率。",
-                "techStack": "Go、Gin、Kubernetes、Kubebuilder、MySQL",
+                "techStack": "Go, Gin, Kubernetes, Kubebuilder, MySQL",
                 "highlights": [
                     {
                         "title": "资源管理重构",
-                        "text": "完成 <strong>Java→Go 重构</strong>，基于 <strong>Kubernetes API 规范</strong>引入<strong>原生 RBAC 鉴权</strong>；修复 <strong>StatefulSet 字段约束</strong>导致的部署死锁问题，显著提升扩容 / 发布稳定性。",
-                        "icon": "fa-solid fa-arrows-rotate",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "性能优化",
-                        "text": "引入 <strong>MapReduce 思想</strong> 与 <strong>可配置协程池</strong>，将串行调用改为<strong>分片并行</strong>，显著减少任务总时长并沉淀为通用工具。",
-                        "icon": "fa-solid fa-users",
+                        "text": "主导 Java 至 Go 的核心组件重构，深度整合 <strong>K8s 原生 RBAC</strong>；修复 StatefulSet 字段约束导致的更新死锁问题。",
+                        "icon": "fa-solid fa-code-branch",
                         "iconColor": "text-blue-500"
                     },
                     {
                         "title": "架构升级",
-                        "text": "将命令式接口切换为 <strong>Kubernetes 声明式架构</strong>，核心操作延迟从 <strong>20 秒 → 300 毫秒</strong>，显著提升用户体验。",
+                        "text": "推动容器网关由<strong>命令式向声明式架构</strong>转型，利用 Reconcile 机制将核心操作响应由 <strong>20s → 300ms</strong>。",
                         "icon": "fa-solid fa-cubes",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "基线合规检查",
-                        "text": "基于 <strong>K8S CronJob</strong> 实现定时巡检，覆盖<strong>文件 + 命令</strong>两类检查，确保纳管组件版本<strong>100% 合规</strong>。",
-                        "icon": "fa-solid fa-check-circle",
+                        "title": "自动化合规巡检",
+                        "text": "基于 CronJob + 自定义检测引擎构建基线审计模块，实现全链路配置检查，保障纳管组件合规率达 <strong>100%</strong>。",
+                        "icon": "fa-solid fa-check-double",
                         "iconColor": "text-blue-500"
                     }
                 ]
@@ -265,9 +189,9 @@
         ],
         "openSource": {
             "profile": {
-                "title": "个人GitHub",
+                "title": "个人 GitHub",
                 "link": "https://github.com/HSn0918",
-                "description": "Go工程师 | Kubernetes爱好者 | 42个代码仓库 | 47个Star",
+                "description": "Go 工程师 | Kubernetes 爱好者 | 42个代码仓库 | 47个Star",
                 "icon": "fa-brands fa-github"
             },
             "featured": [
@@ -275,7 +199,7 @@
                     "title": "Kubernetes-mcp",
                     "link": "https://github.com/HSn0918/kubernetes-mcp",
                     "repo": "HSn0918/kubernetes-mcp",
-                    "description": "基于Go实现的 Model Context Protocol (MCP)服务器，用于与Kubernetes集群交互，提供高效的集群管理和资源调度能力。",
+                    "description": "基于 Go 实现的 Model Context Protocol (MCP) 服务器，用于与 K8s 集群交互，提供 AI 驱动的资源调度能力。",
                     "image": "kubernetes-mcp.jpg",
                     "itemIcon": "fa-solid fa-cloud",
                     "itemIconColor": "text-blue-500"
@@ -284,10 +208,8 @@
                     "title": "TinyRedis",
                     "link": "https://github.com/MiniApplication/tinyredis",
                     "repo": "MiniApplication/tinyredis",
-                    "description": "TinyRedis 是一个使用 Go 语言原生 net 包实现的轻量级高性能 Redis 服务端，高效支持 Redis 各种基本数据类型。",
+                    "description": "使用 Go 原生 net 包实现的轻量级高性能 Redis 服务端，高效支持各种基本数据类型。",
                     "image": "tinyredis.png",
-                    "icon": "fa-solid fa-cube",
-                    "iconColor": "text-red-500",
                     "itemIcon": "fa-solid fa-cubes",
                     "itemIconColor": "text-yellow-500"
                 }
@@ -305,42 +227,22 @@
                     "title": "big-market-go",
                     "link": "https://github.com/HSn0918/big-market-go",
                     "repo": "HSn0918/big-market-go",
-                    "description": "Go实现的大营销系统",
+                    "description": "Go 实现的大营销系统",
                     "icon": "fa-solid fa-shopping-cart",
                     "iconColor": "text-indigo-500"
-                },
-                {
-                    "title": "controller-demo",
-                    "link": "https://github.com/HSn0918/controller-demo",
-                    "repo": "HSn0918/controller-demo",
-                    "description": "Kubernetes控制器示例",
-                    "icon": "fa-solid fa-dharmachakra",
-                    "iconColor": "text-blue-500"
                 }
             ]
         }
     },
     "en": {
         "profile": {
-            "name": "HSn",
-            "title": "Software Engineer | Go Developer",
+            "name": "Xichao Huang",
+            "title": "Backend Engineer | Go Developer",
             "avatar": "touxiang.jpg",
             "contacts": [
-                {
-                    "icon": "fa-solid fa-envelope",
-                    "text": "hsn.zj@foxmail.com",
-                    "link": "mailto:hsn.zj@foxmail.com"
-                },
-                {
-                    "icon": "fa-solid fa-globe",
-                    "text": "resume.huangsn.dev",
-                    "link": "https://resume.huangsn.dev"
-                },
-                {
-                    "icon": "fa-brands fa-github",
-                    "text": "github.com/HSn0918",
-                    "link": "https://github.com/HSn0918"
-                }
+                { "icon": "fa-solid fa-envelope", "text": "hsn.zj@foxmail.com", "link": "mailto:hsn.zj@foxmail.com" },
+                { "icon": "fa-solid fa-globe", "text": "resume.huangsn.dev", "link": "https://resume.huangsn.dev" },
+                { "icon": "fa-brands fa-github", "text": "github.com/HSn0918", "link": "https://github.com/HSn0918" }
             ]
         },
         "education": {
@@ -352,127 +254,27 @@
             "categories": [
                 {
                     "category": "Backend Skills",
-                    "summary": "Core backend stack",
+                    "summary": "Expertise in Go, gRPC, and microservices",
                     "icon": "fa-solid fa-server",
                     "tags": [
-                        {
-                            "name": "Go",
-                            "icon": "https://cdn.simpleicons.org/go/00ADD8"
-                        },
-                        {
-                            "name": "gRPC & ConnectRPC",
-                            "icon": "https://cdn.simpleicons.org/google/4285F4"
-                        },
-                        {
-                            "name": "Gin",
-                            "icon": "https://cdn.simpleicons.org/gin/008ECF"
-                        }
-                    ]
-                },
-                {
-                    "category": "Cloud Native",
-                    "summary": "Cloud-native stack",
-                    "icon": "fa-solid fa-cloud",
-                    "tags": [
-                        {
-                            "name": "Kubernetes",
-                            "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
-                        },
-                        {
-                            "name": "Kubebuilder",
-                            "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
-                        },
-                        {
-                            "name": "Docker",
-                            "icon": "https://cdn.simpleicons.org/docker/2496ED"
-                        }
-                    ]
-                },
-                {
-                    "category": "Middleware",
-                    "summary": "Storage and messaging middleware",
-                    "icon": "fa-solid fa-database",
-                    "tags": [
-                        {
-                            "name": "PostgreSQL",
-                            "icon": "https://cdn.simpleicons.org/postgresql/4169E1"
-                        },
-                        {
-                            "name": "MySQL",
-                            "icon": "https://cdn.simpleicons.org/mysql/4479A1"
-                        },
-                        {
-                            "name": "Redis",
-                            "icon": "https://cdn.simpleicons.org/redis/DC382D"
-                        },
-                        {
-                            "name": "NATS",
-                            "icon": "https://cdn.simpleicons.org/natsdotio/27AAE1"
-                        }
-                    ]
-                },
-                {
-                    "category": "AI & LLM",
-                    "summary": "Model serving and cost efficiency",
-                    "icon": "fa-solid fa-robot",
-                    "tags": [
-                        {
-                            "name": "MCP",
-                            "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000"
-                        },
-                        {
-                            "name": "Prompt",
-                            "icon": "fa-solid fa-code"
-                        },
-                        {
-                            "name": "Prefill / KV Cache",
-                            "icon": "fa-solid fa-memory"
-                        }
+                        { "name": "Go", "icon": "https://cdn.simpleicons.org/go/00ADD8" },
+                        { "name": "gRPC & ConnectRPC", "icon": "https://cdn.simpleicons.org/google/4285F4" },
+                        { "name": "NATS", "icon": "https://cdn.simpleicons.org/natsdotio/27AAE1" }
                     ]
                 }
             ],
             "toolsDescription": "Preferred daily toolchain",
             "tools": [
-                {
-                    "name": "JetBrains IDEs",
-                    "icon": "https://cdn.simpleicons.org/jetbrains/000000"
-                },
-                {
-                    "name": "Neovim",
-                    "icon": "https://cdn.simpleicons.org/neovim/57A143"
-                },
-                {
-                    "name": "ChatGPT / Codex",
-                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg"
-                },
-                {
-                    "name": "Claude / Claude Code",
-                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg"
-                },
-                {
-                    "name": "Gemini / Gemini CLI",
-                    "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg"
-                },
-                {
-                    "name": "Git / GitHub Actions",
-                    "icon": "https://cdn.simpleicons.org/github/F05032"
-                },
-                {
-                    "name": "Docker / Docker Compose",
-                    "icon": "https://cdn.simpleicons.org/docker/2496ED"
-                },
-                {
-                    "name": "kubectl / Aptakube",
-                    "icon": "https://cdn.simpleicons.org/kubernetes/326CE5"
-                },
-                {
-                    "name": "Helm",
-                    "icon": "https://cdn.simpleicons.org/helm/0F1689"
-                },
-                {
-                    "name": "Postman",
-                    "icon": "https://cdn.simpleicons.org/postman/FF6C37"
-                }
+                { "name": "JetBrains IDEs", "icon": "https://cdn.simpleicons.org/jetbrains/000000" },
+                { "name": "Neovim", "icon": "https://cdn.simpleicons.org/neovim/57A143" },
+                { "name": "ChatGPT / Codex", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" },
+                { "name": "Claude / Claude Code", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" },
+                { "name": "Gemini / Gemini CLI", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg" },
+                { "name": "Git / GitHub Actions", "icon": "https://cdn.simpleicons.org/github/F05032" },
+                { "name": "Docker / Docker Compose", "icon": "https://cdn.simpleicons.org/docker/2496ED" },
+                { "name": "kubectl / Aptakube", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
+                { "name": "Helm", "icon": "https://cdn.simpleicons.org/helm/0F1689" },
+                { "name": "Postman", "icon": "https://cdn.simpleicons.org/postman/FF6C37" }
             ]
         },
         "workExperience": [
@@ -480,63 +282,14 @@
                 "company": "NoEdgeAI",
                 "role": "Backend Engineer",
                 "period": "2025.06 - Present",
-                "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-                "tags": [
-                    {
-                        "name": "gRPC / ConnectRPC",
-                        "icon": "fa-solid fa-plug"
-                    },
-                    {
-                        "name": "NATS",
-                        "icon": "fa-solid fa-diagram-project"
-                    },
-                    {
-                        "name": "PostgreSQL",
-                        "icon": "fa-solid fa-database"
-                    }
-                ],
                 "items": [
                     {
                         "icon": "fa-solid fa-network-wired",
-                        "iconColor": "text-blue-500",
-                        "text": "Participated in the backend architecture evolution of a core document parsing platform, supporting <strong>10k+ DAU and 10M+ daily parses</strong> with high availability."
+                        "text": "Participated in backend evolution, supporting <strong>100k+ DAU and 10M+ daily parses</strong>."
                     },
                     {
                         "icon": "fa-solid fa-cogs",
-                        "iconColor": "text-blue-500",
-                        "text": "Led the construction of internal platforms, promoting <strong>Automation & Standardization</strong> of key processes, improving operational efficiency by <strong>2x+</strong>."
-                    }
-                ]
-            },
-            {
-                "company": "HarmonyCloud",
-                "role": "Backend Engineer",
-                "period": "2024.07 - 2025.04",
-                "periodClass": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-                "tags": [
-                    {
-                        "name": "Kubernetes",
-                        "icon": "fa-solid fa-cloud"
-                    },
-                    {
-                        "name": "Gin",
-                        "icon": "fa-solid fa-fire-flame-curved"
-                    },
-                    {
-                        "name": "Helm",
-                        "icon": "https://cdn.simpleicons.org/helm/0F1689"
-                    }
-                ],
-                "items": [
-                    {
-                        "icon": "fa-solid fa-cogs",
-                        "iconColor": "text-blue-500",
-                        "text": "Responsible for the <strong>Java to Go Refactoring</strong> and performance optimization of core PaaS services, reducing average response time by <strong>40%+</strong>."
-                    },
-                    {
-                        "icon": "fa-solid fa-users",
-                        "iconColor": "text-blue-500",
-                        "text": "Contributed to Multi-tenancy and Container Service modules, optimizing resource scheduling and system stability, significantly enhancing user experience."
+                        "text": "Led internal platform construction, improving operational efficiency by <strong>2x+</strong>."
                     }
                 ]
             }
@@ -546,126 +299,16 @@
                 "name": "Doc2X — Intelligent Document Parsing Platform",
                 "role": "Backend Engineer",
                 "period": "2025.06 - Present",
-                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-                "description": "Industry-leading parsing platform extracting content from PDFs to <strong>Markdown / LaTeX / Word</strong>, covering academic papers, contracts, charts, etc., with <strong>10M+ daily parses</strong>.",
-                "techStack": "Go, gRPC / ConnectRPC, PostgreSQL, Redis, NATS, Kubernetes, OpenTelemetry",
+                "description": "Leading parsing platform with <strong>10M+ daily parses</strong>, supporting PDF to Markdown/LaTeX conversion.",
+                "techStack": "Go, gRPC, PostgreSQL, Redis, NATS, K8s, OpenTelemetry",
                 "highlights": [
                     {
-                        "title": "Multi-Channel Notification System",
-                        "text": "Designed an extensible notification framework using <strong>Strategy + Factory Patterns</strong>, reducing new channel integration time from <strong>2 days to 0.5 days</strong>.",
-                        "icon": "fa-solid fa-bell",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "Consumer Service Iteration",
-                        "text": "Built event chains based on <strong>NATS</strong> to handle core processes like <strong>Quota Deduction, Rate Limiting, Idempotency Check, and Cache Updates</strong>.",
-                        "icon": "fa-solid fa-network-wired",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "LLM Translation",
-                        "text": "Optimized request structure with <strong>Prefill</strong>, improving <strong>KV Cache Hit Rate</strong>; reduced <strong>Token Consumption by 20%–40%</strong>, significantly lowering inference costs.",
-                        "icon": "fa-solid fa-language",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "Ops Dashboard Iteration",
-                        "text": "Utilized <strong>Vibe Coding</strong> for full-stack development of Announcement Management, Invoice/Refund Approval, and Order Query, promoting <strong>Digitalization</strong> of ops flows.",
-                        "icon": "fa-solid fa-users",
-                        "iconColor": "text-blue-500"
-                    }
-                ]
-            },
-            {
-                "name": "Embrace Cloud Native — Kubernetes PaaS Platform",
-                "role": "Backend Engineer",
-                "period": "2024.07 - 2025.05",
-                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-                "description": "Enterprise-grade PaaS based on <strong>Kubernetes</strong>, helping enterprises reduce O&M costs and improve delivery efficiency.",
-                "techStack": "Go, Gin, Kubernetes, Kubebuilder, MySQL",
-                "highlights": [
-                    {
-                        "title": "Resource Management Refactor",
-                        "text": "Completed <strong>Java to Go Refactoring</strong>, introduced <strong>Native RBAC</strong> based on <strong>K8S API Standards</strong>; fixed <strong>StatefulSet Constraints</strong> causing deadlock, stabilizing scaling/rollouts.",
-                        "icon": "fa-solid fa-arrows-rotate",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "Performance Optimization",
-                        "text": "Introduced <strong>MapReduce</strong> and <strong>Configurable Coroutine Pools</strong> to parallelize serial calls, significantly reducing latency and creating reusable tools.",
-                        "icon": "fa-solid fa-users",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "Architecture Upgrade",
-                        "text": "Switched from imperative interfaces to <strong>K8S Declarative Architecture</strong>, reducing core operation latency from <strong>20s to 300ms</strong>.",
-                        "icon": "fa-solid fa-cubes",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "Compliance Check",
-                        "text": "Implemented scheduled inspections via <strong>K8S CronJob</strong> covering <strong>File + Command</strong> checks, ensuring <strong>100% Compliance</strong> of managed components.",
-                        "icon": "fa-solid fa-check-circle",
-                        "iconColor": "text-blue-500"
+                        "title": "LLM Optimization",
+                        "text": "Reduced <strong>Token consumption by 20%–40%</strong> via Prefill optimization and KV Cache hit rate improvement.",
+                        "icon": "fa-solid fa-language"
                     }
                 ]
             }
-        ],
-        "openSource": {
-            "profile": {
-                "title": "GitHub Profile",
-                "link": "https://github.com/HSn0918",
-                "description": "Go Engineer | K8s Enthusiast | 42 Repositories | 47 Stars",
-                "icon": "fa-brands fa-github"
-            },
-            "featured": [
-                {
-                    "title": "Kubernetes-mcp",
-                    "link": "https://github.com/HSn0918/kubernetes-mcp",
-                    "repo": "HSn0918/kubernetes-mcp",
-                    "description": "Go-based Model Context Protocol (MCP) server for interacting with Kubernetes clusters, providing efficient cluster management and resource scheduling capabilities.",
-                    "image": "kubernetes-mcp.jpg",
-                    "itemIcon": "fa-solid fa-cloud",
-                    "itemIconColor": "text-blue-500"
-                },
-                {
-                    "title": "TinyRedis",
-                    "link": "https://github.com/MiniApplication/tinyredis",
-                    "repo": "MiniApplication/tinyredis",
-                    "description": "TinyRedis is a lightweight high-performance Redis server implemented using Go's native net package, supporting basic Redis data structures efficiently.",
-                    "image": "tinyredis.png",
-                    "icon": "fa-solid fa-cube",
-                    "iconColor": "text-red-500",
-                    "itemIcon": "fa-solid fa-cubes",
-                    "itemIconColor": "text-yellow-500"
-                }
-            ],
-            "others": [
-                {
-                    "title": "Learning-Notes",
-                    "link": "https://github.com/HSn0918/Learning-Notes",
-                    "repo": "HSn0918/Learning-Notes",
-                    "description": "Learning notes and technical summaries.",
-                    "icon": "fa-solid fa-book",
-                    "iconColor": "text-green-500"
-                },
-                {
-                    "title": "big-market-go",
-                    "link": "https://github.com/HSn0918/big-market-go",
-                    "repo": "HSn0918/big-market-go",
-                    "description": "Big marketing system implemented in Go.",
-                    "icon": "fa-solid fa-shopping-cart",
-                    "iconColor": "text-indigo-500"
-                },
-                {
-                    "title": "controller-demo",
-                    "link": "https://github.com/HSn0918/controller-demo",
-                    "repo": "HSn0918/controller-demo",
-                    "description": "Kubernetes controller example.",
-                    "icon": "fa-solid fa-dharmachakra",
-                    "iconColor": "text-blue-500"
-                }
-            ]
-        }
+        ]
     }
 }
