@@ -32,13 +32,13 @@
 
   \datedsubsection{\textbf{智识无垠}，后端开发工程师}{2025.06 -- 至今}
   \begin{itemize}[leftmargin=*, itemsep=0.5ex]
-    \item 参与核心文档解析平台的后端架构演进，支撑 \textbf{万级 DAU、千万级日解析量}，服务可用性稳定。
-    \item 主导内部平台建设，推动关键流程 \textbf{自动化与标准化}，运营效率提升 \textbf{2 倍以上}。
+    \item 参与核心文档解析平台的后端架构演进，支撑 \textbf{十万级 DAU、千万级日解析量}，服务可用性稳定。
+    \item 负责内部平台建设，推动关键流程 \textbf{自动化与标准化}，运营效率提升 \textbf{2 倍以上}。
   \end{itemize}
 
   \datedsubsection{\textbf{谐云}，后端开发工程师}{2024.07 -- 2025.04}
   \begin{itemize}[leftmargin=*, itemsep=0.5ex]
-    \item 负责 PaaS 平台核心服务的 \textbf{Java→Go 重构} 与性能优化，使服务平均响应时间降低 \textbf{40\%+}。
+    \item 负责 PaaS 平台容器服务的 \textbf{Java→Go 重构} 与性能优化，使服务平均响应时间降低 \textbf{40\%+}。
     \item 参与多租户、容器服务等模块建设，优化资源调度与系统稳定性，显著提升用户体验。
   \end{itemize}
 }
@@ -56,24 +56,23 @@
   \item \textbf{技术栈}：\textbf{Go}、\textbf{gRPC / ConnectRPC}、\textbf{PostgreSQL}、\textbf{Redis}、\textbf{NATS}、\textbf{Kubernetes}、\textbf{OpenTelemetry}
   \item \textbf{核心贡献}：
   \begin{itemize}[leftmargin=2em, itemsep=0.4ex]
-    \item \textbf{多渠道通知系统}：基于 \textbf{策略模式 + 工厂模式} 设计\textbf{可扩展通知框架}，新渠道接入时间从 \textbf{2 天缩短至 0.5 天}。
-    \item \textbf{统一消费者服务}：基于 \textbf{NATS} 构建事件链路，实现 \textbf{额度扣减、限流、幂等校验、缓存更新} 等核心处理流程。
-    \item \textbf{大模型翻译}：基于 \textbf{Prefill 优化} 请求结构，提升 \textbf{整体 KV Cache 命中率}；整体 \textbf{Token 消耗降低 20\%～40\%}，显著减少推理成本。
-    \item \textbf{管理后台开发}：使用 \textbf{Vibe Coding} 完成公告管理、发票/退款审批、订单查询等功能全栈开发，推进运营流程\textbf{数字化}，显著提升内部效率。
+    \item \textbf{核心服务高可用}：构建\textbf{分级限流与闲时排队}体系，确保超额流量下的系统稳定；针对解析/导出环节实施\textbf{缓存策略}，保障高并发场景下的服务可用性。
+    \item \textbf{多渠道通知}：基于\textbf{策略+工厂模式}抽象通知中台，统一接入短信、邮件及飞书/钉钉等主流平台，实现业务解耦与高度可扩展性。
+    \item     \textbf{大模型翻译}：为了翻译服务\textbf{整体 KV Cache 命中率}，基于 \textbf{Prefill 优化} 请求结构，整体 \textbf{Token 消耗降低 20\%～40\%}。
+    \item     \textbf{管理后台开发}：运用 \textbf{Vibe Coding} 模式主导运营中台数字化建设，独立完成公告管理、审批流（发票/退款）、订单分析及兑换码等核心模块的全栈开发，显著提升了内部运营效率与业务支撑能力。
   \end{itemize}
 \end{itemize}
 
 % -------- 观云台 --------
-\datedsubsection{\textbf{观云台 — Kubernetes PaaS 平台}，后端开发}{2024.07 -- 2025.05}
+\datedsubsection{\textbf{观云台 — Kubernetes PaaS 平台}，后端开发}{2024.07 -- 2025.04}
 \begin{itemize}[leftmargin=*, itemsep=0.6ex]
   \item \textbf{项目简介}：基于 \textbf{Kubernetes} 的企业级 PaaS，帮助企业降低运维成本并提升业务交付效率。
   \item \textbf{技术栈}：\textbf{Go}、\textbf{Gin}、\textbf{Kubernetes}、\textbf{Kubebuilder}、\textbf{MySQL}
   \item \textbf{核心贡献}：
   \begin{itemize}[leftmargin=2em, itemsep=0.4ex]
-    \item \textbf{Kubernetes 资源管理重构}：完成 \textbf{Java→Go 重构}，基于 \textbf{Kubernetes API 规范} 引入\textbf{原生 RBAC 鉴权}；修复 \textbf{StatefulSet 字段约束}导致的部署死锁问题，显著提升扩容 / 发布稳定性。
-    \item \textbf{多租户备份性能优化}：引入 \textbf{MapReduce 思想} 与 \textbf{可配置协程池}，将串行调用改为 \textbf{分片并行}，显著减少任务总时长并沉淀为通用工具。
-    \item \textbf{容器服务（网关）重构}：将命令式接口切换为 \textbf{Kubernetes 声明式架构}，核心操作延迟从 \textbf{20 秒 → 300 毫秒}，显著提升用户体验。
-    \item \textbf{基线合规巡检}：基于 \textbf{K8S CronJob} 实现定时巡检，覆盖 \textbf{文件 + 命令} 两类检查，确保纳管组件版本 \textbf{100\% 合规}。
+\item \textbf{资源管理重构}：主导 Java 至 Go 的核心组件重构，深度整合 \textbf{K8s 原生 RBAC 鉴权规范}；修复 StatefulSet 字段约束导致的更新死锁问题，确保大规模集群发布与扩缩容的稳定性。
+\item \textbf{网关架构演进}：推动容器网关由\textbf{命令式向声明式架构}转型，利用 Controller Reconcile机制}将核心操作响应由 \textbf{20s →300ms}。
+\item \textbf{自动化合规巡检}：基于 CronJob + 自定义检测引擎 构建基线审计模块，实现全链路文件与配置一致性检查，保障纳管组件合规率达 \textbf{100\%}。
   \end{itemize}
 \end{itemize}
 
