@@ -356,7 +356,6 @@ const App = () => {
                 <SkillsSection
                   skills={data?.skills}
                   labels={{
-                    tag: labels["skill-tags"],
                     tools: labels["skill-tools"],
                     toolsBadge: labels["skill-tools-badge"]
                   }}

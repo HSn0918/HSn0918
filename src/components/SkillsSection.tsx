@@ -4,7 +4,6 @@ import { isUrl } from "../utils";
 type SkillsSectionProps = {
   skills?: Skills;
   labels: {
-    tag: string;
     tools: string;
     toolsBadge: string;
   };
@@ -38,31 +37,31 @@ const SkillsSection = ({ skills, labels }: SkillsSectionProps) => {
                 )}
               </div>
             </div>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              {labels.tag}
-            </span>
           </div>
           <div className="flex flex-wrap gap-2">
             {(skill.tags || []).map((rawTag, tagIndex) => {
               const tag = typeof rawTag === "string" ? { name: rawTag } : rawTag;
+              const tagName = (tag.name || "").trim();
+              if (!tagName) return null;
               const icon = tag.icon || "fa-solid fa-hashtag";
               const iconIsUrl = isUrl(icon);
               return (
                 <span
-                  key={`${tag.name}-${tagIndex}`}
+                  key={`${tagName}-${tagIndex}`}
                   className="tag-pill inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground gap-1 hover:bg-primary/10 hover:text-primary transition-colors"
                 >
                   {iconIsUrl ? (
                     <img
                       src={icon}
-                      alt={tag.name}
+                      alt=""
+                      aria-hidden="true"
                       className="w-4 h-4 rounded-[3px] bg-white/70 p-[1px]"
                       loading="lazy"
                     />
                   ) : (
                     <i className={`${icon} text-primary/80 text-sm`}></i>
                   )}
-                  <span>{tag.name}</span>
+                  <span>{tagName}</span>
                 </span>
               );
             })}
@@ -97,24 +96,27 @@ const SkillsSection = ({ skills, labels }: SkillsSectionProps) => {
           </div>
           <div className="flex flex-wrap gap-2">
             {tools.map((tool) => {
+              const toolName = tool.name.trim();
+              if (!toolName) return null;
               const icon = tool.icon || "fa-solid fa-screwdriver-wrench";
               const iconIsUrl = isUrl(icon);
               return (
                 <span
-                  key={tool.name}
+                  key={toolName}
                   className="tag-pill inline-flex items-center rounded-full border border-border bg-primary/5 px-3 py-1.5 text-xs font-semibold text-foreground gap-2 hover:bg-primary/10 hover:text-primary transition-colors"
                 >
                   {iconIsUrl ? (
                     <img
                       src={icon}
-                      alt={tool.name}
+                      alt=""
+                      aria-hidden="true"
                       className="w-4 h-4 rounded-[3px] bg-white/70 p-[1px]"
                       loading="lazy"
                     />
                   ) : (
                     <i className={`${icon} text-primary/80 text-sm`}></i>
                   )}
-                  {tool.name}
+                  {toolName}
                 </span>
               );
             })}

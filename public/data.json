@@ -35,7 +35,7 @@
                     "icon": "fa-solid fa-server",
                     "tags": [
                         { "name": "Go", "icon": "https://cdn.simpleicons.org/go/00ADD8" },
-                        { "name": "gRPC & ConnectRPC ", "icon": "https://cdn.simpleicons.org/google/4285F4" },
+                        { "name": "gRPC & ConnectRPC", "icon": "https://cdn.simpleicons.org/google/4285F4" },
                         { "name": "Gin", "icon": "https://cdn.simpleicons.org/gin/008ECF" }
                     ]
                 },
