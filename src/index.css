@@ -470,26 +470,36 @@
 
         /* --- Hacker Mode Easter Egg --- */
         .hacker-mode {
-            --background: 120 20% 4%;
-            --foreground: 120 100% 60%;
-            --card: 120 20% 6%;
-            --card-foreground: 120 100% 60%;
-            --popover: 120 20% 6%;
-            --popover-foreground: 120 100% 60%;
-            --primary: 120 100% 60%;
-            --primary-foreground: 0 0% 0%;
-            --secondary: 120 30% 10%;
-            --secondary-foreground: 120 100% 60%;
-            --muted: 120 30% 10%;
-            --muted-foreground: 120 60% 30%;
-            --accent: 120 100% 60%;
-            --accent-foreground: 0 0% 0%;
-            --destructive: 0 100% 50%;
+            --background: 120 20% 5%;
+            --foreground: 120 80% 60%;
+            --card: 120 20% 7%;
+            --card-foreground: 120 80% 60%;
+            --popover: 120 20% 7%;
+            --popover-foreground: 120 80% 60%;
+            --primary: 120 80% 60%;
+            --primary-foreground: 120 20% 5%;
+            --secondary: 120 30% 12%;
+            --secondary-foreground: 120 80% 60%;
+            --muted: 120 30% 12%;
+            --muted-foreground: 120 50% 40%;
+            --accent: 120 80% 20%;
+            --accent-foreground: 120 80% 60%;
+            --destructive: 0 80% 50%;
             --destructive-foreground: 0 0% 0%;
-            --border: 120 60% 20%;
-            --input: 120 60% 20%;
-            --ring: 120 100% 60%;
+            --border: 120 50% 20%;
+            --input: 120 50% 20%;
+            --ring: 120 80% 60%;
             --radius: 0;
+        }
+
+        /* Smooth theme transition */
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        /* Transition specific variables where possible by targeting elements */
+        .surface, .tag-pill, .nav-link, nav, button, a {
+            transition: all 0.5s ease;
         }
 
         .hacker-mode body,
@@ -499,14 +509,26 @@
         }
 
         .hacker-mode body.page-shell {
-            background: #020202;
+            background: #050505;
             background-image: 
-                linear-gradient(rgba(0, 255, 70, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 70, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
+                linear-gradient(rgba(0, 255, 70, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 70, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
         
-        .hacker-mode body.page-shell::before, 
+        .hacker-mode body.page-shell::before {
+            /* CRT Scanline Effect */
+            content: "";
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        
         .hacker-mode body.page-shell::after {
             display: none;
         }
@@ -515,16 +537,22 @@
             background: none !important;
             -webkit-text-fill-color: initial !important;
             color: hsl(var(--primary)) !important;
-            text-shadow: 0 0 8px hsl(var(--primary) / 0.8);
+            text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
         }
 
+        .hacker-mode .profile-orb img {
+             filter: grayscale(100%) contrast(1.2) brightness(0.9) sepia(1) hue-rotate(50deg) saturate(3);
+        }
+        
         .hacker-mode .profile-orb, 
-        .hacker-mode .profile-orb::before, 
-        .hacker-mode img {
-             filter: grayscale(100%) contrast(1.2) brightness(0.8) sepia(1) hue-rotate(50deg) saturate(3);
+        .hacker-mode .avatar-frame {
              border-radius: 0 !important;
+             transition: border-radius 0.5s ease;
         }
         
         .hacker-mode * {
-            border-radius: 0 !important;
+            /* Remove the harsh wildcard for border-radius */
+            /* border-radius: 0 !important; */
         }
+        
+        /* Specific radius overrides handled by var(--radius) : 0 */
