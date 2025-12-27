@@ -1,6 +1,8 @@
 /*noinspection CssUnknownAtRule*/
 @tailwind base;
+/*noinspection CssUnknownAtRule*/
 @tailwind components;
+/*noinspection CssUnknownAtRule*/
 @tailwind utilities;
 
         /* CSS Variables for Shadcn Theme (Zinc/Slate) */
@@ -163,6 +165,11 @@
             opacity: 1;
         }
 
+        .nav-link.is-active::after {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+
         /* Fix FontAwesome width consistency */
         .icon-fixed {
             width: 1.25rem;
@@ -225,52 +232,7 @@
             min-width: 0;
         }
 
-        .sidebar {
-            position: sticky;
-            top: 1.5rem;
-            align-self: start;
-        }
 
-        .sidebar-title {
-            font-size: 0.7rem;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: hsl(var(--muted-foreground));
-        }
-
-        .sidebar-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: hsl(var(--muted-foreground));
-            transition: color 0.2s ease, transform 0.2s ease;
-        }
-
-        .sidebar-link:hover {
-            color: hsl(var(--foreground));
-            transform: translateX(2px);
-        }
-
-        .sidebar-link::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 999px;
-            background: hsl(var(--primary));
-            opacity: 0.5;
-        }
-
-        @media (max-width: 1024px) {
-            .layout-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                position: static;
-                order: -1;
-            }
-        }
 
         #profile-section {
             position: relative;
@@ -384,4 +346,60 @@
         .dark footer {
             background-image: linear-gradient(180deg, transparent, hsl(220 22% 12% / 0.95));
         }
-    
+
+        .sidebar {
+            position: sticky;
+            top: 1.5rem;
+            align-self: start;
+        }
+
+        .sidebar-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: hsl(var(--muted-foreground));
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .sidebar-link:hover {
+            color: hsl(var(--foreground));
+            transform: translateX(2px);
+        }
+
+        .sidebar-link.is-active {
+            color: hsl(var(--foreground));
+            transform: translateX(2px);
+        }
+
+        .sidebar-link::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: hsl(var(--primary));
+            opacity: 0.5;
+        }
+
+        .sidebar-link.is-active::before {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: sticky;
+                top: 1rem;
+                order: -1;
+            }
+        }
