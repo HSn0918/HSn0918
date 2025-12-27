@@ -11,6 +11,8 @@ import type { LanguageData, ResumeData } from "./types/resume";
 import { getGitHubStars } from "./utils";
 
 type Lang = "zh" | "en";
+const sectionIds = ["education", "skills", "work", "projects", "opensource"] as const;
+type SectionId = (typeof sectionIds)[number];
 
 type I18nLabels = Record<string, string>;
 
@@ -74,6 +76,7 @@ const App = () => {
   });
   const [mobileOpen, setMobileOpen] = useState(false);
   const [stars, setStars] = useState<StarsMap>({});
+  const [activeSectionId, setActiveSectionId] = useState<SectionId>(sectionIds[0]);
   const avatarRef = useRef<HTMLImageElement>(null);
 
   const labels = useMemo(() => i18n[lang] || i18n.zh, [lang]);
@@ -144,6 +147,46 @@ const App = () => {
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, [data, lang]);
+
+  useEffect(() => {
+    let rafId = 0;
+
+    const updateActive = () => {
+      const offset = 120;
+      let nextActive: SectionId = sectionIds[0];
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id);
+        if (!element) continue;
+        const top = element.getBoundingClientRect().top;
+        if (top - offset <= 0) {
+          nextActive = id;
+        }
+      }
+
+      setActiveSectionId((prev) => (prev === nextActive ? prev : nextActive));
+    };
+
+    const schedule = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        updateActive();
+      });
+    };
+
+    updateActive();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const konamiCode = [
@@ -252,6 +295,15 @@ const App = () => {
   ];
 
   const languageLabel = lang === "zh" ? "EN" : "中";
+  const handleNavigate = (id: string) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+    try {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch {
+      target.scrollIntoView(true);
+    }
+  };
 
   return (
     <>
@@ -265,16 +317,28 @@ const App = () => {
           </a>
 
           <div className="hidden md:flex items-center gap-6 text-sm font-medium">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className="nav-link transition-colors hover:text-foreground/80 text-foreground/60 hover:text-primary flex items-center gap-2"
-              >
-                <i className={`fa-solid ${item.icon} text-xs`}></i>
-                <span>{item.label}</span>
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = item.id === activeSectionId;
+              const className = [
+                "nav-link transition-colors hover:text-foreground/80 hover:text-primary flex items-center gap-2",
+                isActive ? "is-active text-foreground" : "text-foreground/60"
+              ].join(" ");
+
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={className}
+                  onClick={() => {
+                    handleNavigate(item.id);
+                  }}
+                  aria-current={isActive ? "location" : undefined}
+                >
+                  <i className={`fa-solid ${item.icon} text-xs`}></i>
+                  <span>{item.label}</span>
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-4">
@@ -311,7 +375,10 @@ const App = () => {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  handleNavigate(item.id);
+                  setMobileOpen(false);
+                }}
                 className="nav-link block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
               >
                 <i className={`fa-solid ${item.icon} mr-2 w-4 text-center`}></i>
@@ -420,6 +487,8 @@ const App = () => {
             <Sidebar
               profile={data?.profile}
               skills={data?.skills}
+              onNavigate={handleNavigate}
+              activeId={activeSectionId}
               labels={{
                 onpage: labels["sidebar-onpage"],
                 focus: labels["sidebar-focus"],

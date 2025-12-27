@@ -13,9 +13,11 @@ type SidebarProps = {
     projects: string;
     opensource: string;
   };
+  onNavigate?: (id: string) => void;
+  activeId?: string;
 };
 
-const Sidebar = ({ profile, skills, labels }: SidebarProps) => {
+const Sidebar = ({ profile, skills, labels, onNavigate, activeId }: SidebarProps) => {
   if (!profile) return null;
 
   const navItems = [
@@ -31,12 +33,23 @@ const Sidebar = ({ profile, skills, labels }: SidebarProps) => {
       <div className="space-y-3">
         <p className="sidebar-title">{labels.onpage}</p>
         <div className="space-y-2">
-          {navItems.map((item) => (
-            <a key={item.id} href={`#${item.id}`} className="sidebar-link">
-              <i className={`fa-solid ${item.icon} text-xs text-primary/70`}></i>
-              <span>{item.label}</span>
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const isActive = item.id === activeId;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`sidebar-link ${isActive ? "is-active" : ""}`}
+                onClick={() => {
+                  onNavigate?.(item.id);
+                }}
+                aria-current={isActive ? "location" : undefined}
+              >
+                <i className={`fa-solid ${item.icon} text-xs text-primary/70`}></i>
+                <span>{item.label}</span>
+              </a>
+            );
+          })}
         </div>
       </div>
       <div className="space-y-3">
