@@ -103,6 +103,17 @@ const App = () => {
   const data: LanguageData | undefined = allData?.[lang];
 
   useEffect(() => {
+    // Easter Egg: Console Message
+    console.log(
+      "%cHello there! 👋\n%cLooking for the source code? Check it out here: https://github.com/HSn0918",
+      "font-size: 24px; font-weight: bold; color: #ea580c; font-family: 'Courier New', monospace;",
+      "font-size: 14px; color: #666; font-family: 'Courier New', monospace;"
+    );
+    console.log(
+      "%cTip: Try clicking the terminal icon in the profile section...",
+      "font-size: 12px; color: #888; font-style: italic;"
+    );
+
     let active = true;
     fetch("/data.json")
       .then((res) => res.json())

@@ -94,7 +94,11 @@ const ProfileSection = ({ profile, avatarRef }: ProfileSectionProps) => {
             ></i>
           </h1>
           <p className="hero-subtitle text-xl text-muted-foreground mt-2 flex items-center justify-center md:justify-start gap-2 h-8">
-            <i className="fa-solid fa-terminal text-sm"></i>
+            <i
+              className="fa-solid fa-terminal text-sm cursor-pointer hover:text-primary transition-colors duration-300"
+              title="System Access"
+              onClick={() => document.documentElement.classList.toggle("hacker-mode")}
+            ></i>
             <Typewriter text={profile.title} />
           </p>
         </div>

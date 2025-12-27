@@ -467,3 +467,64 @@
              /* Subtle pop */
              transition: transform 0.3s ease;
         }
+
+        /* --- Hacker Mode Easter Egg --- */
+        .hacker-mode {
+            --background: 120 20% 4%;
+            --foreground: 120 100% 60%;
+            --card: 120 20% 6%;
+            --card-foreground: 120 100% 60%;
+            --popover: 120 20% 6%;
+            --popover-foreground: 120 100% 60%;
+            --primary: 120 100% 60%;
+            --primary-foreground: 0 0% 0%;
+            --secondary: 120 30% 10%;
+            --secondary-foreground: 120 100% 60%;
+            --muted: 120 30% 10%;
+            --muted-foreground: 120 60% 30%;
+            --accent: 120 100% 60%;
+            --accent-foreground: 0 0% 0%;
+            --destructive: 0 100% 50%;
+            --destructive-foreground: 0 0% 0%;
+            --border: 120 60% 20%;
+            --input: 120 60% 20%;
+            --ring: 120 100% 60%;
+            --radius: 0;
+        }
+
+        .hacker-mode body,
+        .hacker-mode h1, .hacker-mode h2, .hacker-mode h3, .hacker-mode h4, .hacker-mode p, .hacker-mode span, .hacker-mode a {
+            font-family: "Courier New", Courier, monospace !important;
+            letter-spacing: -0.02em;
+        }
+
+        .hacker-mode body.page-shell {
+            background: #020202;
+            background-image: 
+                linear-gradient(rgba(0, 255, 70, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 70, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .hacker-mode body.page-shell::before, 
+        .hacker-mode body.page-shell::after {
+            display: none;
+        }
+
+        .hacker-mode .animate-gradient {
+            background: none !important;
+            -webkit-text-fill-color: initial !important;
+            color: hsl(var(--primary)) !important;
+            text-shadow: 0 0 8px hsl(var(--primary) / 0.8);
+        }
+
+        .hacker-mode .profile-orb, 
+        .hacker-mode .profile-orb::before, 
+        .hacker-mode img {
+             filter: grayscale(100%) contrast(1.2) brightness(0.8) sepia(1) hue-rotate(50deg) saturate(3);
+             border-radius: 0 !important;
+        }
+        
+        .hacker-mode * {
+            border-radius: 0 !important;
+        }
