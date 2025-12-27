@@ -1,25 +1,79 @@
 {
-    "zh": {
+    "common": {
         "profile": {
-            "name": "HSn",
-            "title": "后端开发工程师 | Go Developer",
             "avatar": "touxiang.jpg",
             "contacts": [
                 {
                     "icon": "fa-solid fa-envelope",
-                    "text": "hsn.zj@foxmail.com",
                     "link": "mailto:hsn.zj@foxmail.com"
                 },
                 {
                     "icon": "fa-solid fa-globe",
-                    "text": "resume.huangsn.dev",
                     "link": "https://resume.huangsn.dev"
                 },
                 {
                     "icon": "fa-brands fa-github",
-                    "text": "github.com/HSn0918",
                     "link": "https://github.com/HSn0918"
                 }
+            ]
+        },
+        "skills": {
+            "tools": [
+                { "icon": "https://cdn.simpleicons.org/jetbrains/000000" },
+                { "icon": "https://cdn.simpleicons.org/neovim/57A143" },
+                { "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" },
+                { "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" },
+                { "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg" },
+                { "icon": "https://cdn.simpleicons.org/github/F05032" },
+                { "icon": "https://cdn.simpleicons.org/docker/2496ED" },
+                { "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
+                { "icon": "https://cdn.simpleicons.org/helm/0F1689" },
+                { "icon": "https://cdn.simpleicons.org/postman/FF6C37" }
+            ]
+        },
+        "openSource": {
+            "profile": {
+                "link": "https://github.com/HSn0918",
+                "icon": "fa-brands fa-github"
+            },
+            "featured": [
+                {
+                    "link": "https://github.com/HSn0918/kubernetes-mcp",
+                    "repo": "HSn0918/kubernetes-mcp",
+                    "itemIcon": "fa-solid fa-cloud",
+                    "itemIconColor": "text-blue-500"
+                },
+                {
+                    "link": "https://github.com/MiniApplication/tinyredis",
+                    "repo": "MiniApplication/tinyredis",
+                    "itemIcon": "fa-solid fa-cubes",
+                    "itemIconColor": "text-yellow-500"
+                }
+            ],
+            "others": [
+                {
+                    "link": "https://github.com/HSn0918/Learning-Notes",
+                    "repo": "HSn0918/Learning-Notes",
+                    "icon": "fa-solid fa-book",
+                    "iconColor": "text-green-500"
+                },
+                {
+                    "link": "https://github.com/HSn0918/big-market-go",
+                    "repo": "HSn0918/big-market-go",
+                    "icon": "fa-solid fa-shopping-cart",
+                    "iconColor": "text-indigo-500"
+                }
+            ]
+        }
+    },
+    "zh": {
+        "profile": {
+            "name": "HSn",
+            "title": "后端开发工程师 | Go Developer",
+            "contacts": [
+                { "text": "hsn.zj@foxmail.com" },
+                { "text": "resume.huangsn.dev" },
+                { "text": "github.com/HSn0918" }
             ]
         },
         "education": {
@@ -73,16 +127,16 @@
             ],
             "toolsDescription": "日常偏好的工具链",
             "tools": [
-                { "name": "jetbrains", "icon": "https://cdn.simpleicons.org/jetbrains/000000" },
-                { "name": "Neovim", "icon": "https://cdn.simpleicons.org/neovim/57A143" },
-                { "name": "ChatGPT / Codex", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" },
-                { "name": "Claude / Claude Code", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" },
-                { "name": "Gemini / Gemini Cli", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg" },
-                { "name": "Git / GitHub Actions", "icon": "https://cdn.simpleicons.org/github/F05032" },
-                { "name": "Docker / Docker Compose", "icon": "https://cdn.simpleicons.org/docker/2496ED" },
-                { "name": "kubectl / Aptakube", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
-                { "name": "Helm", "icon": "https://cdn.simpleicons.org/helm/0F1689" },
-                { "name": "Postman", "icon": "https://cdn.simpleicons.org/postman/FF6C37" }
+                { "name": "jetbrains" },
+                { "name": "Neovim" },
+                { "name": "ChatGPT / Codex" },
+                { "name": "Claude / Claude Code" },
+                { "name": "Gemini / Gemini Cli" },
+                { "name": "Git / GitHub Actions" },
+                { "name": "Docker / Docker Compose" },
+                { "name": "kubectl / Aptakube" },
+                { "name": "Helm" },
+                { "name": "Postman" }
             ]
         },
         "workExperience": [
@@ -190,46 +244,28 @@
         "openSource": {
             "profile": {
                 "title": "个人 GitHub",
-                "link": "https://github.com/HSn0918",
-                "description": "Go 工程师 | Kubernetes 爱好者 | 42个代码仓库 | 47个Star",
-                "icon": "fa-brands fa-github"
+                "description": "Go 工程师 | Kubernetes 爱好者 | 42个代码仓库 | 47个Star"
             },
             "featured": [
                 {
                     "title": "Kubernetes-mcp",
-                    "link": "https://github.com/HSn0918/kubernetes-mcp",
-                    "repo": "HSn0918/kubernetes-mcp",
                     "description": "基于 Go 实现的 Model Context Protocol (MCP) 服务器，用于与 K8s 集群交互，提供 AI 驱动的资源调度能力。",
-                    "image": "kubernetes-mcp.jpg",
-                    "itemIcon": "fa-solid fa-cloud",
-                    "itemIconColor": "text-blue-500"
+                    "image": "kubernetes-mcp.jpg"
                 },
                 {
                     "title": "TinyRedis",
-                    "link": "https://github.com/MiniApplication/tinyredis",
-                    "repo": "MiniApplication/tinyredis",
                     "description": "使用 Go 原生 net 包实现的轻量级高性能 Redis 服务端，高效支持各种基本数据类型。",
-                    "image": "tinyredis.png",
-                    "itemIcon": "fa-solid fa-cubes",
-                    "itemIconColor": "text-yellow-500"
+                    "image": "tinyredis.png"
                 }
             ],
             "others": [
                 {
                     "title": "Learning-Notes",
-                    "link": "https://github.com/HSn0918/Learning-Notes",
-                    "repo": "HSn0918/Learning-Notes",
-                    "description": "学习笔记与技术总结",
-                    "icon": "fa-solid fa-book",
-                    "iconColor": "text-green-500"
+                    "description": "学习笔记与技术总结"
                 },
                 {
                     "title": "big-market-go",
-                    "link": "https://github.com/HSn0918/big-market-go",
-                    "repo": "HSn0918/big-market-go",
-                    "description": "Go 实现的大营销系统",
-                    "icon": "fa-solid fa-shopping-cart",
-                    "iconColor": "text-indigo-500"
+                    "description": "Go 实现的大营销系统"
                 }
             ]
         }
@@ -238,11 +274,10 @@
         "profile": {
             "name": "HSn",
             "title": "Backend Engineer | Go Developer",
-            "avatar": "touxiang.jpg",
             "contacts": [
-                { "icon": "fa-solid fa-envelope", "text": "hsn.zj@foxmail.com", "link": "mailto:hsn.zj@foxmail.com" },
-                { "icon": "fa-solid fa-globe", "text": "resume.huangsn.dev", "link": "https://resume.huangsn.dev" },
-                { "icon": "fa-brands fa-github", "text": "github.com/HSn0918", "link": "https://github.com/HSn0918" }
+                { "text": "hsn.zj@foxmail.com" },
+                { "text": "resume.huangsn.dev" },
+                { "text": "github.com/HSn0918" }
             ]
         },
         "education": {
@@ -265,16 +300,16 @@
             ],
             "toolsDescription": "Preferred daily toolchain",
             "tools": [
-                { "name": "JetBrains IDEs", "icon": "https://cdn.simpleicons.org/jetbrains/000000" },
-                { "name": "Neovim", "icon": "https://cdn.simpleicons.org/neovim/57A143" },
-                { "name": "ChatGPT / Codex", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" },
-                { "name": "Claude / Claude Code", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" },
-                { "name": "Gemini / Gemini CLI", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg" },
-                { "name": "Git / GitHub Actions", "icon": "https://cdn.simpleicons.org/github/F05032" },
-                { "name": "Docker / Docker Compose", "icon": "https://cdn.simpleicons.org/docker/2496ED" },
-                { "name": "kubectl / Aptakube", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5" },
-                { "name": "Helm", "icon": "https://cdn.simpleicons.org/helm/0F1689" },
-                { "name": "Postman", "icon": "https://cdn.simpleicons.org/postman/FF6C37" }
+                { "name": "JetBrains IDEs" },
+                { "name": "Neovim" },
+                { "name": "ChatGPT / Codex" },
+                { "name": "Claude / Claude Code" },
+                { "name": "Gemini / Gemini CLI" },
+                { "name": "Git / GitHub Actions" },
+                { "name": "Docker / Docker Compose" },
+                { "name": "kubectl / Aptakube" },
+                { "name": "Helm" },
+                { "name": "Postman" }
             ]
         },
         "workExperience": [
@@ -309,6 +344,34 @@
                     }
                 ]
             }
-        ]
+        ],
+        "openSource": {
+            "profile": {
+                "title": "Personal GitHub",
+                "description": "Go Engineer | K8s Enthusiast | 42 repos | 47 stars"
+            },
+            "featured": [
+                {
+                    "title": "Kubernetes-mcp",
+                    "description": "Model Context Protocol server for K8s interaction with AI-driven resource scheduling.",
+                    "image": "kubernetes-mcp.jpg"
+                },
+                {
+                    "title": "TinyRedis",
+                    "description": "Lightweight high-performance Redis server implemented in Go.",
+                    "image": "tinyredis.png"
+                }
+            ],
+            "others": [
+                {
+                    "title": "Learning-Notes",
+                    "description": "Learning notes and technical summaries"
+                },
+                {
+                    "title": "big-market-go",
+                    "description": "Big marketing system implemented in Go"
+                }
+            ]
+        }
     }
 }

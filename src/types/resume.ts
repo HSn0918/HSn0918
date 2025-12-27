@@ -108,6 +108,7 @@ export type LanguageData = {
 };
 
 export type ResumeData = {
+  common?: any;
   zh: LanguageData;
   en: LanguageData;
 };

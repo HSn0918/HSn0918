@@ -428,3 +428,20 @@
         ::-webkit-scrollbar-thumb:hover {
             background: hsl(var(--muted-foreground) / 0.5);
         }
+
+        /* Typewriter Effect */
+        .typewriter-cursor::after {
+            content: "";
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: hsl(var(--primary));
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }

@@ -62,6 +62,26 @@ const getInitialLang = (): Lang => {
   return stored === "en" ? "en" : "zh";
 };
 
+const deepMerge = (target: any, source: any) => {
+  if (!source) return target;
+  const output = { ...target };
+  Object.keys(source).forEach((key) => {
+    if (source[key] && typeof source[key] === "object" && !Array.isArray(source[key])) {
+      output[key] = deepMerge(target[key] || {}, source[key]);
+    } else if (Array.isArray(source[key]) && Array.isArray(target[key])) {
+      output[key] = target[key].map((item: any, index: number) => {
+        if (typeof item === "object" && source[key][index]) {
+          return deepMerge(item, source[key][index]);
+        }
+        return item;
+      });
+    } else {
+      output[key] = source[key];
+    }
+  });
+  return output;
+};
+
 type StarsMap = Record<string, number | "N/A">;
 
 const App = () => {
@@ -88,6 +108,10 @@ const App = () => {
       .then((res) => res.json())
       .then((json: ResumeData) => {
         if (!active) return;
+        if (json.common) {
+          json.zh = deepMerge(json.zh, json.common);
+          json.en = deepMerge(json.en, json.common);
+        }
         setAllData(json);
       })
       .catch((error) => console.error("Error loading data:", error));

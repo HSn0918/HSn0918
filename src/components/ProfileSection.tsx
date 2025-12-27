@@ -1,9 +1,32 @@
-import type { RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
 import type { Profile } from "../types/resume";
 
 type ProfileSectionProps = {
   profile?: Profile;
   avatarRef: RefObject<HTMLImageElement>;
+};
+
+const Typewriter = ({ text }: { text: string }) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setDisplayedText("");
+    setIndex(0);
+  }, [text]);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex((prev) => prev + 1);
+      }, 70);
+      return () => clearTimeout(timeout);
+    }
+    return undefined;
+  }, [index, text]);
+
+  return <span className="typewriter-cursor">{displayedText}</span>;
 };
 
 const ProfileSection = ({ profile, avatarRef }: ProfileSectionProps) => {
@@ -47,9 +70,9 @@ const ProfileSection = ({ profile, avatarRef }: ProfileSectionProps) => {
               title="Verified"
             ></i>
           </h1>
-          <p className="hero-subtitle text-xl text-muted-foreground mt-2 flex items-center justify-center md:justify-start gap-2">
+          <p className="hero-subtitle text-xl text-muted-foreground mt-2 flex items-center justify-center md:justify-start gap-2 h-8">
             <i className="fa-solid fa-terminal text-sm"></i>
-            {profile.title}
+            <Typewriter text={profile.title} />
           </p>
         </div>
         <div className="flex flex-wrap justify-center md:justify-start gap-2">
