@@ -34,7 +34,7 @@ const i18n: Record<Lang, I18nLabels> = {
     "sidebar-onpage": "页面导航",
     "sidebar-focus": "技能方向",
     "sidebar-contact": "联系方式",
-    "footer": "&copy; 2025 HSn. Built with Tailwind CSS & Shadcn Style."
+    "footer": `&copy; ${new Date().getFullYear()} HSn. Built with Tailwind CSS & Shadcn Style.`
   },
   en: {
     "nav-title": "Resume",
@@ -53,7 +53,7 @@ const i18n: Record<Lang, I18nLabels> = {
     "sidebar-onpage": "On this page",
     "sidebar-focus": "Focus",
     "sidebar-contact": "Contact",
-    "footer": "&copy; 2025 HSn. Built with Tailwind CSS & Shadcn Style."
+    "footer": `&copy; ${new Date().getFullYear()} HSn. Built with Tailwind CSS & Shadcn Style.`
   }
 };
 
@@ -69,11 +69,14 @@ const deepMerge = (target: any, source: any) => {
     if (source[key] && typeof source[key] === "object" && !Array.isArray(source[key])) {
       output[key] = deepMerge(target[key] || {}, source[key]);
     } else if (Array.isArray(source[key]) && Array.isArray(target[key])) {
-      output[key] = target[key].map((item: any, index: number) => {
-        if (typeof item === "object" && source[key][index]) {
-          return deepMerge(item, source[key][index]);
+      const maxLen = Math.max(target[key].length, source[key].length);
+      output[key] = Array.from({ length: maxLen }, (_, index) => {
+        const tItem = target[key][index];
+        const sItem = source[key][index];
+        if (tItem && sItem && typeof tItem === "object" && typeof sItem === "object") {
+          return deepMerge(tItem, sItem);
         }
-        return item;
+        return sItem ?? tItem;
       });
     } else {
       output[key] = source[key];
@@ -151,11 +154,19 @@ const App = () => {
 
     let active = true;
 
-    repos.forEach(async (repoPath) => {
-      const [owner, repo] = repoPath.split("/");
-      const value = await getGitHubStars(owner, repo);
+    Promise.all(
+      repos.map(async (repoPath) => {
+        const [owner, repo] = repoPath.split("/");
+        const value = await getGitHubStars(owner, repo);
+        return { repoPath, value };
+      })
+    ).then((results) => {
       if (!active) return;
-      setStars((prev) => ({ ...prev, [repoPath]: value }));
+      const newStars: StarsMap = {};
+      for (const { repoPath, value } of results) {
+        newStars[repoPath] = value;
+      }
+      setStars((prev) => ({ ...prev, ...newStars }));
     });
 
     return () => {
@@ -351,7 +362,7 @@ const App = () => {
 
   return (
     <>
-      <nav className="w-full border-b border-border/40 bg-background">
+      <nav className="w-full border-b border-border/40 bg-background sticky top-0 z-50">
         <div className="container mx-auto px-4 max-w-4xl flex h-14 items-center justify-between">
           <a href="#" className="mr-6 flex items-center space-x-2">
             <i className="fa-solid fa-code text-primary text-xl"></i>

@@ -380,13 +380,33 @@
                 "name": "Doc2X — Intelligent Document Parsing Platform",
                 "role": "Backend Engineer",
                 "period": "2025.06 - Present",
-                "description": "Leading parsing platform with <strong>10M+ daily parses</strong>, supporting PDF to Markdown/LaTeX conversion.",
-                "techStack": "Go, gRPC, PostgreSQL, Redis, NATS, K8s, OpenTelemetry",
+                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+                "description": "Leading parsing platform with <strong>10M+ daily parses</strong>, supporting PDF to Markdown/LaTeX/Word conversion.",
+                "techStack": "Go, gRPC, PostgreSQL, Redis, NATS, Kubernetes, OpenTelemetry",
                 "highlights": [
                     {
-                        "title": "LLM Optimization",
-                        "text": "Reduced <strong>Token consumption by 20%–40%</strong> via Prefill optimization and KV Cache hit rate improvement.",
-                        "icon": "fa-solid fa-language"
+                        "title": "High-Availability Core Services",
+                        "text": "Built <strong>tiered rate-limiting and off-peak queuing</strong> system with <strong>multi-level caching</strong> for parsing/export pipelines, ensuring stability under traffic spikes.",
+                        "icon": "fa-solid fa-shield-halved",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "Multi-Channel Notification System",
+                        "text": "Designed notification middleware using <strong>Strategy + Factory patterns</strong>, integrating SMS, email, Feishu/DingTalk for decoupled and extensible messaging.",
+                        "icon": "fa-solid fa-bell",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "LLM Translation Optimization",
+                        "text": "Reduced <strong>Token consumption by 20%–40%</strong> via <strong>Prefill optimization</strong> and KV Cache hit rate improvement.",
+                        "icon": "fa-solid fa-language",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "Admin Dashboard Development",
+                        "text": "Independently delivered full-stack admin features (announcements, approval workflows, order analytics) using <strong>Vibe Coding</strong>, significantly boosting operational efficiency.",
+                        "icon": "fa-solid fa-user-gear",
+                        "iconColor": "text-blue-500"
                     }
                 ]
             },
@@ -400,17 +420,20 @@
                     {
                         "title": "Resource Management Refactoring",
                         "text": "Led core component refactoring from Java to Go, integrating <strong>K8s native RBAC</strong>; fixed deadlock issues caused by StatefulSet constraints.",
-                        "icon": "fa-solid fa-code-branch"
+                        "icon": "fa-solid fa-code-branch",
+                        "iconColor": "text-blue-500"
                     },
                     {
                         "title": "Architecture Upgrade",
                         "text": "Promoted transformation of container gateway from <strong>imperative to declarative architecture</strong>, improving core response from <strong>20s → 300ms</strong> using Reconcile mechanism.",
-                        "icon": "fa-solid fa-cubes"
+                        "icon": "fa-solid fa-cubes",
+                        "iconColor": "text-blue-500"
                     },
                     {
                         "title": "Automated Compliance Inspection",
                         "text": "Built baseline audit module based on CronJob + custom detection engine, ensuring <strong>100%</strong> compliance of managed components.",
-                        "icon": "fa-solid fa-check-double"
+                        "icon": "fa-solid fa-check-double",
+                        "iconColor": "text-blue-500"
                     }
                 ]
             }

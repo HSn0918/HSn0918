@@ -30,16 +30,12 @@ const ProjectsSection = ({ projects, coreLabel }: ProjectsSectionProps) => {
                 <i className="fa-solid fa-user-gear text-xs"></i>
                 {project.role}
               </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <i className="fa-regular fa-clock text-xs"></i>
-                {project.period}
-              </span>
             </div>
           </div>
           <span
-            className={`${project.periodClass ?? ""} px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shadow-sm ring-1 ring-inset ring-current/20`}
+            className={`${project.periodClass ?? ""} px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shadow-sm ring-1 ring-inset ring-current/20 flex items-center gap-1.5`}
           >
+            <i className="fa-regular fa-calendar-check text-[10px]"></i>
             {project.period}
           </span>
         </div>

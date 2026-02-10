@@ -107,7 +107,7 @@ const OpenSourceSection = ({ openSource, labels, stars }: OpenSourceSectionProps
           <i className="fa-solid fa-layer-group text-blue-500"></i>
           {labels.other}
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {others.map((item, index) => (
             <div
               key={`${item.title}-${index}`}
