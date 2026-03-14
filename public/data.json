@@ -38,6 +38,12 @@
             },
             "featured": [
                 {
+                    "link": "https://github.com/noedgeai/doc2x-mcp",
+                    "repo": "noedgeai/doc2x-mcp",
+                    "itemIcon": "fa-solid fa-robot",
+                    "itemIconColor": "text-purple-500"
+                },
+                {
                     "link": "https://github.com/HSn0918/kubernetes-mcp",
                     "repo": "HSn0918/kubernetes-mcp",
                     "itemIcon": "fa-solid fa-cloud",
@@ -116,12 +122,12 @@
                 },
                 {
                     "category": "AI & LLM",
-                    "summary": "模型服务化与降本增效经验",
+                    "summary": "AI 编程工具重度用户，具备 MCP 开发与模型优化经验",
                     "icon": "fa-solid fa-robot",
                     "tags": [
-                        { "name": "MCP", "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000" },
-                        { "name": "Prompt", "icon": "fa-solid fa-code" },
-                        { "name": "Prefill / KV Cache", "icon": "fa-solid fa-memory" }
+                        { "name": "Codex", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" },
+                        { "name": "Claude Code", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" },
+                        { "name": "MCP", "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000" }
                     ]
                 }
             ],
@@ -129,9 +135,9 @@
             "tools": [
                 { "name": "jetbrains" },
                 { "name": "Neovim" },
-                { "name": "ChatGPT / Codex" },
-                { "name": "Claude / Claude Code" },
-                { "name": "Gemini / Gemini Cli" },
+                { "name": "Codex" },
+                { "name": "Claude Code" },
+                { "name": "Gemini CLI" },
                 { "name": "Git / GitHub Actions" },
                 { "name": "Docker / Docker Compose" },
                 { "name": "kubectl / Aptakube" },
@@ -155,6 +161,16 @@
                         "icon": "fa-solid fa-cogs",
                         "iconColor": "text-blue-500",
                         "text": "主导内部平台建设，推动关键业务流程<strong>自动化与标准化</strong>，使运营效率提升 <strong>2 倍以上</strong>。"
+                    },
+                    {
+                        "icon": "fa-solid fa-plug",
+                        "iconColor": "text-blue-500",
+                        "text": "负责 <strong>B 端相关生态项目</strong>开发（MCP 服务、pdfdeal Python 库等），降低用户接入门槛。"
+                    },
+                    {
+                        "icon": "fa-solid fa-book-open",
+                        "iconColor": "text-blue-500",
+                        "text": "负责<strong>社区文档</strong>持续更新与维护，提升开发者接入体验。"
                     }
                 ]
             },
@@ -213,6 +229,27 @@
                 ]
             },
             {
+                "name": "newapi-doc2x",
+                "role": "全栈开发",
+                "period": "2025.06 - 至今",
+                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+                "description": "基于开源项目 <strong>new-api</strong> 二次开发，为用户提供直接调用 Doc2X 模型的 API 网关，无需依赖第三方 AI 服务，统一管理多模型接入与用量计费。",
+                "highlights": [
+                    {
+                        "title": "统一用户模型应用计费",
+                        "text": "设计并实现<strong>用户 × 模型 × 应用</strong>三维计费体系，支持按模型、按应用维度独立配额与用量统计，满足多租户精细化计费需求。",
+                        "icon": "fa-solid fa-coins",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "OAuth 统一登录",
+                        "text": "接入企业 <strong>OAuth 2.0</strong> 单点登录，打通内部账号体系，实现用户无感跳转与权限自动同步。",
+                        "icon": "fa-solid fa-key",
+                        "iconColor": "text-blue-500"
+                    }
+                ]
+            },
+            {
                 "name": "观云台 — Kubernetes PaaS 平台",
                 "role": "后端开发",
                 "period": "2024.07 - 2025.04",
@@ -247,6 +284,11 @@
                 "description": "Go 工程师 | Kubernetes 爱好者 | 42个代码仓库 | 47个Star"
             },
             "featured": [
+                {
+                    "title": "doc2x-mcp",
+                    "description": "Doc2X 官方 MCP 服务，让 AI 助手直接调用文档解析能力，支持 PDF 转 Markdown / LaTeX 等格式。",
+                    "image": "doc2x-mcp.png"
+                },
                 {
                     "title": "Kubernetes-mcp",
                     "description": "基于 Go 实现的 Model Context Protocol (MCP) 服务器，用于与 K8s 集群交互，提供 AI 驱动的资源调度能力。",
@@ -320,12 +362,12 @@
                 },
                 {
                     "category": "AI & LLM",
-                    "summary": "Experience in model serving and cost reduction",
+                    "summary": "Heavy user of AI coding tools, MCP development & model optimization experience",
                     "icon": "fa-solid fa-robot",
                     "tags": [
-                        { "name": "MCP", "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000" },
-                        { "name": "Prompt", "icon": "fa-solid fa-code" },
-                        { "name": "Prefill / KV Cache", "icon": "fa-solid fa-memory" }
+                        { "name": "Codex", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" },
+                        { "name": "Claude Code", "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" },
+                        { "name": "MCP", "icon": "https://cdn.simpleicons.org/modelcontextprotocol/000000" }
                     ]
                 }
             ],
@@ -333,9 +375,9 @@
             "tools": [
                 { "name": "JetBrains IDEs" },
                 { "name": "Neovim" },
-                { "name": "ChatGPT / Codex" },
-                { "name": "Claude / Claude Code" },
-                { "name": "Gemini / Gemini CLI" },
+                { "name": "Codex" },
+                { "name": "Claude Code" },
+                { "name": "Gemini CLI" },
                 { "name": "Git / GitHub Actions" },
                 { "name": "Docker / Docker Compose" },
                 { "name": "kubectl / Aptakube" },
@@ -356,6 +398,14 @@
                     {
                         "icon": "fa-solid fa-cogs",
                         "text": "Led internal platform construction, improving operational efficiency by <strong>2x+</strong>."
+                    },
+                    {
+                        "icon": "fa-solid fa-plug",
+                        "text": "Developed <strong>B2B ecosystem projects</strong> (MCP service, pdfdeal Python library, etc.), lowering the barrier for users to integrate our services."
+                    },
+                    {
+                        "icon": "fa-solid fa-book-open",
+                        "text": "Maintained and updated <strong>community documentation</strong>, improving developer onboarding experience."
                     }
                 ]
             },
@@ -411,6 +461,27 @@
                 ]
             },
             {
+                "name": "newapi-doc2x",
+                "role": "Full-Stack Engineer",
+                "period": "2025.06 - Present",
+                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+                "description": "Forked and extended the open-source <strong>new-api</strong> project, providing users direct access to Doc2X models via an API gateway — eliminating the need for third-party AI services, with unified multi-model access and usage billing.",
+                "highlights": [
+                    {
+                        "title": "Unified User-Model-App Billing",
+                        "text": "Designed a <strong>user × model × app</strong> three-dimensional billing system supporting per-model and per-app quota management and usage tracking for multi-tenant fine-grained billing.",
+                        "icon": "fa-solid fa-coins",
+                        "iconColor": "text-blue-500"
+                    },
+                    {
+                        "title": "OAuth SSO Integration",
+                        "text": "Integrated enterprise <strong>OAuth 2.0</strong> single sign-on, connecting internal account systems with seamless redirect and automatic permission synchronization.",
+                        "icon": "fa-solid fa-key",
+                        "iconColor": "text-blue-500"
+                    }
+                ]
+            },
+            {
                 "name": "ViewCloud — Kubernetes PaaS Platform",
                 "role": "Backend Engineer",
                 "period": "2024.07 - 2025.04",
@@ -444,6 +515,11 @@
                 "description": "Go Engineer | K8s Enthusiast | 42 repos | 47 stars"
             },
             "featured": [
+                {
+                    "title": "doc2x-mcp",
+                    "description": "Doc2X official MCP server, enabling AI assistants to directly invoke document parsing capabilities, supporting PDF to Markdown / LaTeX conversion.",
+                    "image": "doc2x-mcp.png"
+                },
                 {
                     "title": "Kubernetes-mcp",
                     "description": "Model Context Protocol server for K8s interaction with AI-driven resource scheduling.",

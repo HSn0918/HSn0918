@@ -1,0 +1,95 @@
+% !TEX program = xelatex
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % 中文字体支持
+\usepackage{linespacing_fix}
+\usepackage{cite}
+\usepackage{comment}
+
+\usepackage[Chinese]{languageSelection}
+\usepackage[color=blue]{notePlus}
+
+% 所有间距由 resume.cls 统一控制
+
+\begin{document}
+\pagenumbering{gobble}
+
+\CN{
+  \name{黄锡超}
+  \info{手机: (+86) 13736707307}{邮箱: hsn.zj@foxmail.com}{}{}
+  \info{性别: 男}{微信: hsn7307}{在线简历: resume.huangsn.dev}{}
+}
+
+% =============================
+% 教育背景
+% =============================
+\CN{
+  \section{教育背景}
+  \datedsubsection{\textbf{浙江理工大学科技与艺术学院}，计算机科学与技术（本科）}{2021.09 -- 2025.06}
+}
+
+% =============================
+% 工作经历
+% =============================
+\CN{
+  \section{工作经历}
+
+  \datedsubsection{\textbf{武汉智识无垠科技有限公司}，后端开发工程师}{2025.06 -- 至今}
+  \begin{itemize}[leftmargin=*]
+    \item 参与 \textbf{核心平台} 后端架构演进，支撑 \textbf{十万级 DAU、千万级日解析量}。
+    \item 主导\textbf{运营管理后台}全栈开发，覆盖公告、审批流、用户概览等模块，运营效率提升 \textbf{2 倍以上}。
+    \item 负责 \textbf{B 端生态项目}开发（MCP 服务、pdfdeal Python 库等），降低用户接入门槛。
+  \end{itemize}
+
+  \datedsubsection{\textbf{杭州谐云科技有限公司}，后端开发工程师}{2024.07 -- 2025.04}
+  \begin{itemize}[leftmargin=*]
+    \item 承担 \textbf{平台功能开发与重构}，参与\textbf{产品评审与测试用例评审}，负责 \textbf{Jira L3 级工单}定位与处理。
+    \item 推动容器网关由\textbf{命令式向声明式}架构转型，核心操作响应耗时 \textbf{20s → 300ms}。
+  \end{itemize}
+}
+
+% =============================
+% 项目经历
+% =============================
+\CN{
+  \section{项目经历}
+
+  \datedsubsection{\textbf{Doc2X — C/B 端智能文档解析平台}，后端开发}{2025.06 -- 至今}
+  \begin{itemize}[leftmargin=*]
+    \item \textbf{简介}：国内 TOP1 文档解析平台，PDF 转 Markdown/LaTeX/Word，日解析量\textbf{千万级}。
+    \item \textbf{技术栈}：Go、gRPC、PostgreSQL、Redis、NATS、K8s、OpenTelemetry
+    \item \textbf{高并发治理}：引入 \textbf{分级限流 + 闲时排队} 及多级缓存，消除高峰期告警。
+    \item \textbf{通知系统}：基于 \textbf{策略 + 工厂模式} 设计多渠道通知中台，实现统一接入与扩展。
+    \item \textbf{翻译优化}：优化 \textbf{Prefill 请求结构} 提升 KV Cache 命中率，\textbf{Token 消耗降低 20\%～40\%}。
+  \end{itemize}
+
+  \datedsubsection{\textbf{newapi-doc2x}，全栈开发}{2026.02 -- 至今}
+  \begin{itemize}[leftmargin=*]
+    \item \textbf{简介}：基于 \textbf{new-api} 二次开发，为用户提供直接调用 Doc2X 模型的 API 网关，无需依赖第三方 AI 服务。
+    \item \textbf{统一计费}：设计 \textbf{用户 × 模型 × 应用} 三维计费体系，支持多租户精细化配额与用量统计。
+    \item \textbf{OAuth 登录}：接入 \textbf{OAuth 2.0} 单点登录，打通账号体系，实现无感跳转与权限自动同步。
+  \end{itemize}
+
+  \datedsubsection{\textbf{观云台 — Kubernetes PaaS 平台}，后端开发}{2024.07 -- 2025.04}
+  \begin{itemize}[leftmargin=*]
+    \item \textbf{简介}：基于 Kubernetes 的企业级 PaaS 平台。
+    \item \textbf{技术栈}：Go、Gin、Kubernetes、Kubebuilder、MySQL
+    \item \textbf{资源管理重构}：Java 至 Go 重构，对齐 \textbf{K8s 原生 RBAC}，修复 StatefulSet 更新死锁问题。
+    \item \textbf{架构升级}：容器网关由\textbf{命令式向声明式}转型，引入 Reconcile 机制，响应耗时 \textbf{20s → 300ms}。
+    \item \textbf{合规巡检}：基于 CronJob + 自定义检测引擎实现自动化配置校验，纳管组件合规率达 \textbf{100\%}。
+  \end{itemize}
+}
+
+% =============================
+% 技能
+% =============================
+\CN{
+  \section{专业技能}
+  \begin{itemize}[leftmargin=*]
+    \item \textbf{编程语言与框架}：熟练使用 Go；掌握 gRPC、ConnectRPC、Gin 及微服务架构设计。
+    \item \textbf{云原生技术}：熟悉 Kubernetes 核心机制，具备通过源码分析定位问题的经验。
+    \item \textbf{数据库与中间件}：熟练使用 PostgreSQL、Redis、NATS。
+    \item \textbf{AI 与大模型}：熟练使用 Codex、Claude Code 等 AI 编程工具；具备 MCP 开发与开源经验。
+  \end{itemize}
+}
+
+\end{document}
