@@ -155,22 +155,22 @@
                     {
                         "icon": "fa-solid fa-network-wired",
                         "iconColor": "text-blue-500",
-                        "text": "参与核心文档解析平台的后端架构演进，支撑<strong>十万级 DAU、千万级日解析量</strong>，保持服务高可用。"
+                        "text": "参与<strong>核心平台</strong>后端架构演进，支撑<strong>十万级 DAU、千万级日解析量</strong>，保持服务高可用。"
+                    },
+                    {
+                        "icon": "fa-solid fa-shield-halved",
+                        "iconColor": "text-blue-500",
+                        "text": "负责<strong>海外身份认证体系</strong>建设，覆盖 Google OAuth / 邮箱双通道认证、CLI / 桌面端授权与订阅级多端会话限制。"
                     },
                     {
                         "icon": "fa-solid fa-cogs",
                         "iconColor": "text-blue-500",
-                        "text": "主导内部平台建设，推动关键业务流程<strong>自动化与标准化</strong>，使运营效率提升 <strong>2 倍以上</strong>。"
+                        "text": "负责<strong>运营管理后台</strong>全栈开发，覆盖公告、审批流、用户概览等模块，运营效率提升 <strong>2 倍以上</strong>。"
                     },
                     {
                         "icon": "fa-solid fa-plug",
                         "iconColor": "text-blue-500",
-                        "text": "负责 <strong>B 端相关生态项目</strong>开发（MCP 服务、pdfdeal Python 库等），降低用户接入门槛。"
-                    },
-                    {
-                        "icon": "fa-solid fa-book-open",
-                        "iconColor": "text-blue-500",
-                        "text": "负责<strong>社区文档</strong>持续更新与维护，提升开发者接入体验。"
+                        "text": "负责 <strong>B 端生态项目</strong>开发（MCP 服务、pdfdeal Python 库等），降低用户接入门槛。"
                     }
                 ]
             },
@@ -183,12 +183,12 @@
                     {
                         "icon": "fa-solid fa-arrows-rotate",
                         "iconColor": "text-blue-500",
-                        "text": "负责 PaaS 平台容器服务的 <strong>Java→Go 重构</strong>，使服务平均响应时间降低 <strong>40%+</strong>。"
+                        "text": "承担<strong>平台功能开发与重构</strong>，参与产品评审与测试用例评审，负责 <strong>Jira L3 级工单</strong>定位与处理。"
                     },
                     {
-                        "icon": "fa-solid fa-users",
+                        "icon": "fa-solid fa-cubes",
                         "iconColor": "text-blue-500",
-                        "text": "参与多租户、容器服务等模块建设，优化资源调度与系统稳定性。"
+                        "text": "推动容器网关由<strong>命令式向声明式</strong>架构转型，核心操作响应耗时 <strong>20s → 300ms</strong>。"
                     }
                 ]
             }
@@ -199,52 +199,31 @@
                 "role": "后端开发",
                 "period": "2025.06 - 至今",
                 "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-                "description": "行业领先的文档解析平台，支持从 PDF 智能提取内容并转换为 <strong>Markdown / LaTeX / Word</strong>，日解析量超 <strong>千万级</strong>。",
-                "techStack": "Go, gRPC, PostgreSQL, Redis, NATS, Kubernetes, OpenTelemetry",
+                "description": "国内 TOP1 文档解析平台，PDF 转 <strong>Markdown / LaTeX / Word</strong>，日解析量 <strong>千万级</strong>，覆盖国内站与海外站双形态。",
+                "techStack": "Go, gRPC, ConnectRPC, PostgreSQL, Redis, NATS, Kubernetes, OpenTelemetry",
                 "highlights": [
                     {
-                        "title": "核心服务高可用",
-                        "text": "构建<strong>分级限流与闲时排队</strong>体系，针对解析/导出环节实施<strong>多级缓存策略</strong>，确保超额流量下的系统稳定性。",
+                        "title": "高并发治理",
+                        "text": "高峰期解析、导出链路被免费长尾请求挤占，付费请求出现堆积告警。落地<strong>分级限流 + 闲时排队</strong>与多级缓存，将高峰流量平滑至闲时消化，<strong>付费链路告警清零</strong>。",
                         "icon": "fa-solid fa-shield-halved",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "多渠道通知系统",
-                        "text": "基于<strong>策略+工厂模式</strong>设计通知中台，接入短信、邮件及飞书/钉钉，实现业务解耦与高度可扩展性。",
+                        "title": "通知系统",
+                        "text": "短信、邮件、飞书 / 钉钉等通知散落于各业务模块，每新增渠道需改动业务代码。基于<strong>策略 + 工厂模式</strong>抽离多渠道通知中台，<strong>新增渠道仅需扩展 Provider</strong>，业务侧零改动。",
                         "icon": "fa-solid fa-bell",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "大模型翻译优化",
-                        "text": "通过 <strong>Prefill 优化</strong> 请求结构提升 <strong>KV Cache 命中率</strong>，使整体 <strong>Token 消耗降低 20%～40%</strong>。",
-                        "icon": "fa-solid fa-language",
+                        "title": "身份认证",
+                        "text": "海外用户默认以邮箱登录，对接 <strong>Google OAuth</strong> 打通注册与授权；为 CLI / 桌面端场景自建 <strong>OAuth 2.0 授权码 + PKCE</strong> 与刷新令牌轮换，整合后<strong>重构登录体系</strong>。",
+                        "icon": "fa-solid fa-shield-halved",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "管理后台开发",
-                        "text": "运用 <strong>Vibe Coding</strong> 独立完成公告管理、审批流（发票/退款）、订单分析等全栈开发，显著提升运营效率。",
+                        "title": "运营后台",
+                        "text": "运营 / 客服原依赖工程师查数据并手工处理退款 / 发票 / 注销，沟通成本高且易漏配额回收。独立完成<strong>公告、转账、用户概览、订单分析</strong>等模块，并将<strong>退款 / 发票 / 注销改造为自助流程</strong>。",
                         "icon": "fa-solid fa-user-gear",
-                        "iconColor": "text-blue-500"
-                    }
-                ]
-            },
-            {
-                "name": "newapi-doc2x",
-                "role": "全栈开发",
-                "period": "2025.06 - 至今",
-                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-                "description": "基于开源项目 <strong>new-api</strong> 二次开发，为用户提供直接调用 Doc2X 模型的 API 网关，无需依赖第三方 AI 服务，统一管理多模型接入与用量计费。",
-                "highlights": [
-                    {
-                        "title": "统一用户模型应用计费",
-                        "text": "设计并实现<strong>用户 × 模型 × 应用</strong>三维计费体系，支持按模型、按应用维度独立配额与用量统计，满足多租户精细化计费需求。",
-                        "icon": "fa-solid fa-coins",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "OAuth 统一登录",
-                        "text": "接入企业 <strong>OAuth 2.0</strong> 单点登录，打通内部账号体系，实现用户无感跳转与权限自动同步。",
-                        "icon": "fa-solid fa-key",
                         "iconColor": "text-blue-500"
                     }
                 ]
@@ -254,24 +233,24 @@
                 "role": "后端开发",
                 "period": "2024.07 - 2025.04",
                 "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-                "description": "基于 <strong>Kubernetes</strong> 的企业级 PaaS，帮助企业降低运维成本并提升业务交付效率。",
+                "description": "企业级 Kubernetes PaaS 平台，面向多租户提供容器服务与合规审计，支撑客户降低运维成本、提升交付效率。",
                 "techStack": "Go, Gin, Kubernetes, Kubebuilder, MySQL",
                 "highlights": [
                     {
                         "title": "资源管理重构",
-                        "text": "主导 Java 至 Go 的核心组件重构，深度整合 <strong>K8s 原生 RBAC</strong>；修复 StatefulSet 字段约束导致的更新死锁问题。",
+                        "text": "将资源管理服务由 <strong>Java 重写为 Go</strong>，并按 <strong>K8s 原生 RBAC</strong> 重整权限模型；期间通过<strong>阅读 K8s 源码定位到一处上游校验缺陷</strong>，并在资源层补齐预校验完成兜底。",
                         "icon": "fa-solid fa-code-branch",
                         "iconColor": "text-blue-500"
                     },
                     {
                         "title": "架构升级",
-                        "text": "推动容器网关由<strong>命令式向声明式架构</strong>转型，利用 Reconcile 机制将核心操作响应由 <strong>20s → 300ms</strong>。",
+                        "text": "容器网关原为命令式调用链，单次操作需顺序串接多个 API，<strong>高峰期响应耗时 20s</strong>且失败难以重试。引入 Reconcile 改造为<strong>声明式 + 幂等收敛</strong>，响应稳定收敛至 <strong>300ms</strong> 内。",
                         "icon": "fa-solid fa-cubes",
                         "iconColor": "text-blue-500"
                     },
                     {
                         "title": "自动化合规巡检",
-                        "text": "基于 CronJob + 自定义检测引擎构建基线审计模块，实现全链路配置检查，保障纳管组件合规率达 <strong>100%</strong>。",
+                        "text": "历史方案依赖运维人工核对配置基线，效率低且漏检率高。基于 CronJob + 自定义检测引擎实现<strong>自动化基线审计</strong>，纳管组件合规率达 <strong>100%</strong>。",
                         "icon": "fa-solid fa-check-double",
                         "iconColor": "text-blue-500"
                     }
@@ -393,19 +372,19 @@
                 "items": [
                     {
                         "icon": "fa-solid fa-network-wired",
-                        "text": "Participated in backend evolution, supporting <strong>100k+ DAU and 10M+ daily parses</strong>."
+                        "text": "Contributed to <strong>core platform</strong> backend evolution, supporting <strong>100k+ DAU and 10M+ daily parses</strong> with high availability."
+                    },
+                    {
+                        "icon": "fa-solid fa-shield-halved",
+                        "text": "Led the <strong>overseas identity and authentication system</strong> — Google OAuth / email dual-channel auth, CLI / desktop authorization, and subscription-tier multi-device session limits."
                     },
                     {
                         "icon": "fa-solid fa-cogs",
-                        "text": "Led internal platform construction, improving operational efficiency by <strong>2x+</strong>."
+                        "text": "Owned full-stack delivery of the <strong>operations console</strong> (announcements, approval flows, user overview), boosting operational efficiency by <strong>2x+</strong>."
                     },
                     {
                         "icon": "fa-solid fa-plug",
                         "text": "Developed <strong>B2B ecosystem projects</strong> (MCP service, pdfdeal Python library, etc.), lowering the barrier for users to integrate our services."
-                    },
-                    {
-                        "icon": "fa-solid fa-book-open",
-                        "text": "Maintained and updated <strong>community documentation</strong>, improving developer onboarding experience."
                     }
                 ]
             },
@@ -416,11 +395,11 @@
                 "items": [
                     {
                         "icon": "fa-solid fa-arrows-rotate",
-                        "text": "Responsible for <strong>Java→Go refactoring</strong> of PaaS container services, reducing average response time by <strong>40%+</strong>."
+                        "text": "Drove <strong>platform feature delivery and refactoring</strong>, joined product and test-case reviews, and owned <strong>Jira L3 ticket</strong> triage and resolution."
                     },
                     {
-                        "icon": "fa-solid fa-users",
-                        "text": "Participated in multi-tenancy and container service modules, optimizing resource scheduling and stability."
+                        "icon": "fa-solid fa-cubes",
+                        "text": "Migrated the container gateway from <strong>imperative to declarative</strong> architecture, dropping core operation latency from <strong>20s → 300ms</strong>."
                     }
                 ]
             }
@@ -431,52 +410,31 @@
                 "role": "Backend Engineer",
                 "period": "2025.06 - Present",
                 "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-                "description": "Leading parsing platform with <strong>10M+ daily parses</strong>, supporting PDF to Markdown/LaTeX/Word conversion.",
-                "techStack": "Go, gRPC, PostgreSQL, Redis, NATS, Kubernetes, OpenTelemetry",
+                "description": "China's #1 document parsing platform — PDF to <strong>Markdown / LaTeX / Word</strong>, <strong>10M+ daily parses</strong>, running both domestic and overseas deployments.",
+                "techStack": "Go, gRPC, ConnectRPC, PostgreSQL, Redis, NATS, Kubernetes, OpenTelemetry",
                 "highlights": [
                     {
-                        "title": "High-Availability Core Services",
-                        "text": "Built <strong>tiered rate-limiting and off-peak queuing</strong> system with <strong>multi-level caching</strong> for parsing/export pipelines, ensuring stability under traffic spikes.",
+                        "title": "High-Concurrency Governance",
+                        "text": "At peak, free-tier long-tail traffic crowded out paid requests on parsing / export pipelines, triggering backlog alerts. Introduced <strong>tiered rate-limiting + off-peak queuing</strong> with multi-level caching, smoothing peak traffic into idle windows — <strong>paid-pipeline alerts cleared</strong>.",
                         "icon": "fa-solid fa-shield-halved",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "Multi-Channel Notification System",
-                        "text": "Designed notification middleware using <strong>Strategy + Factory patterns</strong>, integrating SMS, email, Feishu/DingTalk for decoupled and extensible messaging.",
+                        "title": "Notification System",
+                        "text": "SMS, email, Feishu / DingTalk channels were scattered across business modules, and adding a new channel required business code changes. Extracted a unified notification middleware via <strong>Strategy + Factory patterns</strong>; <strong>new channels only require a Provider</strong>, with zero changes on the business side.",
                         "icon": "fa-solid fa-bell",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "LLM Translation Optimization",
-                        "text": "Reduced <strong>Token consumption by 20%–40%</strong> via <strong>Prefill optimization</strong> and KV Cache hit rate improvement.",
-                        "icon": "fa-solid fa-language",
+                        "title": "Identity & Auth",
+                        "text": "Overseas users default to email login: integrated <strong>Google OAuth</strong> for signup and authorization, and built our own <strong>OAuth 2.0 authorization code + PKCE</strong> with refresh-token rotation for the CLI / desktop flow, then <strong>rebuilt the login system</strong>.",
+                        "icon": "fa-solid fa-shield-halved",
                         "iconColor": "text-blue-500"
                     },
                     {
-                        "title": "Admin Dashboard Development",
-                        "text": "Independently delivered full-stack admin features (announcements, approval workflows, order analytics) using <strong>Vibe Coding</strong>, significantly boosting operational efficiency.",
+                        "title": "Operations Console",
+                        "text": "Ops and support relied on engineers to query data and manually handle refunds / invoices / account closure, with high coordination cost and frequent missed quota recovery. Independently delivered <strong>announcements, transfer logs, user overview, order analytics</strong> modules, and turned <strong>refunds / invoices / closures into self-serve flows</strong>.",
                         "icon": "fa-solid fa-user-gear",
-                        "iconColor": "text-blue-500"
-                    }
-                ]
-            },
-            {
-                "name": "newapi-doc2x",
-                "role": "Full-Stack Engineer",
-                "period": "2025.06 - Present",
-                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-                "description": "Forked and extended the open-source <strong>new-api</strong> project, providing users direct access to Doc2X models via an API gateway — eliminating the need for third-party AI services, with unified multi-model access and usage billing.",
-                "highlights": [
-                    {
-                        "title": "Unified User-Model-App Billing",
-                        "text": "Designed a <strong>user × model × app</strong> three-dimensional billing system supporting per-model and per-app quota management and usage tracking for multi-tenant fine-grained billing.",
-                        "icon": "fa-solid fa-coins",
-                        "iconColor": "text-blue-500"
-                    },
-                    {
-                        "title": "OAuth SSO Integration",
-                        "text": "Integrated enterprise <strong>OAuth 2.0</strong> single sign-on, connecting internal account systems with seamless redirect and automatic permission synchronization.",
-                        "icon": "fa-solid fa-key",
                         "iconColor": "text-blue-500"
                     }
                 ]
@@ -485,24 +443,25 @@
                 "name": "ViewCloud — Kubernetes PaaS Platform",
                 "role": "Backend Engineer",
                 "period": "2024.07 - 2025.04",
-                "description": "Enterprise-level PaaS based on <strong>Kubernetes</strong>, helping enterprises reduce O&M costs and improve business delivery efficiency.",
+                "periodClass": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+                "description": "Enterprise-grade Kubernetes PaaS for multi-tenant container services and compliance audit, helping customers cut O&M cost and ship faster.",
                 "techStack": "Go, Gin, Kubernetes, Kubebuilder, MySQL",
                 "highlights": [
                     {
                         "title": "Resource Management Refactoring",
-                        "text": "Led core component refactoring from Java to Go, integrating <strong>K8s native RBAC</strong>; fixed deadlock issues caused by StatefulSet constraints.",
+                        "text": "Rewrote the resource management service from <strong>Java to Go</strong> and realigned its permission model with <strong>K8s native RBAC</strong>. <strong>Pinpointed an upstream validation defect by reading K8s source</strong>, and added pre-validation at the resource layer as a safety net.",
                         "icon": "fa-solid fa-code-branch",
                         "iconColor": "text-blue-500"
                     },
                     {
                         "title": "Architecture Upgrade",
-                        "text": "Promoted transformation of container gateway from <strong>imperative to declarative architecture</strong>, improving core response from <strong>20s → 300ms</strong> using Reconcile mechanism.",
+                        "text": "The container gateway was an imperative call chain: a single operation chained multiple APIs sequentially, peak latency reached <strong>20s</strong> and failures were hard to retry. Reworked it with Reconcile into a <strong>declarative + idempotent convergence</strong> model, stabilizing latency at <strong>300ms</strong>.",
                         "icon": "fa-solid fa-cubes",
                         "iconColor": "text-blue-500"
                     },
                     {
                         "title": "Automated Compliance Inspection",
-                        "text": "Built baseline audit module based on CronJob + custom detection engine, ensuring <strong>100%</strong> compliance of managed components.",
+                        "text": "The legacy approach relied on ops manually verifying configuration baselines, which was slow and error-prone. Built an <strong>automated baseline audit</strong> on CronJob + a custom detection engine, lifting managed-component compliance to <strong>100%</strong>.",
                         "icon": "fa-solid fa-check-double",
                         "iconColor": "text-blue-500"
                     }

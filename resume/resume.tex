@@ -36,7 +36,8 @@
   \datedsubsection{\textbf{武汉智识无垠科技有限公司}，后端开发工程师}{2025.06 -- 至今}
   \begin{itemize}[leftmargin=*]
     \item 参与 \textbf{核心平台} 后端架构演进，支撑 \textbf{十万级 DAU、千万级日解析量}。
-    \item 主导\textbf{运营管理后台}全栈开发，覆盖公告、审批流、用户概览等模块，运营效率提升 \textbf{2 倍以上}。
+    \item 负责\textbf{海外身份认证体系}建设，覆盖 Google OAuth / 邮箱双通道认证、CLI / 桌面端授权与订阅级多端会话限制。
+    \item 负责\textbf{运营管理后台}全栈开发，覆盖公告、审批流、用户概览等模块，运营效率提升 \textbf{2 倍以上}。
     \item 负责 \textbf{B 端生态项目}开发（MCP 服务、pdfdeal Python 库等），降低用户接入门槛。
   \end{itemize}
 
@@ -55,27 +56,21 @@
 
   \datedsubsection{\textbf{Doc2X — C/B 端智能文档解析平台}，后端开发}{2025.06 -- 至今}
   \begin{itemize}[leftmargin=*]
-    \item \textbf{简介}：国内 TOP1 文档解析平台，PDF 转 Markdown/LaTeX/Word，日解析量\textbf{千万级}。
-    \item \textbf{技术栈}：Go、gRPC、PostgreSQL、Redis、NATS、K8s、OpenTelemetry
-    \item \textbf{高并发治理}：引入 \textbf{分级限流 + 闲时排队} 及多级缓存，消除高峰期告警。
-    \item \textbf{通知系统}：基于 \textbf{策略 + 工厂模式} 设计多渠道通知中台，实现统一接入与扩展。
-    \item \textbf{翻译优化}：优化 \textbf{Prefill 请求结构} 提升 KV Cache 命中率，\textbf{Token 消耗降低 20\%～40\%}。
-  \end{itemize}
-
-  \datedsubsection{\textbf{newapi-doc2x}，全栈开发}{2026.02 -- 至今}
-  \begin{itemize}[leftmargin=*]
-    \item \textbf{简介}：基于 \textbf{new-api} 二次开发，为用户提供直接调用 Doc2X 模型的 API 网关，无需依赖第三方 AI 服务。
-    \item \textbf{统一计费}：设计 \textbf{用户 × 模型 × 应用} 三维计费体系，支持多租户精细化配额与用量统计。
-    \item \textbf{OAuth 登录}：接入 \textbf{OAuth 2.0} 单点登录，打通账号体系，实现无感跳转与权限自动同步。
+    \item \textbf{简介}：国内 TOP1 文档解析平台，PDF 转 Markdown / LaTeX / Word，日解析量 \textbf{千万级}，覆盖国内站与海外站双形态。
+    \item \textbf{技术栈}：Go、gRPC、ConnectRPC、PostgreSQL、Redis、NATS、Kubernetes、OpenTelemetry
+    \item \textbf{高并发治理}：高峰期解析、导出链路被免费长尾请求挤占，付费请求出现堆积告警。落地\textbf{分级限流 + 闲时排队}与多级缓存，将高峰流量平滑至闲时消化，\textbf{付费链路告警清零}。
+    \item \textbf{通知系统}：短信、邮件、飞书 / 钉钉等通知散落于各业务模块，每新增渠道需改动业务代码。基于\textbf{策略 + 工厂模式}抽离多渠道通知中台，\textbf{新增渠道仅需扩展 Provider}，业务侧零改动。
+    \item \textbf{身份认证}：海外用户默认以邮箱登录，对接 \textbf{Google OAuth} 打通注册与授权；为 CLI / 桌面端场景自建 \textbf{OAuth 2.0 授权码 + PKCE} 与刷新令牌轮换，整合后\textbf{重构登录体系}。
+    \item \textbf{运营后台}：运营 / 客服原依赖工程师查数据并手工处理退款 / 发票 / 注销，沟通成本高且易漏配额回收。独立完成\textbf{公告、转账、用户概览、订单分析}等模块，并将\textbf{退款 / 发票 / 注销改造为自助流程}。
   \end{itemize}
 
   \datedsubsection{\textbf{观云台 — Kubernetes PaaS 平台}，后端开发}{2024.07 -- 2025.04}
   \begin{itemize}[leftmargin=*]
-    \item \textbf{简介}：基于 Kubernetes 的企业级 PaaS 平台。
+    \item \textbf{简介}：企业级 Kubernetes PaaS 平台，面向多租户提供容器服务与合规审计，支撑客户降低运维成本、提升交付效率。
     \item \textbf{技术栈}：Go、Gin、Kubernetes、Kubebuilder、MySQL
-    \item \textbf{资源管理重构}：Java 至 Go 重构，对齐 \textbf{K8s 原生 RBAC}，修复 StatefulSet 更新死锁问题。
-    \item \textbf{架构升级}：容器网关由\textbf{命令式向声明式}转型，引入 Reconcile 机制，响应耗时 \textbf{20s → 300ms}。
-    \item \textbf{合规巡检}：基于 CronJob + 自定义检测引擎实现自动化配置校验，纳管组件合规率达 \textbf{100\%}。
+    \item \textbf{资源重构}：将资源管理服务由 \textbf{Java 重写为 Go}，并按 \textbf{K8s 原生 RBAC} 重整权限模型；期间通过\textbf{阅读 K8s 源码定位到一处上游校验缺陷}，并在资源层补齐预校验完成兜底。
+    \item \textbf{架构升级}：容器网关原为命令式调用链，单次操作需顺序串接多个 API，\textbf{高峰期响应耗时 20s}且失败难以重试。引入 Reconcile 改造为\textbf{声明式 + 幂等收敛}，响应稳定收敛至 \textbf{300ms} 内。
+    \item \textbf{合规巡检}：历史方案依赖运维人工核对配置基线，效率低且漏检率高。基于 CronJob + 自定义检测引擎实现\textbf{自动化基线审计}，纳管组件合规率达 \textbf{100\%}。
   \end{itemize}
 }
 
