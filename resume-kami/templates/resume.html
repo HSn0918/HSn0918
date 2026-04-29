@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>黄锡超 · 简历</title>
+<meta name="author" content="黄锡超">
+<meta name="description" content="后端开发工程师，专注 Go 与云原生，曾支撑千万级日解析量与企业级 PaaS 平台架构。">
+<meta name="keywords" content="后端开发,Go,Kubernetes,云原生,微服务,简历">
+<meta name="generator" content="Kami">
+<style>
+  /* Regular weight */
+  @font-face {
+    font-family: "TsangerJinKai02";
+    src: url("../fonts/TsangerJinKai02-W04.ttf") format("truetype"),
+       url("https://cdn.jsdelivr.net/gh/tw93/Kami@main/assets/fonts/TsangerJinKai02-W04.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* Bold weight - W05 for all bold variants */
+  @font-face {
+    font-family: "TsangerJinKai02";
+    src: url("../fonts/TsangerJinKai02-W05.ttf") format("truetype"),
+       url("https://cdn.jsdelivr.net/gh/tw93/Kami@main/assets/fonts/TsangerJinKai02-W05.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+@page {
+    size: A4;
+    margin: 11mm 13mm 11mm 13mm;
+    background: #f5f4ed;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --parchment: #f5f4ed;
+    --ivory:     #faf9f5;
+    --sand:      #e8e6dc;
+    --border:    #e8e6dc;
+    --border-soft: #e5e3d8;
+    --near-black: #141413;
+    --dark-warm: #3d3d3a;
+    --olive:     #504e49;
+    --stone:     #6b6a64;
+    --brand:     #1B365D;
+    --brand-tint: #EEF2F7;
+    --brand-tint-strong: #E4ECF5;
+    --serif: "TsangerJinKai02", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", Georgia, serif;
+    --sans: var(--serif);
+  }
+
+  html, body { background: var(--parchment); }
+
+  @media screen {
+    body { max-width: 210mm; margin: 0 auto; padding: 14mm; }
+  }
+
+  body {
+    color: var(--near-black);
+    font-family: var(--serif);
+    font-size: 9.2pt;
+    line-height: 1.42;
+    letter-spacing: 0.3pt;
+  }
+
+  .serif { font-family: var(--serif); }
+
+  a { color: var(--brand); text-decoration: none; }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 3mm;
+    margin-bottom: 4mm;
+    border-bottom: 0.5pt solid var(--border);
+  }
+  .header > div:first-child { flex-shrink: 0; }
+  .name {
+    font-family: var(--serif);
+    font-size: 26pt;
+    font-weight: 500;
+    letter-spacing: 0.5pt;
+    color: var(--near-black);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 2.2mm;
+    white-space: nowrap;
+  }
+  .alias {
+    font-size: 12pt;
+    font-weight: 400;
+    color: var(--stone);
+    letter-spacing: 0.2pt;
+  }
+
+  .contact {
+    text-align: right;
+    font-size: 9pt;
+    color: var(--stone);
+    line-height: 1.6;
+    margin-bottom: -0.5mm;
+  }
+  .contact a { color: var(--dark-warm); }
+  .contact .role {
+    color: var(--brand);
+    font-size: 10.5pt;
+    font-weight: 500;
+    letter-spacing: 0.3pt;
+  }
+
+  /* SECTION */
+  .section-title {
+    font-family: var(--serif);
+    font-size: 12.5pt;
+    font-weight: 500;
+    color: var(--near-black);
+    border-left: 2.5pt solid var(--brand);
+    border-radius: 1.5pt;
+    padding: 0 0 0 8pt;
+    margin: 4mm 0 1.6mm 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2mm;
+  }
+  .section-title .sub {
+    margin-left: auto;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 9pt;
+    color: var(--stone);
+    letter-spacing: 0.3pt;
+  }
+  section:first-of-type .section-title { margin-top: 0; }
+  .section-title + .skill-row { padding-top: 1.2mm; }
+  .section-title + .edu-row { padding-top: 1.2mm; }
+
+  /* PROJECTS */
+  .project {
+    padding: 1.2mm 0 1.2mm 0;
+    border-top: 0.4pt solid var(--border-soft);
+    break-inside: avoid;
+  }
+  .project:first-of-type { border-top: 0.4pt solid var(--border); padding-top: 1.2mm; }
+  .proj-head {
+    display: flex; align-items: baseline;
+    gap: 2mm; margin-bottom: 0.8mm;
+  }
+  .proj-name {
+    font-family: var(--serif);
+    font-size: 11pt; font-weight: 500; color: var(--near-black);
+  }
+  .proj-kind { font-size: 10.5pt; color: var(--olive); }
+  .proj-role {
+    font-size: 9pt; color: var(--brand); font-weight: 500;
+    margin-left: auto; background: #EEF2F7;
+    padding: 0.4mm 1.4mm; border-radius: 2pt;
+    letter-spacing: 0.2pt;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .proj-lines { display: table; width: 100%; }
+  .proj-row { display: table-row; }
+  .proj-label {
+    display: table-cell; width: 16mm;
+    font-size: 9pt; color: var(--brand);
+    font-weight: 500; letter-spacing: 0.3pt;
+    padding: 0.3mm 0 0.5mm 0; vertical-align: top;
+  }
+  .proj-text {
+    display: table-cell; font-size: 9.2pt;
+    color: var(--near-black); line-height: 1.42; letter-spacing: 0.3pt;
+    padding: 0.2mm 0 0.5mm 1mm;
+  }
+  .proj-text .hl { color: var(--brand); }
+
+  /* SKILLS */
+  .skill-row {
+    display: flex; gap: 3mm; padding: 1.4mm 0;
+    border-bottom: 0.3pt dotted var(--border);
+    align-items: baseline;
+  }
+  .skill-row:last-of-type { border-bottom: none; }
+  .skill-label {
+    font-size: 9pt; font-weight: 500;
+    color: var(--brand); letter-spacing: 0.3pt;
+    width: 26mm; flex-shrink: 0;
+    line-height: 1.4;
+  }
+  .skill-body { font-size: 9.2pt; color: var(--near-black); line-height: 1.42; letter-spacing: 0.3pt; flex: 1; }
+  .skill-body .em-brand { color: var(--brand); }
+
+  .no-break { break-inside: avoid; }
+
+  /* EDUCATION */
+  .edu-row {
+    display: flex; justify-content: space-between;
+    align-items: baseline; font-size: 9.5pt; padding: 1.4mm 0;
+  }
+  .edu-row .school {
+    font-family: var(--serif);
+    font-weight: 500; font-size: 11pt;
+  }
+  .edu-row .major { color: var(--olive); font-size: 9.5pt; }
+  .edu-row .date { color: var(--stone); font-variant-numeric: tabular-nums; font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="name serif">黄锡超<span class="alias">HSn</span></div>
+  </div>
+  <div class="contact">
+    <span class="role">后端开发工程师 · Go / 云原生</span><br>
+    <a href="tel:+8613736707307">(+86) 137 3670 7307</a>　·　<a href="mailto:hsn.zj@foxmail.com">hsn.zj@foxmail.com</a>　·　微信 hsn7307<br>
+    <a href="https://resume.huangsn.dev">resume.huangsn.dev</a>　·　男
+  </div>
+</div>
+
+<section>
+  <div class="section-title">教育背景</div>
+  <div class="edu-row">
+    <div>
+      <span class="school serif">浙江理工大学科技与艺术学院</span>
+      <span class="major">　· 计算机科学与技术 · 本科</span>
+    </div>
+    <div class="date">2021.09 - 2025.06</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">工作经历</div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">武汉智识无垠科技有限公司</span>
+      <span class="proj-kind">· 后端开发工程师</span>
+      <span class="proj-role">2025.06 - 至今</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">核心平台</div>
+        <div class="proj-text">参与<span class="hl">核心平台</span>后端架构演进，支撑 <span class="hl">十万级 DAU、千万级日解析量</span>，保持服务高可用。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">身份认证</div>
+        <div class="proj-text">负责海外身份认证体系建设，覆盖 <span class="hl">Google OAuth / 邮箱双通道认证</span>、CLI / 桌面端授权与订阅级多端会话限制。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">运营后台</div>
+        <div class="proj-text">负责<span class="hl">运营管理后台</span>全栈开发，覆盖公告、审批流、用户概览等模块，运营效率提升 <span class="hl">2 倍以上</span>。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">B 端生态</div>
+        <div class="proj-text">负责 <span class="hl">B 端生态项目</span>开发（MCP 服务、pdfdeal Python 库等），降低用户接入门槛。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">杭州谐云科技有限公司</span>
+      <span class="proj-kind">· 后端开发工程师</span>
+      <span class="proj-role">2024.07 - 2025.04</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">平台开发</div>
+        <div class="proj-text">承担<span class="hl">平台功能开发与重构</span>，参与产品评审与测试用例评审，负责 <span class="hl">Jira L3 级工单</span>定位与处理。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">架构转型</div>
+        <div class="proj-text">推动容器网关由<span class="hl">命令式向声明式</span>架构转型，核心操作响应耗时 <span class="hl">20s → 300ms</span>。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">项目经历</div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">Doc2X</span>
+      <span class="proj-kind">· C/B 端智能文档解析平台</span>
+      <span class="proj-role">2025.06 - 至今 · 后端开发</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">简介</div>
+        <div class="proj-text">国内 TOP1 文档解析平台，PDF 转 Markdown / LaTeX / Word，日解析量 <span class="hl">千万级</span>，覆盖国内站与海外站双形态。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">技术栈</div>
+        <div class="proj-text">Go、gRPC、ConnectRPC、PostgreSQL、Redis、NATS、Kubernetes、OpenTelemetry。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">高并发治理</div>
+        <div class="proj-text">高峰期解析、导出链路被免费长尾请求挤占，付费请求出现堆积告警。落地<span class="hl">分级限流 + 闲时排队</span>与多级缓存，将高峰流量平滑至闲时消化，<span class="hl">付费链路告警清零</span>。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">通知系统</div>
+        <div class="proj-text">短信、邮件、飞书 / 钉钉等通知散落于各业务模块，每新增渠道需改动业务代码。基于<span class="hl">策略 + 工厂模式</span>抽离多渠道通知中台，<span class="hl">新增渠道仅需扩展 Provider</span>，业务侧零改动。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">身份认证</div>
+        <div class="proj-text">海外用户默认以邮箱登录，对接 <span class="hl">Google OAuth</span> 打通注册与授权；为 CLI / 桌面端场景自建 <span class="hl">OAuth 2.0 授权码 + PKCE</span> 与刷新令牌轮换，整合后<span class="hl">重构登录体系</span>。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">运营后台</div>
+        <div class="proj-text">运营 / 客服原依赖工程师查数据并手工处理退款 / 发票 / 注销，沟通成本高且易漏配额回收。独立完成<span class="hl">公告、转账、用户概览、订单分析</span>等模块，并将<span class="hl">退款 / 发票 / 注销改造为自助流程</span>。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">观云台</span>
+      <span class="proj-kind">· Kubernetes PaaS 平台</span>
+      <span class="proj-role">2024.07 - 2025.04 · 后端开发</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">简介</div>
+        <div class="proj-text">企业级 Kubernetes PaaS 平台，面向多租户提供容器服务与合规审计，支撑客户降低运维成本、提升交付效率。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">技术栈</div>
+        <div class="proj-text">Go、Gin、Kubernetes、Kubebuilder、MySQL。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">资源重构</div>
+        <div class="proj-text">将资源管理服务由 <span class="hl">Java 重写为 Go</span>，并按 <span class="hl">K8s 原生 RBAC</span> 重整权限模型；期间通过<span class="hl">阅读 K8s 源码定位到一处上游校验缺陷</span>，并在资源层补齐预校验完成兜底。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">架构升级</div>
+        <div class="proj-text">容器网关原为命令式调用链，单次操作需顺序串接多个 API，<span class="hl">高峰期响应耗时 20s</span>且失败难以重试。引入 Reconcile 改造为<span class="hl">声明式 + 幂等收敛</span>，响应稳定收敛至 <span class="hl">300ms</span> 内。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">合规巡检</div>
+        <div class="proj-text">历史方案依赖运维人工核对配置基线，效率低且漏检率高。基于 CronJob + 自定义检测引擎实现<span class="hl">自动化基线审计</span>，纳管组件合规率达 <span class="hl">100%</span>。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="no-break">
+  <div class="section-title">专业技能</div>
+  <div class="skill-row">
+    <div class="skill-label">编程语言与框架</div>
+    <div class="skill-body">熟练使用 <span class="em-brand">Go</span>；掌握 gRPC、ConnectRPC、Gin 及微服务架构设计。</div>
+  </div>
+  <div class="skill-row">
+    <div class="skill-label">云原生</div>
+    <div class="skill-body">熟悉 <span class="em-brand">Kubernetes 核心机制</span>，具备通过源码分析定位问题的经验。</div>
+  </div>
+  <div class="skill-row">
+    <div class="skill-label">数据库与中间件</div>
+    <div class="skill-body">熟练使用 <span class="em-brand">PostgreSQL、Redis、NATS</span>。</div>
+  </div>
+  <div class="skill-row">
+    <div class="skill-label">AI 与大模型</div>
+    <div class="skill-body">熟练使用 <span class="em-brand">Codex、Claude Code</span> 等 AI 编程工具；具备 MCP 开发与开源经验。</div>
+  </div>
+</section>
+
+</body>
+</html>
